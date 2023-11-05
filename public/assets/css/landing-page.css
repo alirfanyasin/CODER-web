@@ -10,6 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  /* border: 1px solid white; */
 }
 
 
@@ -49,3 +50,6 @@ body {
   margin: 300px auto;
 }
 
+#division-section .row {
+  margin-top: 80px;
+}
