@@ -21,6 +21,8 @@
 
 <body>
 
+  @include('components.navbar')
+
   @yield('content')
 
   {{-- BOOTSTRAP 5.3.2 JS --}}
