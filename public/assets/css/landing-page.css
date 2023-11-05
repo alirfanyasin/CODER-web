@@ -1,0 +1,51 @@
+:root {
+  --color-white: #FFFFFF;
+  --color-red: #900505;
+  --color-blue: #01012D;
+}
+
+/* Utilities */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+  background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
+  overflow-x: hidden;
+}
+
+.btn-main {
+  color: var(--color-white);
+
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 200px );
+  -webkit-backdrop-filter: blur( 200px );
+  border-radius: 10px;
+  padding: 10px 60px;
+  text-decoration: none;
+}
+
+.btn-second {
+  color: var(--color-white);
+  border-radius: 10px;
+  border: 2px white solid;
+  padding: 10px 60px;
+  text-decoration: none;
+}
+
+
+#hero-section h1 {
+  font-size: 60px;
+  word-wrap: break-word
+}
+
+
+#about-section {
+  margin: 300px auto;
+}
+

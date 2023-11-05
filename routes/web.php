@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LandingPage;
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,4 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('test');
-});
+Route::get('/', [LandingPageController::class, 'index']);
