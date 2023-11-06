@@ -13,6 +13,18 @@
   /* border: 1px solid white; */
 }
 
+.custom-cursor .circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+  background-color: black;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999999; /* so that it stays on top of all other elements */
+}
+
 
 body {
   background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
@@ -40,7 +52,7 @@ body {
 
 
 #hero-section h1 {
-  font-size: 60px;
+  font-size: 50px;
   word-wrap: break-word
 }
 
@@ -83,10 +95,33 @@ footer {
 }
 
 
+nav .navbar-nav .nav-link:hover {
+  border-bottom: 2px solid white;
+}
+
+.btn-main:hover {
+  background: none;
+  border: 1px solid white;
+}
+
+.btn-second:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 200px );
+  -webkit-backdrop-filter: blur( 200px );
+  border-radius: 10px;
+  padding: 10px 60px;
+  text-decoration: none;
+  border: none;
+}
+
 
 
 @media (max-width: 768px) {
   /* Gaya CSS untuk layar berukuran kecil */
+
+
 
   .btn-main {
     color: var(--color-white);
@@ -138,5 +173,13 @@ footer {
     padding: 20px;
   }
 
+  footer .col-md-3:nth-child(1)  {
+    display: flex;
+    justify-content: center;
+  }
+
+  footer .col-md-3:nth-child(2),footer .col-md-3:nth-child(3),footer .col-md-3:nth-child(4)  {
+    margin-top: 50px;
+  }
 
 }

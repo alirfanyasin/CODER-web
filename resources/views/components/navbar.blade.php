@@ -12,12 +12,13 @@
      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
        <div class="me-auto"></div>
        <div class="navbar-nav">
-         <a class="nav-link text-white active" aria-current="page" href="#">Home</a>
-         <a class="nav-link mx-3 text-white" href="#">About</a>
-         <a class="nav-link mx-3 text-white" href="#">Event</a>
-         <a class="nav-link mx-3 text-white" href="#">Gallery</a>
-         <a class="nav-link mx-3 text-white" href="#">News</a>
-         <a class="nav-link text-white" href="#">E-Learning</a>
+         <a class="nav-link ms-3 text-white active" aria-current="page" href="#">Home</a>
+         <a class="nav-link ms-3 text-white" href="#about-section">About</a>
+         {{-- <a class="nav-link ms-3 text-white" href="#">Event</a> --}}
+         <a class="nav-link ms-3 text-white" href="#division-section">Division</a>
+         <a class="nav-link ms-3 text-white" href="#gallery-section">Gallery</a>
+         <a class="nav-link ms-3 text-white" href="#news-section">News</a>
+         <a class="nav-link ms-3 text-white" href="#">E-Learning</a>
        </div>
      </div>
    </div>

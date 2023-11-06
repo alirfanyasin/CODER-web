@@ -7,15 +7,21 @@
     <div class="row d-flex justify-content-between align-items-center">
       <div class="col-lg-6 col-md-12 text-white">
         <div class="position-relative">
-          <h1 class="fw-bold">Creativity on Digital Environment in
-            Room of Technology</h1>
-          <p class="fw-light">CODER merupakan Unit Kegiatan Mahasiswa (UKM) dari Institut Teknologi Telkom Surabaya.
+          <h1 class="fw-bold animate__animated animate__lightSpeedInLeft animate__delay-1s">Creativity on Digital
+            Environment
+            in<br>
+            Room of <span id="element"></span></h1>
+          <p class="fw-light animate__animated animate__bounceInUp animate__delay-2s">CODER merupakan Unit Kegiatan
+            Mahasiswa (UKM)
+            dari Institut Teknologi Telkom Surabaya.
             Kami
             berfokus pada
             teknologi pengembangan software</p>
-          <div class="mt-5 btn-group">
-            <a href="" class="btn-main">Join Us</a>
-            <a href="" class="btn-second mx-3">See More</a>
+          <div class="mt-5 btn-group animate__animated  animate__bounceInUp animate__delay-3s">
+            <a href="" class="btn-main animate__animated animate__tada animate__delay-4s animate__repeat-3">Join
+              Us</a>
+            <a href="" class="btn-second mx-3">See
+              More</a>
           </div>
         </div>
         <div class="Ellipse5 position-absolute"
@@ -23,7 +29,8 @@
         </div>
       </div>
       <div class="col-lg-6 col-md-12 position-relative">
-        <img src="{{ asset('assets/img/illustration-1.png') }}" alt="illustration one" class="w-100">
+        <img src="{{ asset('assets/img/illustration-1.png') }}" alt="illustration one"
+          class="w-100 animate__animated animate__lightSpeedInRight animate__delay-1s">
         <div class="Ellipse3 position-absolute"
           style="width: 477px; height: 477px; background: rgba(255, 0, 153, 0.48); box-shadow: 400px 400px 400px; border-radius: 9999px; filter: blur(100px); z-index: -99; margin-top: -1000px;">
         </div>
@@ -38,17 +45,17 @@
 
   {{-- About - start --}}
   <div class="container" id="about-section">
-    <header class="row text-center position-relative mb-5">
+    <header class="row text-center position-relative mb-5" data-aos="zoom-in" data-aos-duration="2000">
       <h2 class="fw-semibold text-white">About Us</h2>
       <div class="d-flex justify-content-center position-absolute mt-5">
         <img src="{{ asset('assets/img/about-us.png') }}" alt="" style="z-index: -99;">
       </div>
     </header>
     <div class="row" style="margin: 70px auto;">
-      <div class="col-lg-6 col-md-12">
+      <div class="col-lg-6 col-md-12" data-aos="fade-right" data-aos-duration="2000">
         <img src="{{ asset('assets/img/illustration-2.png') }}" alt="" class="w-100">
       </div>
-      <div class="col-lg-6 col-md-12 position-relative">
+      <div class="col-lg-6 col-md-12 position-relative" data-aos="fade-left" data-aos-duration="2000">
         <div class="Ellipse4 position-absolute"
           style="width: 340px; height: 340px; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; z-index: -999; margin-left: 450px; margin-top: -150px;">
         </div>
@@ -115,7 +122,7 @@
       style="width: 800px; height: 800px; background: rgba(0, 207.93, 221.20, 0.23); box-shadow: 400px 400px 400px; border-radius: 9999px; filter: blur(100px); margin-top: -200px;">
     </div>
 
-    <header class="row text-center position-relative mb-5">
+    <header class="row text-center position-relative mb-5" data-aos="zoom-in" data-aos-duration="2000">
       <h2 class="fw-semibold text-white">Division</h2>
       <div class="d-flex justify-content-center position-absolute mt-5">
         <img src="{{ asset('assets/img/division.png') }}" alt="" style="z-index: -99;">
@@ -123,7 +130,7 @@
     </header>
 
     <div class="row">
-      <div class="col-lg-4 col-md-6 mb-4 text-white">
+      <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="1000">
         <div class="p-5 text-center "
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="d-flex justify-content-center mb-4">
@@ -136,7 +143,7 @@
           <p class="fw-light">Melakukan pengembangan aplikasi berbasis Website</p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4 text-white">
+      <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="2000">
         <div class="p-5 text-center "
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="d-flex justify-content-center mb-4">
@@ -149,7 +156,7 @@
           <p class="fw-light">Melakukan proses Sketching, Wireframing, Mockup, hingga Prototype</p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4 text-white">
+      <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="3000">
         <div class="p-5 text-center "
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="d-flex justify-content-center mb-4">
@@ -162,7 +169,7 @@
           <p class="fw-light">Melakukan pengembangan aplikasi berbasis Mobile App</p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4 text-white">
+      <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="4000">
         <div class="p-5 text-center "
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="d-flex justify-content-center mb-4">
@@ -175,7 +182,7 @@
           <p class="fw-light">Melakukan pengembangan algoritma pemrograman untuk berkompetisi</p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4 text-white">
+      <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="5000">
         <div class="p-5 text-center "
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="d-flex justify-content-center mb-4">
@@ -188,7 +195,7 @@
           <p class="fw-light">Mengembangkan perangkat lunak berbasis kecerdasan artifisial</p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 mb-4 text-white position-relative">
+      <div class="col-lg-4 col-md-6 mb-4 text-white position-relative" data-aos="flip-left" data-aos-duration="6000">
         <div class="p-5 text-center"
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="d-flex justify-content-center mb-4">
@@ -217,7 +224,7 @@
 
   {{-- Gallery - start --}}
   <div class="container" id="gallery-section">
-    <header class="row text-center position-relative mb-5">
+    <header class="row text-center position-relative mb-5" data-aos="zoom-in" data-aos-duration="2000">
       <h2 class="fw-semibold text-white">Gallery</h2>
       <div class="d-flex justify-content-center position-absolute mt-5">
         <img src="{{ asset('assets/img/gallery.png') }}" alt="" style="z-index: -99;">
@@ -225,7 +232,7 @@
     </header>
 
 
-    <div class="row autoplay">
+    <div class="row autoplay" data-aos="fade-up" data-aos-duration="3000">
       <div class="col-lg-4 col-md-6">
         <div class="card mx-3 p-4"
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
@@ -288,7 +295,7 @@
 
   {{-- News - start --}}
   <div class="container" id="news-section">
-    <header class="row text-center position-relative mb-5">
+    <header class="row text-center position-relative mb-5" data-aos="zoom-in" data-aos-duration="2000">
       <h2 class="fw-semibold text-white">News</h2>
       <div class="d-flex justify-content-center position-absolute mt-5">
         <img src="{{ asset('assets/img/news.png') }}" alt="" style="z-index: -99;">
@@ -297,7 +304,7 @@
 
     <div class="row news-content">
       <div class="col-md-6">
-        <div class="card p-4"
+        <div class="card p-4" data-aos="fade-right" data-aos-duration="2000"
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="text-white">
             <img src="{{ asset('assets/img/img-1.png') }}" class="w-100" alt="...">
@@ -311,7 +318,7 @@
         </div>
       </div>
       <div class="col-md-6 mt-3">
-        <div class="container">
+        <div class="container" data-aos="fade-left" data-aos-duration="2000">
           <div class="row">
             <div class="card mb-3"
               style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
@@ -386,23 +393,23 @@
 
   {{-- Partner - start --}}
   <div class="container" id="partner-section">
-    <header class="row text-center position-relative mb-5">
+    <header class="row text-center position-relative mb-5" data-aos="zoom-in" data-aos-duration="2000">
       <h2 class="fw-semibold text-white">Partner</h2>
       {{-- <div class="d-flex justify-content-center position-absolute mt-5">
         <img src="{{ asset('assets/img/partner.png') }}" alt="" style="z-index: -99;">
       </div> --}}
     </header>
     <div class="row d-flex align-items-center justify-content-center">
-      <div class="col-lg-2 col-md-4 col-6">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-right" data-aos-duration="1000">
         <img src="{{ asset('assets/img/logo-dojo.png') }}" alt="" class="w-100">
       </div>
-      <div class="col-lg-2 col-md-4 col-6">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-right" data-aos-duration="2000">
         <img src="{{ asset('assets/img/logo-playbox.png') }}" alt="" class="w-100">
       </div>
-      <div class="col-lg-2 col-md-4 col-6">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-right" data-aos-duration="3000">
         <img src="{{ asset('assets/img/logo-waow.png') }}" alt="" class="w-100">
       </div>
-      <div class="col-lg-2 col-md-4 col-6">
+      <div class="col-lg-2 col-md-4 col-6" data-aos="fade-right" data-aos-duration="4000">
         <img src="{{ asset('assets/img/logo-wezaa.png') }}" alt="" class="w-100">
       </div>
     </div>
@@ -478,5 +485,14 @@
         ]
       })
     })
+
+    AOS.init();
+
+    var typed = new Typed('#element', {
+      strings: ['Technology', 'Business', 'Future'],
+      typeSpeed: 100,
+      loop: true,
+      loopCount: Infinity,
+    });
   </script>
 @endpush
