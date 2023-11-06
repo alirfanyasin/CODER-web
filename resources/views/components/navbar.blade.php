@@ -1,5 +1,6 @@
  {{-- Navbar - Start --}}
- <nav class="navbar navbar-expand-lg" style="background: rgba(255, 255, 255, 0.19); backdrop-filter: blur(100px);">
+ <nav class="navbar navbar-expand-lg fixed-top"
+   style="background: rgba(255, 255, 255, 0.19); backdrop-filter: blur(5px);">
    <div class="container">
      <a class="navbar-brand text-white" href="#">
        <img src="{{ asset('assets/img/second-logo.png') }}" alt="Logo Coder IT Telkom Surabaya" style="width: 100px">

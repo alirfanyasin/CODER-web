@@ -21,7 +21,6 @@ body {
 
 .btn-main {
   color: var(--color-white);
-
   background: rgba(255, 255, 255, 0.30);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 200px );
@@ -34,7 +33,7 @@ body {
 .btn-second {
   color: var(--color-white);
   border-radius: 10px;
-  border: 2px white solid;
+  border: 1px white solid;
   padding: 10px 60px;
   text-decoration: none;
 }
@@ -52,4 +51,92 @@ body {
 
 #division-section .row {
   margin-top: 80px;
+}
+
+
+#gallery-section {
+  margin: 300px auto;
+}
+
+#gallery-section .row {
+  margin-top: 80px;
+}
+
+#news-section .news-content {
+  margin-top: 80px;
+}
+
+
+#partner-section {
+  margin: 200px auto;
+}
+
+
+footer {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+#about-section .row .col-lg-6 .w-full {
+  padding: 50px;
+}
+
+
+
+
+@media (max-width: 768px) {
+  /* Gaya CSS untuk layar berukuran kecil */
+
+  .btn-main {
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.30);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 200px );
+    -webkit-backdrop-filter: blur( 200px );
+    border-radius: 10px;
+    padding: 10px 40px;
+    text-decoration: none;
+  }
+  
+.btn-second {
+  color: var(--color-white);
+  border-radius: 10px;
+  border: 1px white solid;
+  padding: 10px 40px;
+  text-decoration: none;
+}
+
+  #hero-section h1 {
+    font-size: 25pt;
+    text-align: center;
+  }
+
+  #hero-section p {
+    font-size: 10pt;
+    text-align: center;
+  }
+
+  #hero-section .col-lg-6:nth-child(1) {
+    order: 2;
+  }
+  #hero-section .col-lg-6:nth-child(2) {
+    order: 1;
+  }
+
+  #hero-section .btn-group {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  #about-section .row .col-lg-6:nth-child(1) {
+    margin-bottom: 50px;
+  }
+
+  #about-section .row .col-lg-6 .w-full {
+    padding: 20px;
+  }
+
+
 }
