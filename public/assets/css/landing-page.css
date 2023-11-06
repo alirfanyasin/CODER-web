@@ -25,6 +25,10 @@
   z-index: 99999999; /* so that it stays on top of all other elements */
 }
 
+nav .navbar-toggler-icon {
+  color: white;
+}
+
 
 body {
   background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
@@ -121,7 +125,9 @@ nav .navbar-nav .nav-link:hover {
 @media (max-width: 768px) {
   /* Gaya CSS untuk layar berukuran kecil */
 
-
+  body{
+    overflow-x: hidden;
+  }
 
   .btn-main {
     color: var(--color-white);
