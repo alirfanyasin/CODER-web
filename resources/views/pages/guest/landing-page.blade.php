@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'CODER - Creativity on Digital Environment in Room of Technology')
+@section('title', 'CODER - IT Telkom Surabaya')
 
 @section('content')
   <main>

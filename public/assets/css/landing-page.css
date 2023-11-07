@@ -33,6 +33,7 @@ nav .navbar-toggler-icon {
 body {
   background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
   overflow-x: hidden;
+  width: 100vw;
 }
 
 .btn-main {
@@ -173,6 +174,10 @@ nav .navbar-nav .nav-link:hover {
 
   #about-section .row .col-lg-6:nth-child(1) {
     margin-bottom: 50px;
+  }
+
+  #about-section .row .col-lg-6:nth-child(1) img {
+    display: none;
   }
 
   #about-section .row .col-lg-6 .w-full {
