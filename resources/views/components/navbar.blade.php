@@ -28,7 +28,7 @@
          <a class="nav-link ms-3 text-white" href="#gallery-section">Gallery</a>
          <a class="nav-link ms-3 text-white" href="#news-section">News</a>
          {{-- <a class="nav-link ms-3 text-white" href="#">E-Learning</a> --}}
-         <a class="nav-link ms-3 text-white" href="#">Login</a>
+         <a class="nav-link ms-3 text-white" href="{{ route('login') }}">Login</a>
        </div>
      </div>
    </div>

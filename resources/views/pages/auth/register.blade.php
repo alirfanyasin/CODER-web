@@ -13,6 +13,18 @@
 
           <form action="" class="mt-5">
             <div class="input-group">
+              <input type="text" name="name" class="form-control mb-3 text-white fw-light"
+                style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                  backdrop-filter: blur(5px);"
+                id="name" placeholder="Fullname">
+            </div>
+            <div class="input-group">
+              <input type="text" name="division" class="form-control mb-3 text-white fw-light"
+                style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                  backdrop-filter: blur(5px);"
+                id="division" placeholder="Division">
+            </div>
+            <div class="input-group">
               <input type="text" name="email" class="form-control mb-3 text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
@@ -24,19 +36,16 @@
                   backdrop-filter: blur(5px);"
                 id="email" placeholder="Password">
             </div>
-            <div class="mb-3 d-flex justify-content-end">
-              <a href="" class="text-white text-decoration-none fw-light">Forgot Password?</a>
-            </div>
             <div class="mb-3">
-              <button type="submit" class="btn-auth">Sign In</button>
+              <button type="submit" class="btn-auth">Sign Up</button>
             </div>
             <div class="text-center text-white">
               <p class="mb-4">Or</p>
               <a href="">
                 <img src="{{ asset('assets/img/icon-google.png') }}" alt="">
               </a>
-              <p class="mt-4 fw-light">Don't have an accout? <a href="{{ route('register') }}"
-                  class="fw-semibold text-white text-decoration-none">Sign Up</a></p>
+              <p class="mt-4 fw-light">Do you have an accout? <a href="{{ route('login') }}"
+                  class="fw-semibold text-white text-decoration-none">Sign In</a></p>
             </div>
           </form>
         </div>

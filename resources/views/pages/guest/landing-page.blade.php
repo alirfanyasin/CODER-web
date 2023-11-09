@@ -2,7 +2,7 @@
 @section('title', 'CODER - IT Telkom Surabaya')
 
 @section('content')
-  <main>
+  <main style="width: 100vw;">
     {{-- Hero - start --}}
     <div class="container mt-5" id="hero-section">
       <div class="row d-flex justify-content-between align-items-center">
@@ -26,17 +26,17 @@
             </div>
           </div>
           <div class="Ellipse5 position-absolute"
-            style="width: 660px; height: 660px; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; margin-left: -450px; margin-top: -100px; z-index: -99;">
+            style="width: 660px; height: 660px; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; left: -400px; bottom: -200px; z-index: -99;">
           </div>
         </div>
         <div class="col-lg-6 col-md-12 position-relative">
           <img src="{{ asset('assets/img/illustration-1.png') }}" alt="illustration one"
             class="w-100 animate__animated animate__lightSpeedInRight animate__delay-1s">
           <div class="Ellipse3 position-absolute"
-            style="width: 477px; height: 477px; background: rgba(255, 0, 153, 0.48); box-shadow: 400px 400px 400px; border-radius: 9999px; filter: blur(100px); z-index: -99; margin-top: -1000px;">
+            style="width: 477px; height: 477px; background: rgba(255, 0, 153, 0.48); box-shadow: 400px 400px 400px; border-radius: 9999px; filter: blur(100px); z-index: -99; top: -150px;">
           </div>
           <div class="Ellipse1 position-absolute"
-            style="width: 1000px; height: 1000px; background: rgba(0, 207.93, 221.20, 0.23); box-shadow: 400px 400px 400px; border-radius: 9999px; filter: blur(100px); z-index: -99; margin-right: -350px; margin-top: -200px;">
+            style="width: 100%; height: 100%; background: rgba(0, 207.93, 221.20, 0.23); box-shadow: 400px 400px 400px; border-radius: 9999px; filter: blur(100px); z-index: -99; right: -350px; bottom: 100px;">
           </div>
         </div>
       </div>
@@ -56,9 +56,9 @@
         <div class="col-lg-6 col-md-12" data-aos="fade-right" data-aos-duration="2000">
           <img src="{{ asset('assets/img/illustration-2.png') }}" alt="" class="w-100">
         </div>
-        <div class="col-lg-6 col-md-12 position-relative" data-aos="fade-left" data-aos-duration="2000">
+        <div class="col-lg-6 col-md-12" data-aos="fade-left" data-aos-duration="2000">
           <div class="Ellipse4 position-absolute"
-            style="width: 340px; height: 340px; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; z-index: -999; margin-left: 450px; margin-top: -150px;">
+            style="width: 340px; height: 340px; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; z-index: -999; left: 450px; top: -150px;">
           </div>
           <div class="w-full"
             style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px); z-index: 99;">
@@ -107,7 +107,7 @@
               </div>
             </div>
           </div>
-          <div class="Ellipse6 position-absolute"
+          <div class="Ellipse6 position-relative"
             style="width: 200px; height: 200px; transform: rotate(180deg); transform-origin: 0 0; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; margin-left: 50px; margin-top: 80px;">
           </div>
         </div>
