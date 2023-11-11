@@ -19,6 +19,6 @@ class NewsController extends Controller
 
     public function show()
     {
-        return view('pages.app.news_detail');
+        return view('pages.app.news_show');
     }
 }
