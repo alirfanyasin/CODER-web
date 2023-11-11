@@ -53,3 +53,11 @@ aside .sidebar .list-group .list-item:hover{
 .side-active {
   background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(20px);
 }
+
+
+.input-group input::placeholder {
+  color: var(--color-white); 
+}
+.input-group textarea::placeholder {
+  color: var(--color-white); 
+}
