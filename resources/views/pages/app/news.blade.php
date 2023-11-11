@@ -7,7 +7,7 @@
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>News</h1>
       <div>
-        <a href="{{ route('create.news') }}" class="btn-main">Add News</a>
+        <a href="{{ route('admin.news.create') }}" class="btn-main">Add News</a>
       </div>
     </div>
     <div class="row">

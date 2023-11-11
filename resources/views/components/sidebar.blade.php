@@ -20,11 +20,11 @@
         style="margin-right: 150px;"> <iconify-icon icon="fluent-mdl2:group" width="24"></iconify-icon>
         &nbsp;&nbsp;
         Division</a>
-      <a href="/admin/user"
-        class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/user') ? 'side-active' : '' }}"
+      <a href="{{ route('admin.users') }}"
+        class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/users') ? 'side-active' : '' }}"
         style="margin-right: 150px;"> <iconify-icon icon="ph:user" width="24"></iconify-icon>
         &nbsp;&nbsp;
-        User</a>
+        Users</a>
       <a href="/admin/gallery"
         class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/gallery') ? 'side-active' : '' }}"
         style="margin-right: 150px;"> <iconify-icon icon="solar:gallery-outline" width="24"></iconify-icon>
