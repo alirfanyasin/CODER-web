@@ -33,6 +33,9 @@
         <div class="p-4"
           style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
           <h5 class="text-white">Statistik</h5>
+          <div class="w-100">
+            {!! $chart->container() !!}
+          </div>
         </div>
       </div>
 
@@ -72,3 +75,9 @@
     </div>
   </section>
 @endsection
+
+@push('js-libraries')
+  <script src="{{ $chart->cdn() }}"></script>
+
+  {{ $chart->script() }}
+@endpush
