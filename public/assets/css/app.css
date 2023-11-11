@@ -32,9 +32,24 @@ body {
   position: relative;
 }
 
+.btn-main {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 200px );
+  -webkit-backdrop-filter: blur( 200px );
+  border-radius: 10px;
+  padding: 10px 60px;
+  text-decoration: none;
+}
+
 
 
 
 aside .sidebar .list-group .list-item:hover{
+  background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(20px);
+}
+
+.side-active {
   background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(20px);
 }

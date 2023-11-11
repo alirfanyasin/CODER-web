@@ -35,13 +35,12 @@
 <body>
   <main>
     <div class="row">
-
       <div class="col-3">
         @include('components.sidebar')
       </div>
 
       <div class="col-9" style="height: 100vh; overflow-y: scroll; overflow-x: hidden;">
-        <div class="container px-5">
+        <div class="container">
           <nav class="py-4 d-flex justify-content-end align-items-center">
             <div class="text-white mx-4">
               <span class="fw-light">Welcome, <span class="fw-semibold">Username</span></span>
