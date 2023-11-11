@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LandingPage;
@@ -31,4 +32,7 @@ Route::get('/register', [RegisterController::class, 'register'])->name('register
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/news', [NewsController::class, 'index'])->name('admin.news');
-Route::get('/admin/news/create', [NewsController::class, 'create'])->name('create.news');
+Route::get('/admin/news/create', [NewsController::class, 'create'])->name('admin.news.create');
+Route::get('/admin/news/show', [NewsController::class, 'show'])->name('admin.news.show');
+Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
+Route::get('/admin/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
