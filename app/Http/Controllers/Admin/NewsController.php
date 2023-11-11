@@ -11,4 +11,9 @@ class NewsController extends Controller
     {
         return view('pages.app.news');
     }
+
+    public function create()
+    {
+        return view('pages.app.news_create');
+    }
 }
