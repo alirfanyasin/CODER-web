@@ -1,0 +1,40 @@
+:root {
+  --color-white: #FFFFFF;
+  --color-red: #900505;
+  --color-blue: #01012D;
+}
+
+/* Utilities */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* border: 1px solid white; */
+}
+
+.custom-cursor .circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+  background-color: black;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999999; /* so that it stays on top of all other elements */
+}
+
+
+body {
+  background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
+  overflow-x: hidden;
+  position: relative;
+}
+
+
+
+
+aside .sidebar .list-group .list-item:hover{
+  background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(20px);
+}

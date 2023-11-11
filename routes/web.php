@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LandingPage;
@@ -25,3 +26,6 @@ Route::get('/', [LandingPageController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
+
+
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
