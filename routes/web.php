@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -34,5 +35,7 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('adm
 Route::get('/admin/news', [NewsController::class, 'index'])->name('admin.news');
 Route::get('/admin/news/create', [NewsController::class, 'create'])->name('admin.news.create');
 Route::get('/admin/news/show', [NewsController::class, 'show'])->name('admin.news.show');
+Route::get('/admin/division', [DivisionController::class, 'index'])->name('admin.division');
+Route::get('/admin/division/create', [DivisionController::class, 'create'])->name('admin.division.create');
 Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
