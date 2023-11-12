@@ -2,49 +2,142 @@
 
 @section('title', 'CODER - Create News')
 
+@push('css-libraries')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<style>
+  #editor {
+    height: 400px;
+  }
+</style>
+@endpush
+
 @section('content')
-  <section>
+<section>
+  <form method="POST" action="{{ route('admin.news.store') }}" enctype="multipart/form-data">
+    @csrf
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Create News</h1>
-      {{-- <div>
-        <a href="" class="btn-main">Add News</a>
-      </div> --}}
+      <div>
+        <a href="{{ route('admin.news.store') }}" class="btn-main">Add News</a>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-8 mb-3">
-        <div class="p-3 text-white"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="p-3 text-white" style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
           <div class="input-group mb-4">
-            <input type="text" name="title" class="form-control text-white fw-light"
-              style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
-                  backdrop-filter: blur(5px);"
-              id="email" placeholder="Title">
+            <input type="text" name="title" class="form-control text-white fw-light" style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                  backdrop-filter: blur(5px);" id="title" placeholder="Title" required>
           </div>
           <div class="input-group mb-4">
-            <textarea name="content" id="content" cols="20" rows="10" class="form-control text-white fw-light"
-              style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
-            backdrop-filter: blur(5px);"
-              placeholder="Content"> Type your content here ...
+            <select class="form-select text-white fw-light" style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                  backdrop-filter: blur(5px);" name="category" id="category">
+              <option selected disabled class="text-black">Choose category</option>
+              <option value="1" name="category" id="category" class="text-black">Web</option>
+              <option value="2" name="category" id="category" class="text-black">Mobile</option>
+              <option value="3" name="category" id="category" class="text-black">UI/UX</option>
+              <option value="4" name="category" id="category" class="text-black">Competitive</option>
+              <option value="5" name="category" id="category" class="text-black">Data</option>
+              <option value="6" name="category" id="category" class="text-black">AI</option>
+              <option value="7" name="category" id="category" class="text-black">Event</option>
+            </select>
+          </div>
+          <div class="input-group mb-4">
+            <textarea name="content" id="content" cols="20" rows="10" class="form-control text-white fw-light" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+            backdrop-filter: blur(5px);" placeholder="Content" name="conten" id="conten"> Type your content here ...
             </textarea>
-
+            <!-- <div id="editor"> -->
+            <!-- </div> -->
+            <!-- <input type="hidden" name="content" id="content" required> -->
           </div>
         </div>
       </div>
       <div class="col-md-4 mb-3">
-        <div class="p-3 text-white"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
-          <img src="{{ asset('assets/img/img-1.png') }}" alt="" width="100%">
-          <p class="text-left mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-          <div class="footer d-flex justify-content-between align-items-center">
-            <div>
-              <small class="fw-light" style="color: rgba(255, 255, 255, 0.573);">180 Views</small>
-            </div>
-            <div class="fw-light" style="color: rgba(255, 255, 255, 0.573);">
-              <small>3 hour ago</small> &nbsp;
-            </div>
-          </div>
+        <div class="p-3 text-white" style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px); border-bottom: 2px solid white">
+          <img src="{{ asset('assets/img/no-image.svg') }}" id="result" alt="" class="w-100" width="100%" style="border-radius: 10px;">
+          <p class="text-left mt-3">Thumbnail</p>
         </div>
+        <input type="file" name="thumbnail" id="thumbnail" class="form-control mt-3 text-white" style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);" onchange="readFile(this)" required>
+
       </div>
     </div>
-  </section>
+</section>
 @endsection
+@push('js-libraries')
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+  var toolbarOptions = [
+    [{
+      'header': [1, 2, 3, 4, 5, 6, false]
+    }],
+    [{
+      'font': []
+    }],
+    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+    [{
+      'align': []
+    }],
+    ['blockquote', 'code-block'],
+    ['link', 'image'],
+    [{
+      'list': 'ordered'
+    }, {
+      'list': 'bullet'
+    }],
+    [{
+      'script': 'sub'
+    }, {
+      'script': 'super'
+    }], // superscript/subscript
+    [{
+      'indent': '-1'
+    }, {
+      'indent': '+1'
+    }], // outdent/indent
+    [{
+      'direction': 'rtl'
+    }], // text direction
+
+    [{
+      'color': []
+    }, {
+      'background': []
+    }], // dropdown with defaults from theme
+
+
+
+    ['clean'] // remove formatting button
+  ];
+  var quill = new Quill('#editor', {
+    modules: {
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  });
+
+  // Get quill as conten for DB
+  const updateContentInput = () => {
+    var content = quill.root.innerHTML;
+    document.getElementById("conten").value = content;
+  }
+
+  quill.on('text-change', function() {
+    updateContentInput();
+  });
+
+  // File Reader
+  function readFile(input) {
+    let file = input.files[0];
+    let fileReader = new FileReader();
+    fileReader.readAsText(file);
+    fileReader.onload = function() {
+      document.getElementById("result").src = URL.createObjectURL(file);
+    };
+    fileReader.onerror = function() {
+      alert(fileReader.error);
+    };
+  }
+</script>
+@endpush

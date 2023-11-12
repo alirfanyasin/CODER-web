@@ -39,7 +39,7 @@ Route::get('/admin/news/show', [NewsController::class, 'show'])->name('admin.new
 Route::post('admin/news/store', [NewsController::class, 'store'])->name('admin.news.store');
 Route::get('admin/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
 Route::get('admin/news/{id}/destroy', [NewsController::class, 'destroy'])->name('admin.news.destroy');
-Route::put('/admin/{id}/update', [NewsController::class, 'update'])->name('admin.news.update');
+Route::put('admin/news/{id}/update', [NewsController::class, 'update'])->name('admin.news.update');
 
 Route::get('/admin/division', [DivisionController::class, 'index'])->name('admin.division');
 Route::get('/admin/division/create', [DivisionController::class, 'create'])->name('admin.division.create');
