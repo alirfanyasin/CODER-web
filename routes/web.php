@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DivisionController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -39,3 +40,5 @@ Route::get('/admin/division', [DivisionController::class, 'index'])->name('admin
 Route::get('/admin/division/create', [DivisionController::class, 'create'])->name('admin.division.create');
 Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
+Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
+Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
