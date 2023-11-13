@@ -55,7 +55,7 @@
             <li class="nav-item" role="presentation">
               <button class="nav-link text-white" id="project-tab" data-bs-toggle="tab" data-bs-target="#project-tab-pane"
                 type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"
-                style="background: rgba(255, 255, 255, 0.13); border-radius: 10px 10px 0 0; backdrop-filter: blur(5px);">Profile</button>
+                style="background: rgba(255, 255, 255, 0.13); border-radius: 10px 10px 0 0; backdrop-filter: blur(5px);">Project</button>
             </li>
 
           </ul>
