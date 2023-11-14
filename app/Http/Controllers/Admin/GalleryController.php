@@ -11,4 +11,9 @@ class GalleryController extends Controller
     {
         return view('pages.app.gallery');
     }
+
+    public function create()
+    {
+        return view('pages.app.gallery_create');
+    }
 }

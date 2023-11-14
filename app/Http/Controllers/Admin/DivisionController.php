@@ -15,4 +15,10 @@ class DivisionController extends Controller
     {
         return view('pages.app.division_create');
     }
+
+
+    public function member()
+    {
+        return view('pages.app.division_member');
+    }
 }

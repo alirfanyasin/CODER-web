@@ -29,10 +29,10 @@
               <input type="text" name="icon" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-                id="email" placeholder="Classname Iconify">
+                id="email" placeholder="Icon">
             </div>
             <div class="input-group">
-              <button type="submit" class="text-white px-5 py-3"
+              <button type="submit" class="text-white px-5 py-2"
                 style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none;
               backdrop-filter: blur(5px);">Submit</button>
             </div>
