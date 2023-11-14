@@ -24,7 +24,7 @@
           <h5>Web Development</h5>
           <p class="fw-light">Melakukan pengembangan aplikasi berbasis Website</p>
           <div class="mt-4">
-            <a href=""
+            <a href="{{ route('admin.division.member') }}"
               class="text-decoration-none text-white fw-light px-4 py-2 border-1 border-white border rounded-pill">View
               More</a>
           </div>

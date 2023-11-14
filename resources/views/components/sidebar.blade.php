@@ -35,8 +35,8 @@
         style="margin-right: 150px;"> <iconify-icon icon="carbon:machine-learning-model" width="24"></iconify-icon>
         &nbsp;&nbsp;
         E-Learning</a>
-      <a href="/admin/e-learning"
-        class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/e-learning') ? 'side-active' : '' }} {{ Request::is('admin/e-learning/*') ? 'side-active' : '' }}"
+      <a href="/admin/absence"
+        class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/absence') ? 'side-active' : '' }} {{ Request::is('admin/e-learning/*') ? 'side-active' : '' }}"
         style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
         &nbsp;&nbsp;
         Absence</a>
