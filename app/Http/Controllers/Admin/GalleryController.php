@@ -52,11 +52,13 @@ class GalleryController extends Controller
             }
 
             // Return a success response
-            return response()->json(['message' => 'Files uploaded successfully'], 200);
+            // return response()->json(['message' => 'Files uploaded successfully'], 200);
+            return redirect()->route('admin.gallery')->with('success', 'Files uploaded successfullu');
         }
 
         // Handle the case when no files are uploaded
-        return response()->json(['error' => 'No files uploaded'], 400);
+        // return response()->json(['error' => 'No files uploaded'], 400);
+        return redirect()->route('admin.gallery.create')->with('error', 'No files uploaded');
     }
 
 
