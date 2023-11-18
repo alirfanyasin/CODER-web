@@ -26,7 +26,7 @@
         &nbsp;&nbsp;
         Users</a>
       <a href="/admin/gallery"
-        class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/gallery') ? 'side-active' : '' }}"
+        class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/gallery') ? 'side-active' : '' }} {{ Request::is('admin/gallery/*') ? 'side-active' : '' }} "
         style="margin-right: 150px;"> <iconify-icon icon="solar:gallery-outline" width="24"></iconify-icon>
         &nbsp;&nbsp;
         Gallery</a>
