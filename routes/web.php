@@ -52,7 +52,9 @@ Route::get('/admin/division/member', [DivisionController::class, 'member'])->nam
 
 Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
+
 Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
 Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+Route::post('/admin/gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
 
 Route::get('/admin/e-learning', [LearningController::class, 'index'])->name('admin.learning');
