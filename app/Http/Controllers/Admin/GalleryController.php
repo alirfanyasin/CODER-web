@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +16,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('pages.app.gallery');
+        return view('pages.app.gallery', [
+            'data' => Gallery::all()
+        ]);
     }
 
     /**
@@ -87,6 +90,12 @@ class GalleryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $file = Gallery::findOrFail($id);
+        if (!$file) {
+            return redirect()->back()->with('error', 'File not found');
+        }
+        Storage::delete('public/gallery/' . $file->img);
+        $file->delete();
+        return redirect()->route('admin.gallery')->with('success', 'Deleted file successfuly');
     }
 }
