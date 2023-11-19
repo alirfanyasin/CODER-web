@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\LearningController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -43,7 +44,18 @@ Route::put('admin/news/{id}/update', [NewsController::class, 'update'])->name('a
 
 Route::get('/admin/division', [DivisionController::class, 'index'])->name('admin.division');
 Route::get('/admin/division/create', [DivisionController::class, 'create'])->name('admin.division.create');
+Route::post('/admin/division/store', [DivisionController::class, 'store'])->name('admin.division.store');
+Route::get('/admin/division/{id}/edit', [DivisionController::class, 'edit'])->name('admin.division.edit');
+Route::put('/admin/division/{id}/update', [DivisionController::class, 'update'])->name('admin.division.update');
+Route::delete('/admin/division/{id}/destroy', [DivisionController::class, 'destroy'])->name('admin.division.destroy');
+Route::get('/admin/division/member', [DivisionController::class, 'member'])->name('admin.division.member');
+
 Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
 Route::get('/admin/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
+
 Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
 Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+Route::post('/admin/gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+Route::delete('/admin/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+
+Route::get('/admin/e-learning', [LearningController::class, 'index'])->name('admin.learning');

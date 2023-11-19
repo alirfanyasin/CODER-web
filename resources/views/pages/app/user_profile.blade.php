@@ -43,6 +43,34 @@
           </div>
         </div>
       </div>
+      <div class="row mt-3">
+        <div class="col">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active text-white" id="absence-tab" data-bs-toggle="tab"
+                data-bs-target="#absence-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                aria-selected="true"
+                style="background: rgba(255, 255, 255, 0.13); border-radius: 10px 10px 0 0; backdrop-filter: blur(5px);">Absence</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link text-white" id="project-tab" data-bs-toggle="tab" data-bs-target="#project-tab-pane"
+                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false"
+                style="background: rgba(255, 255, 255, 0.13); border-radius: 10px 10px 0 0; backdrop-filter: blur(5px);">Project</button>
+            </li>
+
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="absence-tab-pane" role="tabpanel" aria-labelledby="absence-tab"
+              tabindex="0">
+              <h1 class="text-white">Ini adaalah absence</h1>
+            </div>
+            <div class="tab-pane fade" id="project-tab-pane" role="tabpanel" aria-labelledby="project-tab" tabindex="0">
+              <h2 class="text-white">Ini adalah project</h2>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 @endsection
