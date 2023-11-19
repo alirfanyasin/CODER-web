@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ElearningController;
+use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -60,5 +61,11 @@ Route::post('/admin/gallery/store', [GalleryController::class, 'store'])->name('
 Route::delete('/admin/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
 Route::get('/admin/e-learning', [ElearningController::class, 'index'])->name('admin.elearning');
-Route::get('/admin/e-learning/modul', [ElearningController::class, 'modul'])->name('admin.elearning.modul');
-Route::get('/admin/e-learning/modul/create', [ElearningController::class, 'modul_create'])->name('admin.elearning.modul.create');
+
+Route::get('/admin/e-learning/module', [ModuleController::class, 'index'])->name('admin.elearning.module');
+Route::get('/admin/e-learning/module/create', [ModuleController::class, 'create'])->name('admin.elearning.module.create');
+Route::post('/admin/e-learning/module/store', [ModuleController::class, 'store'])->name('admin.elearning.module.store');
+Route::delete('/admin/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
+
+
+Route::get('/admin/e-learning/module/division-{id}', [ModuleController::class, 'division']);
