@@ -11,7 +11,9 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return view('pages.app.news');
+        return view('pages.app.news', [
+            'data' => News::all()
+        ]);
     }
 
     public function create()
@@ -19,15 +21,18 @@ class NewsController extends Controller
         return view('pages.app.news_create');
     }
 
-    public function show()
+    public function show(string $id)
     {
-        return view('pages.app.news_show');
+        return view('pages.app.news_show', [
+            'data' => News::find($id)
+        ]);
     }
 
     public function edit(string $id)
     {
-        $item = News::find($id);
-        return view('admin.artikel.edit', compact('item'));
+        $data = News::find($id);
+
+        return view('pages.app.news_edit', compact('data'));
     }
 
     public function store(Request $request)
@@ -67,13 +72,33 @@ class NewsController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $validatedData = $request->validate([
+            'title' => 'string',
+            'category' => 'string',
+            'content' => 'string',
+            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $file = $request->file('thumbnail');
+            $randomString = Str::random(5);
+            $name_file = $randomString . "_" . $file->getClientOriginalName();
+            $file->storeAs('public/image/', $name_file);
+            $validatedData['thumbnail'] = $name_file;
+        };
+
+        if (strpos($validatedData['content'], '<img') !== false) {
+            $contenWithImages = $this->processImagesInConten($validatedData['content']);
+            $validatedData['content'] = $contenWithImages;
+        }
+
         $data = News::find($id);
         $data->title = $request->titleUpdate;
         $data->category = $request->categoryUpdate;
         $data->content = $request->contentUpdate;
         $data->thumbnail = $request->thumbnailUpdate;
-        $data->save();
-        // $data->update($validatedData);
+        // $data->save();
+        $data->update($validatedData);
         // return dd($data);
         return redirect('/admin/news')->with('update', 'News updated successfully');
         // return view('pages.app.news_show');
