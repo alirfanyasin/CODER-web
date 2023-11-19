@@ -60,3 +60,5 @@ Route::post('/admin/gallery/store', [GalleryController::class, 'store'])->name('
 Route::delete('/admin/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
 Route::get('/admin/e-learning', [ElearningController::class, 'index'])->name('admin.elearning');
+Route::get('/admin/e-learning/modul', [ElearningController::class, 'modul'])->name('admin.elearning.modul');
+Route::get('/admin/e-learning/modul/create', [ElearningController::class, 'modul_create'])->name('admin.elearning.modul.create');
