@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Division;
 use Illuminate\Http\Request;
 
 class ElearningController extends Controller
@@ -59,23 +60,6 @@ class ElearningController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
-    }
-
-
-    /**
-     * View Modul.
-     */
-    public function modul()
-    {
-        return view('pages.app.elearning_modul');
-    }
-
-    /** 
-     * Show the form for creating a modul.
-     */
-    public function modul_create(Request $request)
     {
         //
     }

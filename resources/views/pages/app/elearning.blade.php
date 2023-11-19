@@ -11,12 +11,12 @@
 
   <div class="row">
     <div class="col-md-4">
-      <a href="{{ route('admin.elearning.modul') }}" class="text-decoration-none">
+      <a href="/admin/e-learning/module/division-1" class="text-decoration-none">
         <div class="text-white p-4 text-center"
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="text-white">
             <iconify-icon icon="mdi:book-open-page-variant-outline" width="150px"></iconify-icon>
-            <h2>Modul</h2>
+            <h2>Module</h2>
             <p class="fw-light">Membuat dan membagikan modul pembelajaran</p>
           </div>
         </div>

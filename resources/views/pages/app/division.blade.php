@@ -20,7 +20,7 @@
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Division</h1>
       <div>
-        <a href="{{ route('admin.division.create') }}" class="btn-main">Add Division</a>
+        <a href="{{ route('admin.division.create') }}" class="btn-main">Create Division</a>
       </div>
     </div>
 
@@ -45,10 +45,6 @@
                       Delete
                     </button>
                   </form>
-                  {{-- <a class="dropdown-item" href="{{ route('admin.division.destroy', $item->id) }}">
-                    <iconify-icon icon="mi:delete"></iconify-icon>
-                    Delete
-                  </a> --}}
                 </li>
               </ul>
             </div>
@@ -56,9 +52,8 @@
               <div class="d-flex justify-content-center align-items-center"
                 style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
                 <div>
-                  {!! $item->icon !!}
+                  <iconify-icon icon="{{ $item->icon }}" width="50px"></iconify-icon>
                 </div>
-                {{-- <img src="{{ asset('assets/img/icon-webdev.png') }}" alt=""> --}}
               </div>
             </div>
             <h5>{{ $item->name }}</h5>
