@@ -62,4 +62,21 @@ class ElearningController extends Controller
     {
         //
     }
+
+
+    /**
+     * View Modul.
+     */
+    public function modul()
+    {
+        return view('pages.app.elearning_modul');
+    }
+
+    /** 
+     * Show the form for creating a modul.
+     */
+    public function modul_create(Request $request)
+    {
+        //
+    }
 }
