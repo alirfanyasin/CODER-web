@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\GalleryController;
-use App\Http\Controllers\Admin\LearningController;
+use App\Http\Controllers\Admin\ElearningController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -34,6 +34,7 @@ Route::get('/register', [RegisterController::class, 'register'])->name('register
 
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
 Route::get('/admin/news', [NewsController::class, 'index'])->name('admin.news');
 Route::get('/admin/news/create', [NewsController::class, 'create'])->name('admin.news.create');
 Route::get('/admin/news/show', [NewsController::class, 'show'])->name('admin.news.show');
@@ -58,4 +59,4 @@ Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name(
 Route::post('/admin/gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
 Route::delete('/admin/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
-Route::get('/admin/e-learning', [LearningController::class, 'index'])->name('admin.learning');
+Route::get('/admin/e-learning', [ElearningController::class, 'index'])->name('admin.elearning');
