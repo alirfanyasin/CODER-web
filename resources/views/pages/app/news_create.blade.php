@@ -18,7 +18,7 @@
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Create News</h1>
       <div>
-        <a href="{{ route('admin.news.store') }}" class="btn-main">Add News</a>
+        <button type="submit" class="btn-main">Add News</button>
       </div>
     </div>
     <div class="row">
@@ -32,13 +32,13 @@
             <select class="form-select text-white fw-light" style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);" name="category" id="category">
               <option selected disabled class="text-black">Choose category</option>
-              <option value="1" name="category" id="category" class="text-black">Web</option>
-              <option value="2" name="category" id="category" class="text-black">Mobile</option>
-              <option value="3" name="category" id="category" class="text-black">UI/UX</option>
-              <option value="4" name="category" id="category" class="text-black">Competitive</option>
-              <option value="5" name="category" id="category" class="text-black">Data</option>
-              <option value="6" name="category" id="category" class="text-black">AI</option>
-              <option value="7" name="category" id="category" class="text-black">Event</option>
+              <option value="Web" name="category" id="category" class="text-black">Web</option>
+              <option value="Mobile" name="category" id="category" class="text-black">Mobile</option>
+              <option value="UI/UX" name="category" id="category" class="text-black">UI/UX</option>
+              <option value="Competitive" name="category" id="category" class="text-black">Competitive</option>
+              <option value="Data" name="category" id="category" class="text-black">Data</option>
+              <option value="AI" name="category" id="category" class="text-black">AI</option>
+              <option value="Event" name="category" id="category" class="text-black">Event</option>
             </select>
           </div>
           <div class="input-group mb-4">
@@ -60,8 +60,10 @@
 
       </div>
     </div>
+  </form>
 </section>
 @endsection
+
 @push('js-libraries')
 <!-- Include the Quill library -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
