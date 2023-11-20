@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'CODER - Sign In')
+@section('title', 'CODER - Sign Up')
 
 @section('content')
   <div class="container" style="z-index: 100">
