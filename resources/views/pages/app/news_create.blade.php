@@ -5,6 +5,10 @@
 @push('css-libraries')
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
+  span .ql-header .ql-picker {
+    color: white;
+  }
+
   #editor {
     height: 10px;
     width: 10px;
@@ -48,7 +52,7 @@
             <!-- <textarea name="content" id="content" cols="20" rows="10" class="form-control text-white fw-light" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
             backdrop-filter: blur(5px);" placeholder="Content" name="conten" id="conten"> Type your content here ...
             </textarea> -->
-            <div id="editor" name="content">
+            <div id="editor" name="content" style="color: #ffffff">
             </div>
             <input type="hidden" name="content" id="content" required>
           </div>

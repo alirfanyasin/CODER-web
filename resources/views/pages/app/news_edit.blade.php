@@ -2,6 +2,21 @@
 
 @section('title', 'CODER - News')
 
+@push('css-libraries')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<style>
+    span .ql-header .ql-picker {
+        color: white;
+    }
+
+    #editor {
+        height: 10px;
+        width: 10px;
+        color: #ffffff;
+    }
+</style>
+@endpush
+
 @section('content')
 <section>
     <form method="POST" action="{{ route('admin.news.update', $data->id) }}" enctype="multipart/form-data">
@@ -34,13 +49,12 @@
                             <option value="Event" class="text-black" {{ $data->category == 'Event' ? 'selected' : '' }}>Event</option>
                         </select>
                     </div>
-                    <div class="input-group mb-4">
-                        <textarea name="content" id="content" cols="20" rows="10" class="form-control text-white fw-light" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
-            backdrop-filter: blur(5px);" placeholder="Content" name="conten" id="conten">{{ $data->content }}
-                        </textarea>
-                        <!-- <div id="editor"> -->
-                        <!-- </div> -->
-                        <!-- <input type="hidden" name="content" id="content" required> -->
+                    <div class="mb-4" class="text-white fw-light" style="background: rgba(255, 255, 255, 0.02); border: none; border-bottom: 2px solid white;
+            backdrop-filter: blur(5px);">
+                        <div id="editor" name="content" style="color: #ffffff">
+                            {{ $data->content }}
+                        </div>
+                        <input type="hidden" name="content" id="content" required>
                     </div>
                 </div>
             </div>
@@ -57,6 +71,69 @@
 </section>
 @endsection
 @push('js-libraries')
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+    var toolbarOptions = [
+        [{
+            'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+        [{
+            'font': []
+        }],
+        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+        [{
+            'align': []
+        }],
+        ['blockquote', 'code-block'],
+        ['link', 'image'],
+        [{
+            'list': 'ordered'
+        }, {
+            'list': 'bullet'
+        }],
+        [{
+            'script': 'sub'
+        }, {
+            'script': 'super'
+        }], // superscript/subscript
+        [{
+            'indent': '-1'
+        }, {
+            'indent': '+1'
+        }], // outdent/indent
+        [{
+            'direction': 'rtl'
+        }], // text direction
+
+        [{
+            'color': []
+        }, {
+            'background': []
+        }], // dropdown with defaults from theme
+
+
+
+        ['clean'] // remove formatting button
+    ];
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
+    // Get quill as conten for DB
+    const updateContentInput = () => {
+        var content = quill.root.innerHTML;
+        document.getElementById("content").value = content;
+    }
+
+    quill.on('text-change', function() {
+        updateContentInput();
+    });
+</script>
 <script>
     function readFile(input) {
         if (input.files && input.files[0]) {
