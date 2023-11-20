@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
-            'division' => 'Web Development',
+            'division' => 'Admin',
             'field_of_study' => 'Informatika',
             'nim' => '1203220082',
             'batch' => '2022',

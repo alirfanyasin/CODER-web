@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('division');
+            $table->string('division')->nullable();
             $table->string('field_of_study')->nullable();
             $table->string('nim')->nullable();
             $table->string('batch')->nullable();
             $table->string('phone_number')->nullable();
+            $table->string('avatar')->nullable();
 
             // $table->foreign('division_id')->references('id')->on('division');
             $table->rememberToken();
