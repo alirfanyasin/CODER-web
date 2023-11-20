@@ -54,7 +54,9 @@ body {
   text-decoration: none;
 }
 
-
+::placeholder {
+  color: white;
+}
 
 
 aside .sidebar .list-group .list-item:hover{

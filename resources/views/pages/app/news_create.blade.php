@@ -23,9 +23,6 @@
     @csrf
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Create News</h1>
-      <div>
-        <button type="submit" class="btn-main">Add News</button>
-      </div>
     </div>
     <div class="row">
       <div class="col-md-8 mb-3">
@@ -37,7 +34,7 @@
           <div class="input-group mb-4">
             <select class="form-select text-white fw-light" style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);" name="category" id="category">
-              <option selected disabled class="text-black">Choose category</option>
+              <option selected disabled class="text-white">Choose category</option>
               <option value="Web" name="category" id="category" class="text-black">Web</option>
               <option value="Mobile" name="category" id="category" class="text-black">Mobile</option>
               <option value="UI/UX" name="category" id="category" class="text-black">UI/UX</option>
@@ -49,12 +46,13 @@
           </div>
           <div class="mb-4" class="text-white fw-light" style="background: rgba(255, 255, 255, 0.02); border: none; border-bottom: 2px solid white;
             backdrop-filter: blur(5px);">
-            <!-- <textarea name="content" id="content" cols="20" rows="10" class="form-control text-white fw-light" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
-            backdrop-filter: blur(5px);" placeholder="Content" name="conten" id="conten"> Type your content here ...
-            </textarea> -->
             <div id="editor" name="content" style="color: #ffffff">
             </div>
             <input type="hidden" name="content" id="content" required>
+          </div>
+          <div>
+            <button type="submit" class="btn-main" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none;
+              backdrop-filter: blur(5px);">Submit</button>
           </div>
         </div>
       </div>

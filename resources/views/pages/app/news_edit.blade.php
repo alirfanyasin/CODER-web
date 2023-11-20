@@ -24,10 +24,6 @@
         @method('PUT')
         <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
             <h1>Update News</h1>
-            <div>
-                <button type="submit" class="btn-main">Update</button>
-                <a href="{{ route('admin.news.show', $data->id) }}" class="btn-main">Back</a>
-            </div>
         </div>
         <div class="row">
             <div class="col-md-8 mb-3">
@@ -52,9 +48,14 @@
                     <div class="mb-4" class="text-white fw-light" style="background: rgba(255, 255, 255, 0.02); border: none; border-bottom: 2px solid white;
             backdrop-filter: blur(5px);">
                         <div id="editor" name="content" style="color: #ffffff">
-                            {{ $data->content }}
+                            {!! $data->content !!}
                         </div>
                         <input type="hidden" name="content" id="content" required>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn-main" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none;
+              backdrop-filter: blur(5px);">Update</button>
+                        <a href="{{ route('admin.news.show', $data->id) }}" class="btn-main">Back</a>
                     </div>
                 </div>
             </div>
