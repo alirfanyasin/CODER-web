@@ -11,18 +11,19 @@
             <img src="{{ asset('assets/img/second-logo.png') }}" alt="" width="50%">
           </div>
 
-          <form action="" class="mt-5">
+          <form action="{{ route('login.post') }}" method="POST" class="mt-5">
+            @csrf
             <div class="input-group">
               <input type="text" name="email" class="form-control mb-3 text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-                id="email" placeholder="Email Address">
+                placeholder="Email Address">
             </div>
             <div class="input-group">
               <input type="password" name="password" class="form-control mb-3 text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-                id="email" placeholder="Password">
+                placeholder="Password">
             </div>
             <div class="mb-3 d-flex justify-content-end">
               <a href="" class="text-white text-decoration-none fw-light">Forgot Password?</a>
