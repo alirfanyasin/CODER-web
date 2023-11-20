@@ -44,7 +44,7 @@
         <div class="container">
           <nav class="py-4 d-flex justify-content-end align-items-center">
             <div class="text-white mx-4">
-              <span class="fw-light">Welcome, <span class="fw-semibold">Username</span></span>
+              <span class="fw-light">Welcome, <span class="fw-semibold">{{ Auth::user()->name }}</span></span>
             </div>
             {{-- <div class="rounded-pill bg-dark overflow-hidden" style="width: 50px; height: 50px;"> --}}
             <div class="dropdown-center">
@@ -54,7 +54,13 @@
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                <li>
+                  <form action="{{ route('logout') }}" method="POST" class="d-inline-block dropdown-item">
+                    @csrf
+                    <button class="bg-transparent border-0">Sign Out</button>
+                  </form>
+                </li>
+                {{-- <li><a class="dropdown-item" href="#">Sign Out</a></li> --}}
               </ul>
             </div>
 

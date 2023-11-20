@@ -10,17 +10,19 @@
           <div class="d-flex justify-content-center">
             <img src="{{ asset('assets/img/second-logo.png') }}" alt="" width="50%">
           </div>
-
           <form action="{{ route('register.post') }}" method="POST" class="mt-5">
             @csrf
-            <div class="input-group">
-              <input type="text" name="name" class="form-control mb-3 text-white fw-light"
+            <div class="input-group-custom mb-3">
+              <input type="text" name="name" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
                 placeholder="Fullname">
+              @error('name')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
-            <div class="input-group">
-              <select class="form-select text-white fw-light mb-3"
+            <div class="input-group-custom mb-3">
+              <select class="form-select text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                     backdrop-filter: blur(5px);"
                 name="division">
@@ -29,18 +31,27 @@
                   <option value="{{ $division->name }}" class="text-black">{{ $division->name }}</option>
                 @endforeach
               </select>
+              @error('division')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
-            <div class="input-group">
-              <input type="text" name="email" class="form-control mb-3 text-white fw-light"
+            <div class="input-group-custom mb-3">
+              <input type="text" name="email" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
                 placeholder="Email Address">
+              @error('email')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
-            <div class="input-group">
-              <input type="password" name="password" class="form-control mb-3 text-white fw-light"
+            <div class="input-group-custom mb-3">
+              <input type="password" name="password" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
                 placeholder="Password">
+              @error('password')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
             <div class="mb-3">
               <button type="submit" class="btn-auth">Sign Up</button>

@@ -10,8 +10,13 @@ use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LandingPageController;
+
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\ElearningController as UserElearningController;
+use App\Http\Controllers\User\UserController as UserUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,43 +36,57 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+Route::middleware('guest')->group(function () {
+  Route::get('/login', [LoginController::class, 'index'])->name('login');
+  Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+  Route::get('/register', [RegisterController::class, 'index'])->name('register');
+  Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+});
 
 
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+  Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/admin/news', [NewsController::class, 'index'])->name('admin.news');
-Route::get('/admin/news/create', [NewsController::class, 'create'])->name('admin.news.create');
-Route::get('admin/news/{id}/show', [NewsController::class, 'show'])->name('admin.news.show');
-Route::post('admin/news/store', [NewsController::class, 'store'])->name('admin.news.store');
-Route::get('admin/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
-Route::get('admin/news/{id}/destroy', [NewsController::class, 'destroy'])->name('admin.news.destroy');
-Route::put('admin/news/{id}/update', [NewsController::class, 'update'])->name('admin.news.update');
+    Route::get('/news', [NewsController::class, 'index'])->name('admin.news');
+    Route::get('/news/create', [NewsController::class, 'create'])->name('admin.news.create');
+    Route::get('/news/{id}/show', [NewsController::class, 'show'])->name('admin.news.show');
+    Route::post('/news/store', [NewsController::class, 'store'])->name('admin.news.store');
+    Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
+    Route::get('/news/{id}/destroy', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+    Route::put('/news/{id}/update', [NewsController::class, 'update'])->name('admin.news.update');
 
-Route::get('/admin/division', [DivisionController::class, 'index'])->name('admin.division');
-Route::get('/admin/division/create', [DivisionController::class, 'create'])->name('admin.division.create');
-Route::post('/admin/division/store', [DivisionController::class, 'store'])->name('admin.division.store');
-Route::get('/admin/division/{id}/edit', [DivisionController::class, 'edit'])->name('admin.division.edit');
-Route::put('/admin/division/{id}/update', [DivisionController::class, 'update'])->name('admin.division.update');
-Route::delete('/admin/division/{id}/destroy', [DivisionController::class, 'destroy'])->name('admin.division.destroy');
-Route::get('/admin/division/member', [DivisionController::class, 'member'])->name('admin.division.member');
+    Route::get('/division', [DivisionController::class, 'index'])->name('admin.division');
+    Route::get('/division/create', [DivisionController::class, 'create'])->name('admin.division.create');
+    Route::post('/division/store', [DivisionController::class, 'store'])->name('admin.division.store');
+    Route::get('/division/{id}/edit', [DivisionController::class, 'edit'])->name('admin.division.edit');
+    Route::put('/division/{id}/update', [DivisionController::class, 'update'])->name('admin.division.update');
+    Route::delete('/division/{id}/destroy', [DivisionController::class, 'destroy'])->name('admin.division.destroy');
+    Route::get('/division/member', [DivisionController::class, 'member'])->name('admin.division.member');
 
-Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
-Route::get('/admin/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
+    Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
+    Route::get('/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
 
-Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
-Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
-Route::post('/admin/gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
-Route::delete('/admin/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
+    Route::get('/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
+    Route::post('/gallery/store', [GalleryController::class, 'store'])->name('admin.gallery.store');
+    Route::delete('/gallery/{id}/destroy', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 
-Route::get('/admin/e-learning', [ElearningController::class, 'index'])->name('admin.elearning');
+    Route::get('/e-learning', [ElearningController::class, 'index'])->name('admin.elearning');
 
-Route::get('/admin/e-learning/module', [ModuleController::class, 'index'])->name('admin.elearning.module');
-Route::get('/admin/e-learning/module/create', [ModuleController::class, 'create'])->name('admin.elearning.module.create');
-Route::post('/admin/e-learning/module/store', [ModuleController::class, 'store'])->name('admin.elearning.module.store');
-Route::delete('/admin/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
-Route::get('/admin/e-learning/module/division-{id}', [ModuleController::class, 'division']);
+    Route::get('/e-learning/module', [ModuleController::class, 'index'])->name('admin.elearning.module');
+    Route::get('/e-learning/module/create', [ModuleController::class, 'create'])->name('admin.elearning.module.create');
+    Route::post('/e-learning/module/store', [ModuleController::class, 'store'])->name('admin.elearning.module.store');
+    Route::delete('/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
+    Route::get('/e-learning/module/division-{id}', [ModuleController::class, 'division']);
 
-Route::get('/admin/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
+    Route::get('/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
+  });
+});
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+  Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
+  Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
+});

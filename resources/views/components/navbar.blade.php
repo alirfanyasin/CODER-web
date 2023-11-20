@@ -28,7 +28,18 @@
          <a class="nav-link ms-3 text-white" href="#gallery-section">Gallery</a>
          <a class="nav-link ms-3 text-white" href="#news-section">News</a>
          {{-- <a class="nav-link ms-3 text-white" href="#">E-Learning</a> --}}
-         <a class="nav-link ms-3 text-white" href="{{ route('login') }}">Login</a>
+
+         @auth
+           @role('admin')
+             <a class="nav-link ms-3 text-white" href="{{ route('admin.dashboard') }}">Dashboard</a>
+           @endrole
+           @role('user')
+             <a class="nav-link ms-3 text-white" href="{{ route('user.dashboard') }}">Dashboard</a>
+           @endrole
+         @endauth
+         @guest
+           <a class="nav-link ms-3 text-white" href="{{ route('login') }}">Login</a>
+         @endguest
        </div>
      </div>
    </div>
