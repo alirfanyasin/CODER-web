@@ -66,9 +66,9 @@ aside .sidebar .list-group .list-item:hover{
 }
 
 
-.input-group input::placeholder {
+.input-group-custom input::placeholder {
   color: var(--color-white); 
 }
-.input-group textarea::placeholder {
+.input-group-custom textarea::placeholder {
   color: var(--color-white); 
 }

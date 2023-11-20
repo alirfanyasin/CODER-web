@@ -19,6 +19,10 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
+        ], [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Wajib berupa email',
+            'password.required' => 'Password wajib diisi',
         ]);
 
         if (Auth::attempt($credentials)) {
@@ -35,5 +39,13 @@ class LoginController extends Controller
         return back()->withErrors([
             'error' => 'Email atau Password salah!'
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

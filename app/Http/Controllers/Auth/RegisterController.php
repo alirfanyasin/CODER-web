@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'email' => 'required|unique:users|email',
             'password' => 'required|min:8'
         ], [
-            'name.required' => 'Name wajib diisi',
+            'name.required' => 'Nama Lengkap wajib diisi',
             'division.required' => 'Division wajib diisi',
             'email.required' => 'Email wajib diisi',
             'email.unique' => 'Email sudah digunakan',

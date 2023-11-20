@@ -44,7 +44,7 @@ body {
 }
 
 
-form .input-group input::placeholder {
+.input-group-custom input::placeholder {
   color: var(--color-white); 
 }
 

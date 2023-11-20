@@ -10,10 +10,13 @@ use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\User\DashboardController as UserDashboardController;
 
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LandingPageController;
+
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\ElearningController as UserElearningController;
+use App\Http\Controllers\User\UserController as UserUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,7 +83,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
   });
 });
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+  Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
+  Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
 });

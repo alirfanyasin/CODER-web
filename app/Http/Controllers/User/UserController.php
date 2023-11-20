@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Charts\MonthlyContentChart;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-    public function index(MonthlyContentChart $chart)
+    public function index()
     {
-        return view('pages.app.dashboard', ['chart' => $chart->build()]);
+        return view('pages.app.users', [
+            'data' => User::all()
+        ]);
     }
 
     /**
