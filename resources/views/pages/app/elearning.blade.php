@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-md-4">
-      <a href="" class="text-decoration-none">
+      <a href="{{ route('admin.elearning.task') }}" class="text-decoration-none">
         <div class="text-white p-4 text-center"
           style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
           <div class="text-white">
