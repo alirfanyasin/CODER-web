@@ -39,15 +39,26 @@
         @include('components.sidebar')
       </div>
 
+
       <div class="col-9" style="height: 100vh; overflow-y: scroll; overflow-x: hidden;">
         <div class="container">
           <nav class="py-4 d-flex justify-content-end align-items-center">
             <div class="text-white mx-4">
               <span class="fw-light">Welcome, <span class="fw-semibold">Username</span></span>
             </div>
-            <div class="rounded-pill bg-dark overflow-hidden" style="width: 50px; height: 50px;">
-              <img src="{{ asset('assets/img/photo-profile.jpg') }}" alt="" width="100%" height="">
+            {{-- <div class="rounded-pill bg-dark overflow-hidden" style="width: 50px; height: 50px;"> --}}
+            <div class="dropdown-center">
+              <button class="dropdown-toggle rounded-pill bg-dark overflow-hidden" style="width: 50px; height: 50px;"
+                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{ asset('assets/img/photo-profile.jpg') }}" alt="" width="100%" height="100%">
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Sign Out</a></li>
+              </ul>
             </div>
+
+            {{-- </div> --}}
           </nav>
           {{-- Content start --}}
           @yield('content')

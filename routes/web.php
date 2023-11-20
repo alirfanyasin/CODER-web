@@ -32,7 +32,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
 
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
