@@ -6,7 +6,9 @@
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
   #editor {
-    height: 400px;
+    height: 10px;
+    width: 10px;
+    color: #ffffff;
   }
 </style>
 @endpush
@@ -41,13 +43,14 @@
               <option value="Event" name="category" id="category" class="text-black">Event</option>
             </select>
           </div>
-          <div class="input-group mb-4">
-            <textarea name="content" id="content" cols="20" rows="10" class="form-control text-white fw-light" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+          <div class="mb-4" class="text-white fw-light" style="background: rgba(255, 255, 255, 0.02); border: none; border-bottom: 2px solid white;
+            backdrop-filter: blur(5px);">
+            <!-- <textarea name="content" id="content" cols="20" rows="10" class="form-control text-white fw-light" style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
             backdrop-filter: blur(5px);" placeholder="Content" name="conten" id="conten"> Type your content here ...
-            </textarea>
-            <!-- <div id="editor"> -->
-            <!-- </div> -->
-            <!-- <input type="hidden" name="content" id="content" required> -->
+            </textarea> -->
+            <div id="editor" name="content">
+            </div>
+            <input type="hidden" name="content" id="content" required>
           </div>
         </div>
       </div>
@@ -122,7 +125,7 @@
   // Get quill as conten for DB
   const updateContentInput = () => {
     var content = quill.root.innerHTML;
-    document.getElementById("conten").value = content;
+    document.getElementById("content").value = content;
   }
 
   quill.on('text-change', function() {
