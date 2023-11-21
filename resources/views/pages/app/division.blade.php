@@ -4,17 +4,6 @@
 
 
 @section('content')
-  <style>
-    .dropdown-toggle:empty::before {
-      margin-left: 0;
-      display: none;
-
-    }
-
-    .dropdown-toggle:hover {
-      cursor: pointer;
-    }
-  </style>
 
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
@@ -30,7 +19,7 @@
           <div class="px-2 py-4 text-center "
             style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
             <div class="dropdown position-absolute dropstart" style="right: 20px;">
-              <iconify-icon icon="charm:menu-kebab" class="dropdown-toggle" data-bs-toggle="dropdown"
+              <iconify-icon icon="charm:menu-kebab" class="icon-toggle dropdown-toggle" data-bs-toggle="dropdown"
                 aria-expanded="false"></iconify-icon>
               <ul class="dropdown-menu" style="z-index: 999;">
                 <li><a class="dropdown-item" href="{{ route('admin.division.edit', $item->id) }}"><iconify-icon
