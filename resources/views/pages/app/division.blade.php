@@ -12,7 +12,6 @@
         <a href="{{ route('admin.division.create') }}" class="btn-main">Create Division</a>
       </div>
     </div>
-
     <div class="row">
       @foreach ($data as $item)
         <div class="col-lg-4 col-md-6 mb-4 text-white position-relative">
