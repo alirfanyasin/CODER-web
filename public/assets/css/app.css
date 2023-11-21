@@ -74,3 +74,14 @@ aside .sidebar .list-group .list-item:hover{
 .input-group-custom textarea::placeholder {
   color: var(--color-white); 
 }
+
+
+.icon-toggle.dropdown-toggle:empty::before {
+  margin-left: 0;
+  display: none;
+
+}
+
+.icon-toggle.dropdown-toggle:hover {
+  cursor: pointer;
+}
