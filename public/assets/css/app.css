@@ -43,7 +43,20 @@ body {
   text-decoration: none;
 }
 
+.btn-custom {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 200px );
+  -webkit-backdrop-filter: blur( 200px );
+  border-radius: 10px;
+  padding: 10px 30px;
+  text-decoration: none;
+}
 
+::placeholder {
+  color: white;
+}
 
 
 aside .sidebar .list-group .list-item:hover{
@@ -55,9 +68,9 @@ aside .sidebar .list-group .list-item:hover{
 }
 
 
-.input-group input::placeholder {
+.input-group-custom input::placeholder {
   color: var(--color-white); 
 }
-.input-group textarea::placeholder {
+.input-group-custom textarea::placeholder {
   color: var(--color-white); 
 }

@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'CODER - Sign In')
+@section('title', 'CODER - Sign Up')
 
 @section('content')
   <div class="container" style="z-index: 100">
@@ -10,31 +10,48 @@
           <div class="d-flex justify-content-center">
             <img src="{{ asset('assets/img/second-logo.png') }}" alt="" width="50%">
           </div>
-
-          <form action="" class="mt-5">
-            <div class="input-group">
-              <input type="text" name="name" class="form-control mb-3 text-white fw-light"
+          <form action="{{ route('register.post') }}" method="POST" class="mt-5">
+            @csrf
+            <div class="input-group-custom mb-3">
+              <input type="text" name="name" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-                id="name" placeholder="Fullname">
+                placeholder="Fullname">
+              @error('name')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
-            <div class="input-group">
-              <input type="text" name="division" class="form-control mb-3 text-white fw-light"
+            <div class="input-group-custom mb-3">
+              <select class="form-select text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
-                  backdrop-filter: blur(5px);"
-                id="division" placeholder="Division">
+                    backdrop-filter: blur(5px);"
+                name="division">
+                <option selected disabled class="text-black">Choose Division</option>
+                @foreach ($data_division as $division)
+                  <option value="{{ $division->name }}" class="text-black">{{ $division->name }}</option>
+                @endforeach
+              </select>
+              @error('division')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
-            <div class="input-group">
-              <input type="text" name="email" class="form-control mb-3 text-white fw-light"
+            <div class="input-group-custom mb-3">
+              <input type="text" name="email" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-                id="email" placeholder="Email Address">
+                placeholder="Email Address">
+              @error('email')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
-            <div class="input-group">
-              <input type="password" name="password" class="form-control mb-3 text-white fw-light"
+            <div class="input-group-custom mb-3">
+              <input type="password" name="password" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-                id="email" placeholder="Password">
+                placeholder="Password">
+              @error('password')
+                <small class="text-white fw-light">{{ $message }}</small>
+              @enderror
             </div>
             <div class="mb-3">
               <button type="submit" class="btn-auth">Sign Up</button>

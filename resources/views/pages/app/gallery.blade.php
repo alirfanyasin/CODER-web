@@ -7,7 +7,7 @@
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Gallery</h1>
       <div>
-        <a href="{{ route('admin.gallery.create') }}" class="btn-main">Add Gallery</a>
+        <a href="{{ route('admin.gallery.create') }}" class="btn-main">Create Gallery</a>
       </div>
     </div>
 

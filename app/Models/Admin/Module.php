@@ -5,20 +5,18 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Division extends Model
+class Module extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
 
-
     /**
-     * Get the user that owns the Division
+     * Get the division that owns the module.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function module()
+    public function division()
     {
-        return $this->hasMany(Module::class, 'division_id');
+        return $this->belongsTo(Division::class, 'division_id');
     }
 }

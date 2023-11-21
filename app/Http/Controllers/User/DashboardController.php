@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
+use App\Charts\MonthlyContentChart;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class LearningController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    public function index(MonthlyContentChart $chart)
     {
-        return view('pages.app.learning');
+        return view('pages.app.dashboard', ['chart' => $chart->build()]);
     }
 
     /**

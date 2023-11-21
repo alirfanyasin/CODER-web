@@ -23,8 +23,9 @@ class NewsController extends Controller
 
     public function show(string $id)
     {
+        $data = News::find($id);
         return view('pages.app.news_show', [
-            'data' => News::find($id)
+            'data' => $data
         ]);
     }
 
@@ -53,8 +54,8 @@ class NewsController extends Controller
         };
 
         if (strpos($validatedData['content'], '<img') !== false) {
-            $contenWithImages = $this->processImagesInConten($validatedData['content']);
-            $validatedData['content'] = $contenWithImages;
+            $contentWithImages = $this->processImagesInContent($validatedData['content']);
+            $validatedData['content'] = $contentWithImages;
         }
 
         News::create($validatedData);
@@ -73,11 +74,19 @@ class NewsController extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
-            'title' => 'string',
-            'category' => 'string',
-            'content' => 'string',
-            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'title' => 'nullable|string',
+            'category' => 'nullable|string',
+            'content' => 'nullable|string',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
+        if (!isset($validatedData['content'])) {
+            $existingData = News::findOrFail($id);
+            $validatedData['content'] = $existingData->content;
+        }
+
+        // set content default value 
+        // $validatedData['content'] = $validatedData['content'] ?? '';
 
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
@@ -88,23 +97,15 @@ class NewsController extends Controller
         };
 
         if (strpos($validatedData['content'], '<img') !== false) {
-            $contenWithImages = $this->processImagesInConten($validatedData['content']);
-            $validatedData['content'] = $contenWithImages;
+            $contentWithImages = $this->processImagesInContent($validatedData['content']);
+            $validatedData['content'] = $contentWithImages;
         }
 
-        $data = News::find($id);
-        $data->title = $request->titleUpdate;
-        $data->category = $request->categoryUpdate;
-        $data->content = $request->contentUpdate;
-        $data->thumbnail = $request->thumbnailUpdate;
-        // $data->save();
-        $data->update($validatedData);
-        // return dd($data);
-        return redirect('/admin/news')->with('update', 'News updated successfully');
-        // return view('pages.app.news_show');
+        News::where('id', $id)->update($validatedData);
+        return redirect()->route('admin.news')->with('update', 'News updated successfully');
     }
 
-    public function processImagesInConten($content)
+    public function processImagesInContent($content)
     {
         $dom = new \DOMDocument();
         $dom->loadHTML($content);
@@ -132,8 +133,8 @@ class NewsController extends Controller
         }
 
         // Uncode gambar ke HTML string
-        $contenWithImages = $dom->saveHTML();
+        $contentWithImages = $dom->saveHTML();
 
-        return $contenWithImages;
+        return $contentWithImages;
     }
 }
