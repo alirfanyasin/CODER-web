@@ -24,19 +24,19 @@
         </header>
         <form action="{{ route('admin.elearning.module.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
-          <div class="input-group mb-3">
+          <div class="input-group-custom mb-3">
             <input type="text" name="lesson" class="form-control mb-3 text-white fw-light"
               style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                 backdrop-filter: blur(5px);"
               placeholder="Nama Materi">
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group-custom mb-3">
             <input type="number" name="meeting" class="form-control mb-3 text-white fw-light"
               style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                 backdrop-filter: blur(5px);"
               placeholder="Pertemuan">
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group-custom mb-3">
             <select class="form-select text-white fw-light mb-3"
               style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
@@ -47,7 +47,7 @@
               @endforeach
             </select>
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group-custom mb-3">
             <select class="form-select text-white fw-light mb-3 custom-select"
               style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
@@ -66,7 +66,7 @@
           <div class="row link_file" hidden>
             <small class="text-white text-center mb-2">Masukkan salah satu (link atau upload file)</small>
             <div class="col-md-6">
-              <div class="input-group mb-3">
+              <div class="input-group-custom mb-3">
                 <input type="url" name="link" class="form-control mb-3 text-white fw-light"
                   style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                     backdrop-filter: blur(5px);"
@@ -74,7 +74,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="input-group mb-3">
+              <div class="input-group-custom mb-3">
                 <input type="file" name="file" class="form-control mb-3 text-white fw-light"
                   style="height: 50px; line-height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                     backdrop-filter: blur(5px);"
@@ -85,7 +85,7 @@
 
           <div class="row link" hidden>
             <div class="col">
-              <div class="input-group mb-3">
+              <div class="input-group-custom mb-3">
                 <input type="url" name="link" class="form-control mb-3 text-white fw-light"
                   style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                     backdrop-filter: blur(5px);"
@@ -94,7 +94,7 @@
             </div>
           </div>
 
-          <div class="input-group">
+          <div class="input-group-custom">
             <button type="submit" class="text-white px-5 py-2"
               style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none;
             backdrop-filter: blur(5px);">Submit</button>
