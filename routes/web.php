@@ -66,6 +66,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
     Route::get('/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
+    Route::post('/users/give-permission/{id}', [AdminUserController::class, 'givePermission'])->name('admin.users.give_permission');
+    Route::post('/users/revoke-permission/{id}', [AdminUserController::class, 'revokePermission'])->name('admin.users.revoke_permission');
 
     Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
     Route::get('/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');
