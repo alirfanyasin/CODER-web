@@ -105,7 +105,7 @@ use Carbon\Carbon;
             <hr class="border border-2">
           </div>
         @endforeach
-        <div>
+        {{-- <div>
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center mt-4">
               <div class="overflow-hidden rounded-circle border border-1" style="width: 50px; height: 50px;">
@@ -120,8 +120,6 @@ use Carbon\Carbon;
               <div class="text-white px-2 py-1 rounded-2 fw-light">
                 <iconify-icon icon="gg:check-o" width="30px" class="text-success"></iconify-icon>
               </div>
-              {{-- <div>4 Days, 10 Hour</div>
-              <small class="fw-light" style="font-size: 8pt;">20 November 2023</small> --}}
             </div>
           </div>
 
@@ -143,7 +141,7 @@ use Carbon\Carbon;
             </div>
           </div>
           <hr class="border border-2">
-        </div>
+        </div> --}}
       </div>
     </div>
 
