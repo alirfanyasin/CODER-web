@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('file')->nullable();
             $table->dateTime('deadline');
-            $table->string('submission');
+            $table->string('submission')->nullable();
             $table->timestamps();
         });
     }

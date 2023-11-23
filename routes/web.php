@@ -84,6 +84,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
     Route::get('/e-learning/task/create', [TaskController::class, 'create'])->name('admin.elearning.task.create');
+    Route::post('/e-learning/task/store', [TaskController::class, 'store'])->name('admin.elearning.task.store');
   });
 });
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
