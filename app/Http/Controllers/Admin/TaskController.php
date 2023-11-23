@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Division;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -20,7 +21,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.app.elearning_task_create', [
+            'data_division' => Division::all()
+        ]);
     }
 
     /**

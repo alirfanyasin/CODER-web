@@ -7,7 +7,7 @@
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>E-Learning</h1>
       <div>
-        <a href="{{ route('admin.elearning.module.create') }}" class="btn-main">Create Task</a>
+        <a href="{{ route('admin.elearning.task.create') }}" class="btn-main">Create Task</a>
       </div>
     </div>
   </section>
