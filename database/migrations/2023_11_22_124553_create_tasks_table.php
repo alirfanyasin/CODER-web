@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('division_id')->constrained();
             $table->string('task_name');
-            $table->string('description');
+            $table->text('description');
             $table->string('file')->nullable();
             $table->dateTime('deadline');
             $table->string('submission')->nullable();
