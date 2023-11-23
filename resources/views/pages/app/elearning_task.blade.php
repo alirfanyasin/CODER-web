@@ -56,8 +56,18 @@ use Carbon\Carbon;
               <div class="d-flex justify-content-between mt-4 align-items-center">
                 @if ($data->file != null)
                   @role('admin')
-                    <div>
+                    <div class="d-flex align-items-center">
                       <a href="" class="btn-custom">View Submission</a>
+                      <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                          class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                            icon="mynaui:trash"></iconify-icon></button>
+                      </form>
+                      <a href="{{ route('admin.elearning.task.edit', $data->id) }}"
+                        class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
+                          icon="basil:edit-outline"></iconify-icon></a>
                     </div>
                   @endrole
                   @role('user')
@@ -65,13 +75,23 @@ use Carbon\Carbon;
                       <a href="" class="btn-custom">Add Submission</a>
                     </div>
                   @endrole
-                  <a href="">
+                  <a href="{{ asset('storage/task/' . $data->file) }}" target="_blank">
                     <iconify-icon icon="vscode-icons:file-type-pdf2" width="50px"></iconify-icon>
                   </a>
                 @else
                   @role('admin')
                     <div class="d-flex justify-content-between align-items-center">
                       <a href="" class="btn-custom">View Submission</a>
+                      <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                          class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                            icon="mynaui:trash"></iconify-icon></button>
+                      </form>
+                      <a href="{{ route('admin.elearning.task.edit', $data->id) }}"
+                        class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
+                          icon="basil:edit-outline"></iconify-icon></a>
                     </div>
                   @endrole
                   @role('user')
