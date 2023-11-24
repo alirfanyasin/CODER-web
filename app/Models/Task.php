@@ -36,6 +36,6 @@ class Task extends Model
      */
     public function submission()
     {
-        return $this->hasMany(Submission::class);
+        return $this->hasMany(Submission::class, 'task_id');
     }
 }

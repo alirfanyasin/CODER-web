@@ -129,7 +129,7 @@ class TaskController extends Controller
     public function division($id)
     {
         // Menggunakan with() untuk memuat relasi division
-        $allData = Task::with('division')->where('division_id', $id)->get();
+        $allData = Task::with('division')->where('division_id', $id)->orderBy('id', 'desc')->get();
 
         // Mengambil divisi dengan ID yang sesuai
         $division = Division::find($id);
