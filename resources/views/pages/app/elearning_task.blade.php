@@ -43,7 +43,7 @@ use Carbon\Carbon;
                       <small class="fw-light" style="font-size: 10pt;">Administrator</small>
                     @endif
                     @if ($data->user->hasRole('user'))
-                      <small class="fw-light" style="font-size: 10pt;">{{ $data->user->division->name }}</small>
+                      <small class="fw-light" style="font-size: 10pt;">Admin {{ $data->user->division->name }}</small>
                     @endif
                   </div>
                 </div>

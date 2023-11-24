@@ -57,9 +57,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
   Route::post('/e-learning/task/submission/{subm_id}/update/{divi_id}', [UserTaskController::class, 'update'])->name('user.elearning.task.submission.update');
 });
 
-
-
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(function () {
   Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
@@ -106,3 +104,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/e-learning/task/division-{id}', [TaskController::class, 'division'])->name('admin.elearning.task.division');
   });
 });
+
+
+
+
+
+// Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(function () {
+//   Route::get('/admin-division/e-learning/module/create', [ModuleController::class, 'create'])->name('admin.elearning.module.create');
+//   Route::post('/admin-division/e-learning/module/store', [ModuleController::class, 'store'])->name('admin.elearning.module.store');
+//   Route::delete('/admin-division/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
+//   Route::get('/admin-division/e-learning/module/division-{id}', [ModuleController::class, 'division']);
+
+//   Route::get('/admin-division/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
+//   Route::get('/admin-division/e-learning/task/create', [TaskController::class, 'create'])->name('admin.elearning.task.create');
+//   Route::post('/admin-division/e-learning/task/store', [TaskController::class, 'store'])->name('admin.elearning.task.store');
+//   Route::delete('/admin-division/e-learning/task/{id}/destroy', [TaskController::class, 'destroy'])->name('admin.elearning.task.destroy');
+//   Route::get('/admin-division/e-learning/task/{id}/edit', [TaskController::class, 'edit'])->name('admin.elearning.task.edit');
+//   Route::put('/admin-division/e-learning/task/{id}/update', [TaskController::class, 'update'])->name('admin.elearning.task.update');
+//   Route::get('/admin-division/e-learning/task/division-{id}', [TaskController::class, 'division'])->name('admin.elearning.task.division');
+// });
