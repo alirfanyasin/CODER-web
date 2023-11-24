@@ -7,9 +7,9 @@
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>E-Learning</h1>
       <div>
-        @role('admin')
+        @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
           <a href="{{ route('admin.elearning.module.create') }}" class="btn-main">Create Module</a>
-        @endrole
+        @endif
       </div>
     </div>
   </section>
@@ -52,7 +52,7 @@
                     @endif
                   </div>
                   <div>
-                    @role('admin')
+                    @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
                       <form action="{{ route('admin.elearning.module.destroy', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -60,7 +60,7 @@
                           <iconify-icon icon="mynaui:trash"></iconify-icon>
                         </button>
                       </form>
-                    @endrole
+                    @endif
                   </div>
                 </div>
               @endforeach

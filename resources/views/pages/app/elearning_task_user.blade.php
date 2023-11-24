@@ -9,6 +9,13 @@ use Carbon\Carbon;
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>E-Learning</h1>
+      {{-- @if (Auth::user()->hasPermissionTo('admin-division')) --}}
+      @can('admin-division')
+        <div>
+          <a href="{{ route('admin.elearning.task.create') }}" class="btn-main">Create Task</a>
+        </div>
+      @endcan
+      {{-- @endif --}}
     </div>
   </section>
 
@@ -33,7 +40,7 @@ use Carbon\Carbon;
                     <small class="fw-light" style="font-size: 10pt;">Administrator</small>
                   @endif
                   @if ($data->user->hasRole('user'))
-                    <small class="fw-light" style="font-size: 10pt;">{{ $data->user->division->name }}</small>
+                    <small class="fw-light" style="font-size: 10pt;">Admin {{ $data->user->division->name }}</small>
                   @endif
                 </div>
               </div>
