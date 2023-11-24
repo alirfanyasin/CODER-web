@@ -63,10 +63,18 @@
             </div>
             <div class="fw-light mt-4">
               <div class="fw-bold">{{ $user->name }}</div>
+
+              {{-- <small>{{ $user->division->name }}</small> --}}
+
               @if ($user->hasPermissionTo('admin-division'))
-                <small>Admin {{ $user->division }}</small>
+                <small>Admin {{ $user->division->name }}</small>
               @else
-                <small>{{ $user->division }}</small>
+                @if ($user->hasRole('admin'))
+                  <small>Administrator</small>
+                @endif
+                @if ($user->hasRole('user'))
+                  <small>{{ $user->division->name }}</small>
+                @endif
               @endif
             </div>
             <div class="footer d-flex justify-content-center align-items-center mt-3">

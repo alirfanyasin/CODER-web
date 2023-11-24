@@ -29,4 +29,13 @@ class Task extends Model
     {
         return $this->belongsTo(User::class);
     }
+    /**
+     * Get the user that owns the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function submission()
+    {
+        return $this->hasMany(Submission::class, 'task_id');
+    }
 }

@@ -13,19 +13,16 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('division_id');
+            $table->foreignId('division_id')->constrained();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('division')->nullable();
             $table->string('field_of_study')->nullable();
             $table->string('nim')->nullable();
             $table->string('batch')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('avatar')->nullable();
-
-            // $table->foreign('division_id')->references('id')->on('division');
             $table->rememberToken();
             $table->timestamps();
         });

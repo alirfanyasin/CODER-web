@@ -4,20 +4,20 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Division;
-use App\Models\Admin\Module;
+use App\Models\Submission;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class ModuleController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // 
     }
 
     /**
@@ -47,15 +47,22 @@ class ModuleController extends Controller
      */
     public function edit(string $id)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $subm_id, $divi_id)
     {
-        //
+        $validate = $request->validate([
+            'submission' => 'required|url'
+        ]);
+        $validate['user_id'] = Auth::user()->id;
+        $validate['task_id'] = $request->task_id;
+
+        $data = Submission::findOrFail($subm_id);
+        $data->update($validate);
+        return redirect('/e-learning/task/division-' . $divi_id)->with('success', 'Task Updated Successfully');
     }
 
     /**
@@ -77,7 +84,7 @@ class ModuleController extends Controller
             abort(403, 'Unauthorized action.');
         }
         // Menggunakan with() untuk memuat relasi division
-        $allData = Module::with('division')->where('division_id', $id)->get();
+        $allData = Task::with('division')->where('division_id', $id)->orderBy('id', 'desc')->get();
 
         // Mengambil divisi dengan ID yang sesuai
         $division = Division::find($id);
@@ -87,18 +94,27 @@ class ModuleController extends Controller
             abort(404, 'Divisi tidak ditemukan');
         }
 
-        // Mengelompokkan data berdasarkan division_id
-        $groupedDataDivision = $allData->groupBy('division_id');
 
-        // Mengelompokkan data berdasarkan meeting
-        $groupedData = $allData->groupBy('meeting');
-
-        return view('pages.app.elearning_module', [
+        return view('pages.app.elearning_task_user', [
             'allData' => $allData,
-            'groupedData' => $groupedData,
-            'groupedDataDivision' => $groupedDataDivision,
-            'division' => $division, // Mengirimkan data divisi ke view
-            'allDivision' => Division::all()
+            'division' => $division,
+            'submission_data' => Submission::all()
         ]);
+    }
+
+    /**
+     * Create Submission.
+     */
+    public function submission(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'submission' => 'required|url',
+        ]);
+
+        $validateData['user_id'] = Auth::user()->id;
+        $validateData['task_id'] = $request->task_id;
+
+        Submission::create($validateData);
+        return redirect('/e-learning/task/division-' . $id)->with('success', 'Task Submitted Successfully');
     }
 }
