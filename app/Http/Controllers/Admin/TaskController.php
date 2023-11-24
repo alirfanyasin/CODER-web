@@ -54,7 +54,11 @@ class TaskController extends Controller
         // dd($validateData);
 
         Task::create($validateData);
-        return redirect()->route('admin.elearning.task.division', 1)->with('success', 'Created task successfully');
+        if (Auth::user()->hasPermissionTo('admin-division')) {
+            return redirect()->route('elearning.task', 1)->with('success', 'Created task successfully');
+        } else {
+            return redirect()->route('admin.elearning.task.division', 1)->with('success', 'Created task successfully');
+        }
     }
 
     /**
@@ -108,7 +112,11 @@ class TaskController extends Controller
         }
 
         $data->update($validateData);
-        return redirect()->route('admin.elearning.task.division', 1)->with('success', 'Updated task successfully');
+        if (Auth::user()->hasPermissionTo('admin-division')) {
+            return redirect()->route('elearning.task', 1)->with('success', 'Updated task successfully');
+        } else {
+            return redirect()->route('admin.elearning.task.division', 1)->with('success', 'Updated task successfully');
+        }
     }
 
     /**
@@ -122,7 +130,11 @@ class TaskController extends Controller
         }
         Storage::delete('public/task/' . $data->file);
         $data->delete();
-        return redirect()->route('admin.elearning.task.division', 1)->with('success', 'Deleted task successfully');
+        if (Auth::user()->hasPermissionTo('admin-division')) {
+            return redirect()->route('elearning.task', 1)->with('success', 'Deleted task successfully');
+        } else {
+            return redirect()->route('admin.elearning.task.division', 1)->with('success', 'Deleted task successfully');
+        }
     }
 
 

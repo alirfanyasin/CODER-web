@@ -14,7 +14,7 @@
           <div class="p-4 text-white text-center position-relative"
             style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
             @role('admin')
-              @if ($user->division != 'Admin')
+              @if ($user->id != 1)
                 <div class="dropdown position-absolute dropstart" style="right: 20px;">
                   <iconify-icon icon="charm:menu-kebab" class="icon-toggle dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false"></iconify-icon>
@@ -63,8 +63,6 @@
             </div>
             <div class="fw-light mt-4">
               <div class="fw-bold">{{ $user->name }}</div>
-
-              {{-- <small>{{ $user->division->name }}</small> --}}
 
               @if ($user->hasPermissionTo('admin-division'))
                 <small>Admin {{ $user->division->name }}</small>
