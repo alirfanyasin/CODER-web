@@ -44,7 +44,7 @@
       </div>
     @endrole
 
-    @role('user')
+    @if (Auth::user()->hasPermissionTo('admin-division') || Auth::user()->hasRole('user'))
       <div class="list-group mt-5">
         <a href="/dashboard"
           class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('dashboard') ? 'side-active' : '' }}"
@@ -57,8 +57,9 @@
           &nbsp;&nbsp;
           Users</a>
         <a href="/e-learning"
-          class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('e-learning') ? 'side-active' : '' }} {{ Request::is('e-learning/*') ? 'side-active' : '' }}"
-          style="margin-right: 150px;"> <iconify-icon icon="carbon:machine-learning-model" width="24"></iconify-icon>
+          class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('e-learning') ? 'side-active' : '' }} {{ Request::is('e-learning/*') ? 'side-active' : '' }} {{ Request::is('admin/e-learning/*') ? 'side-active' : '' }}"
+          style="margin-right: 150px;"> <iconify-icon icon="carbon:machine-learning-model"
+            width="24"></iconify-icon>
           &nbsp;&nbsp;
           E-Learning</a>
         <a href="/absence"
@@ -67,5 +68,5 @@
           &nbsp;&nbsp;
           Absence</a>
       </div>
-    @endrole
+    @endif
 </aside>
