@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Admin\Division;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,7 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'division',
+        'division_id',
         'field_of_study',
         'nim',
         'batch',
@@ -57,5 +59,14 @@ class User extends Authenticatable
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+
+    /**
+     * Mendefinisikan relasi antara Task dan User.
+     */
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
     }
 }

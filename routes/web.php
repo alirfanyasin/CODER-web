@@ -18,6 +18,8 @@ use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\ElearningController as UserElearningController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\ModuleController as UserModuleController;
+use App\Http\Controllers\User\TaskController as UserTaskController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,15 +45,16 @@ Route::middleware('guest')->group(function () {
   Route::get('/register', [RegisterController::class, 'index'])->name('register');
   Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 });
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
   Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
   Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
   Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
+  Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division']);
+  Route::post('/e-learning/task/submission/{id}', [UserTaskController::class, 'submission'])->name('user.elearning.task.submission');
 });
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
 
 
 
