@@ -17,6 +17,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\ElearningController as UserElearningController;
 use App\Http\Controllers\User\UserController as UserUserController;
+use App\Http\Controllers\User\ModuleController as UserModuleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,16 @@ Route::middleware('guest')->group(function () {
   Route::get('/register', [RegisterController::class, 'index'])->name('register');
   Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 });
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+  Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
+  Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
+  Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
+});
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -84,12 +95,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
     Route::get('/e-learning/task/create', [TaskController::class, 'create'])->name('admin.elearning.task.create');
+    Route::post('/e-learning/task/store', [TaskController::class, 'store'])->name('admin.elearning.task.store');
+    Route::delete('/e-learning/task/{id}/destroy', [TaskController::class, 'destroy'])->name('admin.elearning.task.destroy');
+    Route::get('/e-learning/task/{id}/edit', [TaskController::class, 'edit'])->name('admin.elearning.task.edit');
+    Route::put('/e-learning/task/{id}/update', [TaskController::class, 'update'])->name('admin.elearning.task.update');
+    Route::get('/e-learning/task/division-{id}', [TaskController::class, 'division'])->name('admin.elearning.task.division');
   });
-});
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::middleware(['auth', 'role:user'])->group(function () {
-  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-  Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
-  Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
 });

@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('submissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('division_id')->constrained();
-            $table->string('task_name');
-            $table->text('description');
-            $table->string('file')->nullable();
-            $table->dateTime('deadline');
+            $table->foreignId('task_id')->constrained();
             $table->string('submission')->nullable();
+            $table->unsignedBigInteger('point')->default(5)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('submissions');
     }
 };
