@@ -53,7 +53,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
   Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
   Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
-  Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division']);
+  Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division'])->name('elearning.task');
   Route::post('/e-learning/task/submission/{id}', [UserTaskController::class, 'submission'])->name('user.elearning.task.submission');
   Route::post('/e-learning/task/submission/{subm_id}/update/{divi_id}', [UserTaskController::class, 'update'])->name('user.elearning.task.submission.update');
 });
