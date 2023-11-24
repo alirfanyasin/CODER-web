@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ElearningController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -102,6 +103,8 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/e-learning/task/{id}/edit', [TaskController::class, 'edit'])->name('admin.elearning.task.edit');
     Route::put('/e-learning/task/{id}/update', [TaskController::class, 'update'])->name('admin.elearning.task.update');
     Route::get('/e-learning/task/division-{id}', [TaskController::class, 'division'])->name('admin.elearning.task.division');
+
+    Route::get('/e-learning/submission/{id}/view', [SubmissionController::class, 'show'])->name('admin.elearning.submission.view');
   });
 });
 

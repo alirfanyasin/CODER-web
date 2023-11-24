@@ -3,7 +3,7 @@ use Carbon\Carbon;
 ?>
 @extends('layouts.app')
 
-@section('title', 'CODER - E-Learning Modul')
+@section('title', 'CODER - E-Learning Task')
 
 @section('content')
   <section>
@@ -69,7 +69,8 @@ use Carbon\Carbon;
                   @if ($data->file != null)
                     @role('admin')
                       <div class="d-flex align-items-center">
-                        <a href="" class="btn-custom">View Submission</a>
+                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}" class="btn-custom">View
+                          Submission</a>
                         <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
@@ -95,7 +96,8 @@ use Carbon\Carbon;
                   @else
                     @role('admin')
                       <div class="d-flex justify-content-between align-items-center">
-                        <a href="" class="btn-custom">View Submission</a>
+                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}" class="btn-custom">View
+                          Submission</a>
                         <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
