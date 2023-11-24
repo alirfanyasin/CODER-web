@@ -78,7 +78,22 @@ use Carbon\Carbon;
 
               <div class="d-flex justify-content-between mt-4 align-items-center">
                 @if ($data->file != null)
-                  @role('user')
+                  @can('admin-division')
+                    <div class="d-flex align-items-center">
+                      <a href="" class="btn-custom">View Submission</a>
+                      <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                          class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                            icon="mynaui:trash"></iconify-icon></button>
+                      </form>
+                      <a href="{{ route('admin.elearning.task.edit', $data->id) }}"
+                        class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
+                          icon="basil:edit-outline"></iconify-icon></a>
+                    </div>
+                  @endcan
+                  @if (Auth::user()->hasRole('user') && !Auth::user()->hasPermissionTo('admin-division'))
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex align-items-center ">
                         @if (!$submissionExists)
@@ -94,12 +109,27 @@ use Carbon\Carbon;
                         @endif
                       </div>
                     </div>
-                  @endrole
+                  @endif
                   <a href="{{ asset('storage/task/' . $data->file) }}" target="_blank">
                     <iconify-icon icon="vscode-icons:file-type-pdf2" width="50px"></iconify-icon>
                   </a>
                 @else
-                  @role('user')
+                  @can('admin-division')
+                    <div class="d-flex align-items-center">
+                      <a href="" class="btn-custom">View Submission</a>
+                      <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                          class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                            icon="mynaui:trash"></iconify-icon></button>
+                      </form>
+                      <a href="{{ route('admin.elearning.task.edit', $data->id) }}"
+                        class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
+                          icon="basil:edit-outline"></iconify-icon></a>
+                    </div>
+                  @endcan
+                  @if (Auth::user()->hasRole('user') && !Auth::user()->hasPermissionTo('admin-division'))
                     <div class="d-flex  align-items-center">
                       @if (!$submissionExists)
                         <button type="button" class="btn-custom border-0" data-bs-toggle="modal"
@@ -113,7 +143,7 @@ use Carbon\Carbon;
                             icon="basil:edit-outline"></iconify-icon></button>
                       @endif
                     </div>
-                  @endrole
+                  @endif
                 @endif
               </div>
             </div>
@@ -155,8 +185,8 @@ use Carbon\Carbon;
     </div>
 
     @if ($item->submission()->where('user_id', Auth::user()->id)->exists())
-      <div class="modal fade" id="edit_submission{{ $item->id }}" tabindex="-1" aria-labelledby="edit_submission"
-        aria-hidden="true">
+      <div class="modal fade" id="edit_submission{{ $item->id }}" tabindex="-1"
+        aria-labelledby="edit_submission" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
