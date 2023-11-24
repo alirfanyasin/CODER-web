@@ -74,13 +74,16 @@ use Carbon\Carbon;
                   @role('user')
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex align-items-center ">
-                        <button type="button" class="btn-custom border-0" data-bs-toggle="modal"
-                          data-bs-target="#add_submission{{ $data->id }}">Add
-                          Submission</button>
+                        @if (!$submissionExists)
+                          <button type="button" class="btn-custom border-0" data-bs-toggle="modal"
+                            data-bs-target="#add_submission{{ $data->id }}">Add
+                            Submission</button>
+                        @endif
                         @if ($submissionExists)
-                          <a href="{{ route('admin.elearning.task.edit', $data->id) }}"
-                            class="btn-action-custom mx-2 d-flex justify-content-center align-items-center"><iconify-icon
-                              icon="basil:edit-outline"></iconify-icon></a>
+                          <button
+                            type="button"class="btn-action-custom mx-2 d-flex justify-content-center align-items-center border-0"
+                            data-bs-toggle="modal" data-bs-target="#edit_submission{{ $data->id }}"><iconify-icon
+                              icon="basil:edit-outline"></iconify-icon></button>
                         @endif
                       </div>
                     </div>
@@ -91,13 +94,16 @@ use Carbon\Carbon;
                 @else
                   @role('user')
                     <div class="d-flex  align-items-center">
-                      <button type="button" class="btn-custom border-0" data-bs-toggle="modal"
-                        data-bs-target="#add_submission{{ $data->id }}">Add
-                        Submission</button>
+                      @if (!$submissionExists)
+                        <button type="button" class="btn-custom border-0" data-bs-toggle="modal"
+                          data-bs-target="#add_submission{{ $data->id }}">Add
+                          Submission</button>
+                      @endif
                       @if ($submissionExists)
-                        <a href="{{ route('admin.elearning.task.edit', $data->id) }}"
-                          class="btn-action-custom mx-2 d-flex justify-content-center align-items-center"><iconify-icon
-                            icon="basil:edit-outline"></iconify-icon></a>
+                        <button
+                          type="button"class="btn-action-custom mx-2 d-flex justify-content-center align-items-center border-0"
+                          data-bs-toggle="modal" data-bs-target="#edit_submission{{ $data->id }}"><iconify-icon
+                            icon="basil:edit-outline"></iconify-icon></button>
                       @endif
                     </div>
                   @endrole
@@ -112,21 +118,20 @@ use Carbon\Carbon;
   </div>
 
 
-
   <!-- Modal -->
-  @foreach ($allData as $task => $data)
-    <div class="modal fade" id="add_submission{{ $data->id }}" tabindex="-1" aria-labelledby="add_submission"
+  @foreach ($allData as $item)
+    <div class="modal fade" id="add_submission{{ $item->id }}" tabindex="-1" aria-labelledby="add_submission"
       aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Submission</h1>
+            <h1 class="modal-title fs-5" id="">Add Submission</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form action="{{ route('user.elearning.task.submission', $division->id) }}" method="POST">
             @csrf
             <div class="modal-body">
-              <input type="hidden" name="task_id" value="{{ $data->id }}">
+              <input type="hidden" name="task_id" value="{{ $item->id }}">
               <div class="mb-3">
                 <input type="url" name="submission" class="form-control" placeholder="Masukkan link project">
                 @error('submission')
@@ -141,23 +146,44 @@ use Carbon\Carbon;
         </div>
       </div>
     </div>
+
+    @if ($item->submission()->where('user_id', Auth::user()->id)->exists())
+      <div class="modal fade" id="edit_submission{{ $item->id }}" tabindex="-1" aria-labelledby="edit_submission"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="">Edit Submission</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @foreach ($submission_data as $submis)
+              @if ($submis->task_id == $item->id && Auth::user()->id == $submis->user_id)
+                <form
+                  action="{{ route('user.elearning.task.submission.update', ['subm_id' => $submis->id, 'divi_id' => $division->id]) }}"
+                  method="POST">
+                  @csrf
+                  <div class="modal-body">
+                    <input type="hidden" name="task_id" value="{{ $item->id }}">
+                    <div class="mb-3">
+
+                      <input type="url" name="submission" class="form-control" value="{{ $submis->submission }}"
+                        placeholder="Masukkan link project">
+
+                      @error('submission')
+                        <small class="text-danger">{{ $message }}</small>
+                      @enderror
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Save changes</button>
+                  </div>
+                </form>
+              @endif
+            @endforeach
+          </div>
+        </div>
+      </div>
+    @endif
   @endforeach
-
-
-
-
-  <style>
-    .list-division {
-      transition: .7s;
-    }
-
-    .list-division:hover {
-      background: rgba(255, 255, 255, 0.13);
-      border-radius: 5px;
-      padding: 2px 10px;
-      backdrop-filter: blur(5px);
-    }
-  </style>
-
 
 @endsection

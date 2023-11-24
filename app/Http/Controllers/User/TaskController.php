@@ -52,8 +52,17 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $subm_id, $divi_id)
     {
+        $validate = $request->validate([
+            'submission' => 'required|url'
+        ]);
+        $validate['user_id'] = Auth::user()->id;
+        $validate['task_id'] = $request->task_id;
+
+        $data = Submission::findOrFail($subm_id);
+        $data->update($validate);
+        return redirect('/e-learning/task/division-' . $divi_id)->with('success', 'Task Updated Successfully');
     }
 
     /**
@@ -75,7 +84,7 @@ class TaskController extends Controller
             abort(403, 'Unauthorized action.');
         }
         // Menggunakan with() untuk memuat relasi division
-        $allData = Task::with('division')->where('division_id', $id)->get();
+        $allData = Task::with('division')->where('division_id', $id)->orderBy('id', 'desc')->get();
 
         // Mengambil divisi dengan ID yang sesuai
         $division = Division::find($id);
@@ -84,9 +93,12 @@ class TaskController extends Controller
         if (!$division) {
             abort(404, 'Divisi tidak ditemukan');
         }
+
+
         return view('pages.app.elearning_task_user', [
             'allData' => $allData,
             'division' => $division,
+            'submission_data' => Submission::all()
         ]);
     }
 

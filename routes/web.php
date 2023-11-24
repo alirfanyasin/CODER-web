@@ -54,6 +54,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
   Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division']);
   Route::post('/e-learning/task/submission/{id}', [UserTaskController::class, 'submission'])->name('user.elearning.task.submission');
+  Route::post('/e-learning/task/submission/{subm_id}/update/{divi_id}', [UserTaskController::class, 'update'])->name('user.elearning.task.submission.update');
 });
 
 
