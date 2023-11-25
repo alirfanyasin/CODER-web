@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - Absence')
+@section('title', 'CODER - Show Presence')
 
 @section('content')
   <section>

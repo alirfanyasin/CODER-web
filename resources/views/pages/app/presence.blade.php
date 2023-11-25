@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - Absence')
+@section('title', 'CODER - Presence')
 
 @section('content')
   <section>
@@ -34,34 +34,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th class="align-middle" scope="row">1</th>
-                <td class="align-middle">Pertemuan 1</td>
-                <td class="align-middle">27 November 2023</td>
-                <td class="align-middle"><span class="badge bg-primary">Done</span></td>
-                {{-- <td class="align-middle"><span class="badge bg-warning">Temporary</span></td> --}}
-                {{-- <td class="align-middle"><span class="badge bg-success">Active</span></td> --}}
-                <td>
-                  <div class="d-flex">
-                    <a href="{{ route('admin.presence.show') }}"
-                      class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
-                        icon="carbon:view"></iconify-icon></a>
-                    <form action="" method="POST" class="d-inline-block">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit"
+              @foreach ($data as $presence)
+                <tr>
+                  <th class="align-middle" scope="row">1</th>
+                  <td class="align-middle">Pertemuan {{ $presence->meeting }}</td>
+                  <td class="align-middle">{{ date('j F Y', strtotime($presence->date)) }}</td>
+                  <td class="align-middle"><span
+                      class="badge {{ $presence->status == 'Active' ? 'bg-primary' : '' }}">{{ $presence->status }}</span>
+                  </td>
+                  {{-- <td class="align-middle"><span class="badge bg-warning">Temporary</span></td> --}}
+                  {{-- <td class="align-middle"><span class="badge bg-success">Active</span></td> --}}
+                  <td>
+                    <div class="d-flex">
+                      <a href="{{ route('admin.presence.show') }}"
+                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                          icon="carbon:view"></iconify-icon></a>
+                      <form action="" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                          class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
+                            icon="mynaui:trash"></iconify-icon></button>
+                      </form>
+                      <a href=""
+                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                          icon="basil:edit-outline"></iconify-icon></a>
+                      <a href=""
                         class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
-                          icon="mynaui:trash"></iconify-icon></button>
-                    </form>
-                    <a href=""
-                      class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
-                        icon="basil:edit-outline"></iconify-icon></a>
-                    <a href=""
-                      class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
-                        icon="uil:share"></iconify-icon></a>
-                  </div>
-                </td>
-              </tr>
+                          icon="uil:share"></iconify-icon></a>
+                    </div>
+                  </td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
