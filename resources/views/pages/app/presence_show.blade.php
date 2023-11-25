@@ -48,7 +48,7 @@
                     <tr>
                       <th class="align-middle" scope="row">{{ $no++ }}</th>
                       <td class="align-middle">{{ $data->name }}</td>
-                      <td class="align-middle">{{ $data->email }}</td>
+                      <td class="align-middle">{{ $data->field_of_study }}</td>
                       <td>
                         <div class="d-flex align-items-center">
                           <div class="">
