@@ -5,12 +5,7 @@
 @section('content')
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
-      <h1>Absence</h1>
-      @role('admin')
-        <div>
-          <a href="{{ route('admin.absence.create') }}" class="btn-main">Create Absence</a>
-        </div>
-      @endrole
+      <h1>Presence</h1>
     </div>
   </section>
 
@@ -19,7 +14,7 @@
       <div class="text-white p-4"
         style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
         <header class="text-left">
-          <h5>Absence Mobile Development</h5>
+          <h5>Presence Mobile Development</h5>
         </header>
 
         <div class="mt-4">

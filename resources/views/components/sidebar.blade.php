@@ -36,11 +36,11 @@
           style="margin-right: 150px;"> <iconify-icon icon="carbon:machine-learning-model" width="24"></iconify-icon>
           &nbsp;&nbsp;
           E-Learning</a>
-        <a href="/admin/absence"
-          class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/absence') ? 'side-active' : '' }} {{ Request::is('admin/absence/*') ? 'side-active' : '' }}"
+        <a href="/admin/presence"
+          class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/presence') ? 'side-active' : '' }} {{ Request::is('admin/presence/*') ? 'side-active' : '' }}"
           style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
           &nbsp;&nbsp;
-          Absence</a>
+          Presence</a>
       </div>
     @endrole
 
@@ -62,11 +62,11 @@
             width="24"></iconify-icon>
           &nbsp;&nbsp;
           E-Learning</a>
-        <a href="/absence"
-          class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('absence') ? 'side-active' : '' }} {{ Request::is('absence/*') ? 'side-active' : '' }}"
+        <a href="/presence"
+          class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('presence') ? 'side-active' : '' }} {{ Request::is('presence/*') ? 'side-active' : '' }}"
           style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
           &nbsp;&nbsp;
-          Absence</a>
+          Presence</a>
       </div>
     @endif
 </aside>

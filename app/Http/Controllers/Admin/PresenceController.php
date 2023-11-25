@@ -7,7 +7,7 @@ use App\Models\Absence;
 use App\Models\Admin\Division;
 use Illuminate\Http\Request;
 
-class AbsenceController extends Controller
+class PresenceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,7 +39,7 @@ class AbsenceController extends Controller
         //     'allDivision' => Division::all()
         // ]);
 
-        return view('pages.app.absence');
+        return view('pages.app.presence');
     }
 
     /**
@@ -47,7 +47,7 @@ class AbsenceController extends Controller
      */
     public function create()
     {
-        return view('pages.app.absence_create');
+        return view('pages.app.presence_create');
     }
 
     /**
@@ -63,7 +63,7 @@ class AbsenceController extends Controller
      */
     public function show()
     {
-        return view('pages.app.absence_show');
+        return view('pages.app.presence_show');
     }
 
     /**
