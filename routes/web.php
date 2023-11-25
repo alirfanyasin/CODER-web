@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\UserPresenceController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -22,7 +23,7 @@ use App\Http\Controllers\User\ElearningController as UserElearningController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\ModuleController as UserModuleController;
 use App\Http\Controllers\User\TaskController as UserTaskController;
-
+use App\Models\UserPresence;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -110,9 +111,11 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/presence/division-{id}', [PresenceController::class, 'index'])->name('admin.presence');
     Route::get('/presence/create', [PresenceController::class, 'create'])->name('admin.presence.create');
     Route::post('/presence/store', [PresenceController::class, 'store'])->name('admin.presence.store');
-    Route::get('/presence/show', [PresenceController::class, 'show'])->name('admin.presence.show');
+    Route::get('/presence/{pres_id}/show/{div_id}', [PresenceController::class, 'show'])->name('admin.presence.show');
     Route::get('/presence/{id}/edit', [PresenceController::class, 'edit'])->name('admin.presence.edit');
     Route::put('/presence/{id}/update', [PresenceController::class, 'update'])->name('admin.presence.update');
+    Route::delete('/presence/{id}/destroy', [PresenceController::class, 'destroy'])->name('admin.presence.destroy');
+    Route::post('/presence/user/store', [UserPresenceController::class, 'store'])->name('admin.presence.user.store');
   });
 });
 

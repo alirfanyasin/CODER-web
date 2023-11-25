@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Absence;
 use App\Models\Admin\Division;
 use App\Models\Presence;
+use App\Models\User;
+use App\Models\UserPresence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -72,9 +74,12 @@ class PresenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show($pres_id, $div_id)
     {
-        return view('pages.app.presence_show');
+        return view('pages.app.presence_show', [
+            'user' => User::where('division_id', $div_id)->get(),
+            'presence' => Presence::findOrFail($pres_id)
+        ]);
     }
 
     /**
@@ -114,6 +119,19 @@ class PresenceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Presence::findOrFail($id);
+
+        // Delete related records in user_presences
+        UserPresence::where('presence_id', $data->id)->delete();
+
+        // Now you can safely delete the presence record
+        $data->delete();
+
+        $divisionUser = Auth::user()->division_id;
+        if (Auth::user()->hasPermissionTo('admin-division')) {
+            return redirect()->route('elearning.task', $divisionUser)->with('success', 'Deleted presence successfully');
+        } else {
+            return redirect()->route('admin.presence', 1)->with('success', 'Deleted presence successfully');
+        }
     }
 }

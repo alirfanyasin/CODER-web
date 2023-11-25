@@ -18,16 +18,15 @@
         </header>
 
         <div class="mt-4">
-          <form action="">
-            <div>
+          <form action="{{ route('admin.presence.user.store') }}" method="POST">
+            @csrf
+            <div class="mb-3 d-flex justify-content-between align-items-center">
               <button type="submit" class="text-white px-3 py-2"
                 style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none;
               backdrop-filter: blur(5px);">Save</button>
-              <button type="submit" class="text-white px-3 py-2"
-                style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none;
-              backdrop-filter: blur(5px);">Save
-                Temporary</button>
-
+              <div>
+                {{ date('j F Y', strtotime($presence->date)) }}
+              </div>
             </div>
             <table class="table rounded-4 table-striped" style="background: none">
               <thead>
@@ -39,27 +38,39 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th class="align-middle" scope="row">1</th>
-                  <td class="align-middle">Dandy Maulna Ainul Yakin</td>
-                  <td class="align-middle">Informatika</td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <div class="">
-                        <input type="radio" id="hadir" name="status" value="Hadir">
-                        <label>Hadir</label>
-                      </div>
-                      <div class="mx-4">
-                        <input type="radio" id="izin" name="status" value="Izin">
-                        <label>Izin</label>
-                      </div>
-                      <div class="">
-                        <input type="radio" id="alfa" name="status" value="Alfa">
-                        <label>Alfa</label>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+                @php
+                  $no = 1;
+                @endphp
+                @foreach ($user as $data)
+                  @if ($data->id != 1)
+                    <input type="hidden" name="user_id" value="{{ $data->name }}">
+                    <input type="hidden" name="presence_id" value="{{ $presence->id }}">
+                    <tr>
+                      <th class="align-middle" scope="row">{{ $no++ }}</th>
+                      <td class="align-middle">{{ $data->name }}</td>
+                      <td class="align-middle">{{ $data->email }}</td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="">
+                            <input type="radio" id="hadir" name="status[{{ $data->id }}]" value="Hadir"
+                              {{ getStatusChecked($data->user_presences, $presence->id, 'Hadir') }}>
+                            <label>Hadir</label>
+                          </div>
+                          <div class="mx-4">
+                            <input type="radio" id="izin" name="status[{{ $data->id }}]" value="Izin"
+                              {{ getStatusChecked($data->user_presences, $presence->id, 'Izin') }}>
+                            <label>Izin</label>
+                          </div>
+                          <div class="">
+                            <input type="radio" id="alfa" name="status[{{ $data->id }}]" value="Alfa"
+                              {{ getStatusChecked($data->user_presences, $presence->id, 'Alfa') }}>
+                            <label>Alfa</label>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  @endif
+                @endforeach
               </tbody>
             </table>
           </form>
@@ -87,3 +98,15 @@
     }
   </style>
 @endsection
+
+@php
+  function getStatusChecked($userPresences, $presenceId, $status)
+  {
+      foreach ($userPresences as $userPresence) {
+          if ($userPresence->presence_id == $presenceId && $userPresence->status == $status) {
+              return 'checked';
+          }
+      }
+      return '';
+  }
+@endphp

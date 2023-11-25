@@ -78,4 +78,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Submission::class, 'user_id');
     }
+    /**
+     * Get the user that owns the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user_presences()
+    {
+        return $this->hasMany(UserPresence::class, 'user_id');
+    }
 }
