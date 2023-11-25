@@ -109,6 +109,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
 
     Route::get('/presence', [PresenceController::class, 'index'])->name('admin.presence');
     Route::get('/presence/create', [PresenceController::class, 'create'])->name('admin.presence.create');
+    Route::post('/presence/store', [PresenceController::class, 'store'])->name('admin.presence.store');
     Route::get('/presence/show', [PresenceController::class, 'show'])->name('admin.presence.show');
   });
 });

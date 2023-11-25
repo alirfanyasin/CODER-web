@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - Create Absence')
+@section('title', 'CODER - Create Presence')
 
 @section('content')
   <section>
@@ -18,10 +18,10 @@
         </header>
 
         <div class="mt-4">
-          <form action="">
+          <form action="{{ route('admin.presence.store') }}" method="POST">
             @csrf
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="input-group-custom mb-3">
                   <input type="number" name="meeting" class="form-control text-white fw-light"
                     style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
@@ -32,7 +32,20 @@
                   @enderror
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
+                <div class="input-group-custom mb-3">
+                  <select class="form-select text-white fw-light mb-3"
+                    style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                  backdrop-filter: blur(5px);"
+                    name="division_id" id="division">
+                    <option selected disabled class="text-black">Pilih Divisi</option>
+                    @foreach ($data_division as $division)
+                      <option value="{{ $division->id }}" class="text-black">{{ $division->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
                 <div class="input-group-custom mb-3">
                   <input type="date" name="date" class="form-control text-white fw-light"
                     style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;

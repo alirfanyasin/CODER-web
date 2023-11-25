@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Absence;
 use App\Models\Admin\Division;
+use App\Models\Presence;
 use Illuminate\Http\Request;
 
 class PresenceController extends Controller
@@ -39,7 +40,9 @@ class PresenceController extends Controller
         //     'allDivision' => Division::all()
         // ]);
 
-        return view('pages.app.presence');
+        return view('pages.app.presence', [
+            'data' => Presence::all()
+        ]);
     }
 
     /**
@@ -47,7 +50,9 @@ class PresenceController extends Controller
      */
     public function create()
     {
-        return view('pages.app.presence_create');
+        return view('pages.app.presence_create', [
+            'data_division' => Division::all()
+        ]);
     }
 
     /**
@@ -55,7 +60,14 @@ class PresenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'division_id' => 'required',
+            'meeting' => 'required',
+            'date' => 'required'
+        ]);
+        $validate['status'] = 'Active';
+        Presence::create($validate);
+        return redirect()->route('admin.presence')->with('success', 'Created presence successfully');
     }
 
     /**
