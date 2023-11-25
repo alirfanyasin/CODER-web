@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - Presence')
+@section('title', 'CODER - Presence ' . $division->name)
 
 @section('content')
   <section>
@@ -43,16 +43,15 @@
                   <td class="align-middle">Pertemuan {{ $presence->meeting }}</td>
                   <td class="align-middle">{{ date('j F Y', strtotime($presence->date)) }}</td>
                   <td class="align-middle"><span
-                      class="badge {{ $presence->status == 'Active' ? 'bg-primary' : '' }}">{{ $presence->status }}</span>
+                      class="badge {{ $presence->status == 'Active' ? 'bg-primary' : 'bg-success' }}">{{ $presence->status }}</span>
                   </td>
-                  {{-- <td class="align-middle"><span class="badge bg-warning">Temporary</span></td> --}}
-                  {{-- <td class="align-middle"><span class="badge bg-success">Active</span></td> --}}
                   <td>
                     <div class="d-flex">
-                      <a href="{{ route('admin.presence.show') }}"
+                      <a href="{{ route('admin.presence.show', ['pres_id' => $presence->id, 'div_id' => $presence->division->id]) }}"
                         class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                           icon="carbon:view"></iconify-icon></a>
-                      <form action="" method="POST" class="d-inline-block">
+                      <form action="{{ route('admin.presence.destroy', $presence->id) }}" method="POST"
+                        class="d-inline-block">
                         @csrf
                         @method('DELETE')
                         <button type="submit"

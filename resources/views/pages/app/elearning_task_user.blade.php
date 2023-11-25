@@ -3,7 +3,7 @@ use Carbon\Carbon;
 ?>
 @extends('layouts.app')
 
-@section('title', 'CODER - E-Learning Modul')
+@section('title', 'CODER - E-Learning Task ' . $division->name)
 
 @section('content')
   <section>
