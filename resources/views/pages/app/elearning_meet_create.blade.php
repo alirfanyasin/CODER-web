@@ -20,12 +20,12 @@
             <div class="text-white p-4"
                 style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
                 <header class="text-left mb-4">
-                    <h5>Create Meet</h5>
+                    <h5>Create Module</h5>
                 </header>
-                <form action="{{ route('admin.elearning.meet.store') }}" method="POST">
+                <form action="{{ route('admin.elearning.module.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" name="topic" class="form-control mb-3 text-white fw-light"
+                        <input type="text" name="lesson" class="form-control mb-3 text-white fw-light"
                             style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                 backdrop-filter: blur(5px);"
                             placeholder="Nama Materi">
