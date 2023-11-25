@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\Absence;
+use App\Http\Controllers\Admin\PresenceController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ElearningController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\MeetController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
@@ -53,7 +56,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
   Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
   Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
-  Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division']);
+  Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division'])->name('elearning.task');
   Route::post('/e-learning/task/submission/{id}', [UserTaskController::class, 'submission'])->name('user.elearning.task.submission');
   Route::post('/e-learning/task/submission/{subm_id}/update/{divi_id}', [UserTaskController::class, 'update'])->name('user.elearning.task.submission.update');
 });
@@ -111,6 +114,11 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/e-learning/task/{id}/edit', [TaskController::class, 'edit'])->name('admin.elearning.task.edit');
     Route::put('/e-learning/task/{id}/update', [TaskController::class, 'update'])->name('admin.elearning.task.update');
     Route::get('/e-learning/task/division-{id}', [TaskController::class, 'division'])->name('admin.elearning.task.division');
+    Route::get('/e-learning/submission/{id}/view', [SubmissionController::class, 'show'])->name('admin.elearning.submission.view');
+
+    Route::get('/presence', [PresenceController::class, 'index'])->name('admin.presence');
+    Route::get('/presence/create', [PresenceController::class, 'create'])->name('admin.presence.create');
+    Route::get('/presence/show', [PresenceController::class, 'show'])->name('admin.presence.show');
   });
 });
 

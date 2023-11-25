@@ -80,7 +80,8 @@ use Carbon\Carbon;
                 @if ($data->file != null)
                   @can('admin-division')
                     <div class="d-flex align-items-center">
-                      <a href="" class="btn-custom">View Submission</a>
+                      <a href="{{ route('admin.elearning.submission.view', $data->id) }}" class="btn-custom">View
+                        Submission</a>
                       <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -116,7 +117,8 @@ use Carbon\Carbon;
                 @else
                   @can('admin-division')
                     <div class="d-flex align-items-center">
-                      <a href="" class="btn-custom">View Submission</a>
+                      <a href="{{ route('admin.elearning.submission.view', $data->id) }}" class="btn-custom">View
+                        Submission</a>
                       <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
