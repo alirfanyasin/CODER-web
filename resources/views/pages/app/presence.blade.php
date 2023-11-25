@@ -5,10 +5,10 @@
 @section('content')
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
-      <h1>Absence</h1>
+      <h1>Presence</h1>
       @role('admin')
         <div>
-          <a href="{{ route('admin.absence.create') }}" class="btn-main">Create Absence</a>
+          <a href="{{ route('admin.presence.create') }}" class="btn-main">Create Presence</a>
         </div>
       @endrole
     </div>
@@ -19,7 +19,7 @@
       <div class="text-white p-4"
         style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
         <header class="text-left">
-          <h5>Absence Mobile Development</h5>
+          <h5>Presence Mobile Development</h5>
         </header>
 
         <div class="mt-4">
@@ -27,19 +27,23 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Creator</th>
+                <th scope="col">Meeting</th>
                 <th scope="col">Date</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th class="align-middle" scope="row">1</th>
-                <td class="align-middle">Dandy Maulna Ainul Yakin</td>
+                <td class="align-middle">Pertemuan 1</td>
                 <td class="align-middle">27 November 2023</td>
+                <td class="align-middle"><span class="badge bg-primary">Done</span></td>
+                {{-- <td class="align-middle"><span class="badge bg-warning">Temporary</span></td> --}}
+                {{-- <td class="align-middle"><span class="badge bg-success">Active</span></td> --}}
                 <td>
                   <div class="d-flex">
-                    <a href="{{ route('admin.absence.show') }}"
+                    <a href="{{ route('admin.presence.show') }}"
                       class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                         icon="carbon:view"></iconify-icon></a>
                     <form action="" method="POST" class="d-inline-block">

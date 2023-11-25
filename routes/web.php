@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Absence;
-use App\Http\Controllers\Admin\AbsenceController;
+use App\Http\Controllers\Admin\PresenceController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\GalleryController;
@@ -107,9 +107,9 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/e-learning/task/division-{id}', [TaskController::class, 'division'])->name('admin.elearning.task.division');
     Route::get('/e-learning/submission/{id}/view', [SubmissionController::class, 'show'])->name('admin.elearning.submission.view');
 
-    Route::get('/absence', [AbsenceController::class, 'index'])->name('admin.absence');
-    Route::get('/absence/create', [AbsenceController::class, 'create'])->name('admin.absence.create');
-    Route::get('/absence/show', [AbsenceController::class, 'show'])->name('admin.absence.show');
+    Route::get('/presence', [PresenceController::class, 'index'])->name('admin.presence');
+    Route::get('/presence/create', [PresenceController::class, 'create'])->name('admin.presence.create');
+    Route::get('/presence/show', [PresenceController::class, 'show'])->name('admin.presence.show');
   });
 });
 
