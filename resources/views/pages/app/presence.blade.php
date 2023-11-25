@@ -19,7 +19,7 @@
       <div class="text-white p-4"
         style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
         <header class="text-left">
-          <h5>Presence Mobile Development</h5>
+          <h5>Presence {{ $division->name }}</h5>
         </header>
 
         <div class="mt-4">
@@ -34,9 +34,12 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($data as $presence)
+              @php
+                $no = 1;
+              @endphp
+              @foreach ($allData as $presence)
                 <tr>
-                  <th class="align-middle" scope="row">1</th>
+                  <th class="align-middle" scope="row">{{ $no++ }}</th>
                   <td class="align-middle">Pertemuan {{ $presence->meeting }}</td>
                   <td class="align-middle">{{ date('j F Y', strtotime($presence->date)) }}</td>
                   <td class="align-middle"><span
@@ -56,7 +59,7 @@
                           class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
                             icon="mynaui:trash"></iconify-icon></button>
                       </form>
-                      <a href=""
+                      <a href="{{ route('admin.presence.edit', $presence->id) }}"
                         class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                           icon="basil:edit-outline"></iconify-icon></a>
                       <a href=""
@@ -80,9 +83,12 @@
         </header>
         <div>
           <ul class="mt-3">
-            <li class="mb-3 list-division">
-              <a href="" class="text-white fw-light text-decoration-none">Web Development</a>
-            </li>
+            @foreach ($allDivision as $division)
+              <li class="mb-3 list-division">
+                <a href="{{ url('/admin/presence/division-' . $division->id) }}"
+                  class="text-white fw-light text-decoration-none">{{ $division->name }}</a>
+              </li>
+            @endforeach
           </ul>
         </div>
       </div>

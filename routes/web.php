@@ -107,10 +107,12 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/e-learning/task/division-{id}', [TaskController::class, 'division'])->name('admin.elearning.task.division');
     Route::get('/e-learning/submission/{id}/view', [SubmissionController::class, 'show'])->name('admin.elearning.submission.view');
 
-    Route::get('/presence', [PresenceController::class, 'index'])->name('admin.presence');
+    Route::get('/presence/division-{id}', [PresenceController::class, 'index'])->name('admin.presence');
     Route::get('/presence/create', [PresenceController::class, 'create'])->name('admin.presence.create');
     Route::post('/presence/store', [PresenceController::class, 'store'])->name('admin.presence.store');
     Route::get('/presence/show', [PresenceController::class, 'show'])->name('admin.presence.show');
+    Route::get('/presence/{id}/edit', [PresenceController::class, 'edit'])->name('admin.presence.edit');
+    Route::put('/presence/{id}/update', [PresenceController::class, 'update'])->name('admin.presence.update');
   });
 });
 

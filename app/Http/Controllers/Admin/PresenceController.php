@@ -7,41 +7,35 @@ use App\Models\Absence;
 use App\Models\Admin\Division;
 use App\Models\Presence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PresenceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
         // // Menggunakan with() untuk memuat relasi division
-        // $allData = Absence::with('division')->where('division_id', $id)->get();
+        $allData = Presence::with('division')->where('division_id', $id)->get();
 
-        // // Mengambil divisi dengan ID yang sesuai
-        // $division = Division::find($id);
+        // Mengambil divisi dengan ID yang sesuai
+        $division = Division::find($id);
 
-        // // Jika divisi tidak ditemukan, Anda dapat menangani kasus ini sesuai kebutuhan
-        // if (!$division) {
-        //     abort(404, 'Divisi tidak ditemukan');
-        // }
+        // Jika divisi tidak ditemukan, Anda dapat menangani kasus ini sesuai kebutuhan
+        if (!$division) {
+            abort(404, 'Divisi tidak ditemukan');
+        }
 
-        // // Mengelompokkan data berdasarkan division_id
-        // $groupedDataDivision = $allData->groupBy('division_id');
+        // Mengelompokkan data berdasarkan division_id
+        $groupedDataDivision = $allData->groupBy('division_id');
 
-        // // Mengelompokkan data berdasarkan meeting
-        // $groupedData = $allData->groupBy('meeting');
-
-        // return view('pages.app.absence', [
-        //     'allData' => $allData,
-        //     'groupedData' => $groupedData,
-        //     'groupedDataDivision' => $groupedDataDivision,
-        //     'division' => $division,
-        //     'allDivision' => Division::all()
-        // ]);
 
         return view('pages.app.presence', [
-            'data' => Presence::all()
+            'allData' => $allData,
+            'groupedDataDivision' => $groupedDataDivision,
+            'division' => $division,
+            'allDivision' => Division::all()
         ]);
     }
 
@@ -67,7 +61,12 @@ class PresenceController extends Controller
         ]);
         $validate['status'] = 'Active';
         Presence::create($validate);
-        return redirect()->route('admin.presence')->with('success', 'Created presence successfully');
+        $divisionUser = Auth::user()->division_id;
+        if (Auth::user()->hasPermissionTo('admin-division')) {
+            return redirect()->route('elearning.task', $divisionUser)->with('success', 'Created presence successfully');
+        } else {
+            return redirect()->route('admin.presence', 1)->with('success', 'Created presence successfully');
+        }
     }
 
     /**
@@ -83,7 +82,10 @@ class PresenceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('pages.app.presence_edit', [
+            'data' => Presence::findOrFail($id),
+            'data_division' => Division::all()
+        ]);
     }
 
     /**
@@ -91,7 +93,20 @@ class PresenceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validate = $request->validate([
+            'division_id' => 'required',
+            'meeting' => 'required',
+            'date' => 'required'
+        ]);
+        $validate['status'] = 'Active';
+        $data = Presence::findOrFail($id);
+        $data->update($validate);
+        $divisionUser = Auth::user()->division_id;
+        if (Auth::user()->hasPermissionTo('admin-division')) {
+            return redirect()->route('elearning.task', $divisionUser)->with('success', 'Updated presence successfully');
+        } else {
+            return redirect()->route('admin.presence', 1)->with('success', 'Updated presence successfully');
+        }
     }
 
     /**

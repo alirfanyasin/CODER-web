@@ -36,7 +36,7 @@
           style="margin-right: 150px;"> <iconify-icon icon="carbon:machine-learning-model" width="24"></iconify-icon>
           &nbsp;&nbsp;
           E-Learning</a>
-        <a href="/admin/presence"
+        <a href="/admin/presence/division-1"
           class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('admin/presence') ? 'side-active' : '' }} {{ Request::is('admin/presence/*') ? 'side-active' : '' }}"
           style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
           &nbsp;&nbsp;
@@ -62,7 +62,7 @@
             width="24"></iconify-icon>
           &nbsp;&nbsp;
           E-Learning</a>
-        <a href="/presence"
+        <a href="/presence/division-1"
           class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('presence') ? 'side-active' : '' }} {{ Request::is('presence/*') ? 'side-active' : '' }}"
           style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
           &nbsp;&nbsp;
