@@ -14,7 +14,7 @@
       <div class="text-white p-4"
         style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
         <header class="text-left">
-          <h5>Presence Mobile Development</h5>
+          <h5>Presence {{ $division->name }}</h5>
         </header>
 
         <div class="mt-4">

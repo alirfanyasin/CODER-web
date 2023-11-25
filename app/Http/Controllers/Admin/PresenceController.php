@@ -18,20 +18,14 @@ class PresenceController extends Controller
      */
     public function index($id)
     {
-        // // Menggunakan with() untuk memuat relasi division
         $allData = Presence::with('division')->where('division_id', $id)->get();
-
-        // Mengambil divisi dengan ID yang sesuai
         $division = Division::find($id);
 
-        // Jika divisi tidak ditemukan, Anda dapat menangani kasus ini sesuai kebutuhan
         if (!$division) {
             abort(404, 'Divisi tidak ditemukan');
         }
 
-        // Mengelompokkan data berdasarkan division_id
         $groupedDataDivision = $allData->groupBy('division_id');
-
 
         return view('pages.app.presence', [
             'allData' => $allData,
@@ -78,7 +72,8 @@ class PresenceController extends Controller
     {
         return view('pages.app.presence_show', [
             'user' => User::where('division_id', $div_id)->get(),
-            'presence' => Presence::findOrFail($pres_id)
+            'presence' => Presence::findOrFail($pres_id),
+            'division' => Division::findOrFail($div_id)
         ]);
     }
 
@@ -98,13 +93,13 @@ class PresenceController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $data = Presence::findOrFail($id);
         $validate = $request->validate([
             'division_id' => 'required',
             'meeting' => 'required',
             'date' => 'required'
         ]);
-        $validate['status'] = 'Active';
-        $data = Presence::findOrFail($id);
+        $validate['status'] = $data->status;
         $data->update($validate);
         $divisionUser = Auth::user()->division_id;
         if (Auth::user()->hasPermissionTo('admin-division')) {
@@ -120,11 +115,7 @@ class PresenceController extends Controller
     public function destroy(string $id)
     {
         $data = Presence::findOrFail($id);
-
-        // Delete related records in user_presences
         UserPresence::where('presence_id', $data->id)->delete();
-
-        // Now you can safely delete the presence record
         $data->delete();
 
         $divisionUser = Auth::user()->division_id;
