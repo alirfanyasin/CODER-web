@@ -99,13 +99,14 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::delete('/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
     Route::get('/e-learning/module/division-{id}', [ModuleController::class, 'division']);
 
-    Route::get('/elearning/meet', [MeetController::class, 'index'])->name('admin.elearning.meet');
-    Route::get('/elearning/meet/create', [MeetController::class, 'create'])->name('admin.elearning.meet.create');
-    Route::post('/elearning/meet/store', [MeetController::class, 'store'])->name('admin.elearning.meet.store');
-    Route::delete('/elearning/meet/{id}/destroy', [MeetController::class, 'destroy'])->name('admin.elearning.meet.destroy');
-    Route::get('/elearning/meet/{id}/edit', [MeetController::class, 'edit'])->name('admin.elearning.meet.edit');
-    Route::put('/elearning/meet/{id}/update', [MeetController::class, 'update'])->name('admin.elearning.meet.update');
-    Route::get('/e-learning/meet/division-{id}', [ModuleController::class, 'division']);
+    Route::get('/e-learning/meet', [MeetController::class, 'index'])->name('admin.elearning.meet');
+    Route::get('/e-learning/meet/create', [MeetController::class, 'create'])->name('admin.elearning.meet.create');
+    Route::get('/e-learning/meet/{id}/show', [MeetController::class, 'show'])->name('admin.elearning.meet.show');
+    Route::post('/e-learning/meet/store', [MeetController::class, 'store'])->name('admin.elearning.meet.store');
+    Route::delete('/e-learning/meet/{id}/destroy', [MeetController::class, 'destroy'])->name('admin.elearning.meet.destroy');
+    Route::get('/e-learning/meet/{id}/edit', [MeetController::class, 'edit'])->name('admin.elearning.meet.edit');
+    Route::put('/e-learning/meet/{id}/update', [MeetController::class, 'update'])->name('admin.elearning.meet.update');
+    Route::get('/e-learning/meet/division-{id}', [MeetController::class, 'division']);
 
     Route::get('/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
     Route::get('/e-learning/task/create', [TaskController::class, 'create'])->name('admin.elearning.task.create');

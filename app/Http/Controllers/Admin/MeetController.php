@@ -32,18 +32,19 @@ class MeetController extends Controller
         $validatedData = $request->validate([
             'division_id' => 'required',
             'topic' => 'required|string',
+            'meeting' => 'required',
             'start_time' => 'required',
             'end_time' => 'nullable',
             'link' => 'required|url',
             'type' => 'nullable|string',
         ], [
             'topic.required' => 'Topic harus diisi',
+            'meeting.required' => 'Pertemuan harus diisi',
             'start_time.required' => 'Start Time harus diisi',
             'link.url' => 'Link harus berupa url',
         ]);
 
         Meet::create($validatedData);
-
         return redirect('admin/e-learning/meet/division-1')->with('success', 'Meet created successfully');
     }
 
@@ -52,7 +53,10 @@ class MeetController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Meet::find($id);
+        return view('pages.app.elearning_meet_show', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -68,7 +72,23 @@ class MeetController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'division_id' => 'required',
+            'topic' => 'required|string',
+            'meeting' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'nullable',
+            'link' => 'required|url',
+            'type' => 'nullable|string',
+        ], [
+            'topic.required' => 'Topic harus diisi',
+            'meeting.required' => 'Pertemuan harus diisi',
+            'start_time.required' => 'Start Time harus diisi',
+            'link.url' => 'Link harus berupa url',
+        ]);
+
+        Meet::where('id', $id)->update($validatedData);
+        return redirect('admin/e-learning/meet/division-1')->with('success', 'Meet updated successfully');
     }
 
     /**
@@ -103,7 +123,7 @@ class MeetController extends Controller
         // Mengelompokkan data berdasarkan meeting
         $groupedData = $allData->groupBy('meeting');
 
-        return view('pages.app.elearning_module', [
+        return view('pages.app.elearning_meet', [
             'allData' => $allData,
             'groupedData' => $groupedData,
             'groupedDataDivision' => $groupedDataDivision,

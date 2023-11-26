@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('division_id')->constrained();
             $table->string('topic');
+            $table->string('meeting');
             $table->dateTime('start_time');
             $table->dateTime('end_time')->nullable();
             $table->string('link');

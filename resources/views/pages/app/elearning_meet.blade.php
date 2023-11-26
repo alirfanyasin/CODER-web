@@ -1,109 +1,111 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - E-Learning Modul')
+@section('title', 'CODER - Meet')
 
 @section('content')
     <section>
         <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
-            <h1>E-Learning</h1>
-            <div>
-                @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
+            <h1>Meet</h1>
+            @role('admin')
+                <div>
                     <a href="{{ route('admin.elearning.meet.create') }}" class="btn-main">Create Meet</a>
-                @endif
-            </div>
+                </div>
+            @endrole
         </div>
     </section>
 
     <div class="row">
-        @role('admin')
-            <div class="col-md-8">
-            @endrole
-            @role('user')
-                <div class="col-md-12">
-                @endrole
-                <div class="text-white p-4"
-                    style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
-                    <header class="text-left">
-                        <h5>Meet {{ $division->name }}</h5>
-                    </header>
+        <div class="col-md-8">
+            <div class="text-white p-4"
+                style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+                <header class="text-left">
+                    <h5>Meeting</h5>
+                </header>
 
-                    @foreach ($groupedData as $meeting => $data)
-                        <div>
-                            <div class="d-flex align-items-center">
-                                <hr class="border border-2" style="width: 40%;">
-                                <small class="mx-2 fw-light">Pertemuan {{ $meeting }}</small>
-                                <hr class="border border-2" style="width: 40%;">
-                            </div>
-
-                            @foreach ($data as $item)
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <div class="d-flex align-items-center">
-                                        <iconify-icon icon="{{ $item->type }}" width="40px"></iconify-icon>
-                                        @if ($item->link == null)
-                                            <a class="mx-3 text-white fw-light text-decoration-none">{{ $item->lesson }}
-                                                &nbsp; &rightarrow;
-                                            </a>
-                                        @elseif($item->file == null)
-                                            <a href="{{ $item->link }}" target="_blank"
-                                                class="mx-3 text-white fw-light text-decoration-none">{{ $item->lesson }}
-                                                &nbsp; &rightarrow;
-                                            </a>
-                                        @endif
-                                    </div>
-                                    <div>
-                                        @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
-                                            <form action="{{ route('admin.elearning.module.destroy', $item->id) }}"
-                                                method="POST">
+                <div class="mt-4">
+                    <table class="table rounded-4 table-striped" style="background: none">
+                        @foreach ($allDivision as $division)
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Meeting</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="align-middle" scope="row">{{ $meet->id }}</th>
+                                    <td class="align-middle">{{ $meet->meeting }}</td>
+                                    <td class="align-middle">{{ $meet->start_time }}</td>
+                                    <td class="align-middle"><span class="badge bg-primary">Done</span></td>
+                                    {{-- <td class="align-middle"><span class="badge bg-warning">Temporary</span></td> --}}
+                                    {{-- <td class="align-middle"><span class="badge bg-success">Active</span></td> --}}
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('admin.elearning.meet.show', $data->id) }}"
+                                                class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                                                    icon="carbon:view"></iconify-icon></a>
+                                            <form action="" method="POST" class="d-inline-block">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="text-white"
-                                                    style="background: none; border: none;">
-                                                    <iconify-icon icon="mynaui:trash"></iconify-icon>
-                                                </button>
+                                                <button type="submit"
+                                                    class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
+                                                        icon="mynaui:trash"></iconify-icon></button>
                                             </form>
-                                        @endif
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endforeach
+                                            <a href=""
+                                                class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                                                    icon="basil:edit-outline"></iconify-icon></a>
+                                            <a href=""
+                                                class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
+                                                    icon="uil:share"></iconify-icon></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
+                    </table>
                 </div>
             </div>
-
-
-
-            @role('admin')
-                <div class="col-md-4">
-                    <div class="text-white p-4"
-                        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
-                        <header class="text-left">
-                            <h5>Division</h5>
-                        </header>
-                        <div>
-                            <ul class="mt-3">
-                                @foreach ($allDivision as $division)
-                                    <li class="mb-3 list-division">
-                                        <a href="{{ url('/admin/e-learning/module/division-' . $division->id) }}"
-                                            class="text-white fw-light text-decoration-none">{{ $division->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endrole
         </div>
 
-        <style>
-            .list-division {
-                transition: .7s;
-            }
+        <div class="col-md-4">
+            <div class="text-white p-4"
+                style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+                <header class="text-left">
+                    <h5>Division</h5>
+                </header>
+                <div>
+                    <ul class="mt-3">
+                        @foreach ($allDivision as $division)
+                            <li class="mb-3 list-division">
+                                <a href="{{ url('/admin/e-learning/meet/division-' . $division->id) }}"
+                                    class="text-white fw-light text-decoration-none">{{ $division->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            .list-division:hover {
-                background: rgba(255, 255, 255, 0.13);
-                border-radius: 5px;
-                padding: 2px 10px;
-                backdrop-filter: blur(5px);
-            }
-        </style>
-    @endsection
+    <style>
+        .list-division {
+            transition: .7s;
+        }
+
+        .list-division:hover {
+            background: rgba(255, 255, 255, 0.13);
+            border-radius: 5px;
+            padding: 2px 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        table.table {
+            --bs-table-bg: none;
+            --bs-table-color: white;
+            --bs-table-striped-color: white;
+        }
+    </style>
+@endsection
