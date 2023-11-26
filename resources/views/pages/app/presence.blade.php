@@ -48,8 +48,12 @@
                   <td>
                     <div class="d-flex">
                       <a href="{{ route('admin.presence.show', ['pres_id' => $presence->id, 'div_id' => $presence->division->id]) }}"
-                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                        class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
                           icon="carbon:view"></iconify-icon></a>
+
+                      <a href="{{ route('admin.presence.edit', $presence->id) }}"
+                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
+                          icon="basil:edit-outline"></iconify-icon></a>
                       <form action="{{ route('admin.presence.destroy', $presence->id) }}" method="POST"
                         class="d-inline-block">
                         @csrf
@@ -58,12 +62,14 @@
                           class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
                             icon="mynaui:trash"></iconify-icon></button>
                       </form>
-                      <a href="{{ route('admin.presence.edit', $presence->id) }}"
-                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
-                          icon="basil:edit-outline"></iconify-icon></a>
-                      <a href=""
-                        class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
-                          icon="uil:share"></iconify-icon></a>
+                      {{-- <a href="/presence/verify/{{ Ramsey\Uuid\Uuid::uuid4() }}{{ $presence->id }}"
+                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2">
+                        <iconify-icon icon="uil:share"></iconify-icon> --}}
+                      <a href="#"
+                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2 copyLinkButton"
+                        data-presence-id="{{ $presence->id }}">
+                        <iconify-icon icon="uil:share"></iconify-icon>
+                      </a>
                     </div>
                   </td>
                 </tr>
@@ -113,3 +119,37 @@
     }
   </style>
 @endsection
+
+@push('js-libraries')
+  <script>
+    document.querySelectorAll('.copyLinkButton').forEach(function(button) {
+      button.addEventListener('click', function() {
+        // Membuat nilai acak untuk dijadikan bagian dari link
+        var uniqueValue = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2,
+          15);
+
+        // Mendapatkan presence ID dari data attribute
+        var presenceId = button.getAttribute('data-presence-id');
+
+        // Membuat link dengan nilai acak, ID presence, dan subpath
+        var link = "{{ url('presence/verify/') }}" + '/' + btoa(uniqueValue) + '/' +
+          presenceId + '/user-presence';
+
+        // Membuat elemen textarea untuk menyalin teks ke clipboard
+        var textarea = document.createElement('textarea');
+        textarea.value = link;
+        document.body.appendChild(textarea);
+
+        // Memilih dan menyalin teks di textarea
+        textarea.select();
+        document.execCommand('copy');
+
+        // Menghapus elemen textarea setelah menyalin
+        document.body.removeChild(textarea);
+
+        // Mungkin tambahkan pemberitahuan atau tindakan lain setelah menyalin
+        alert('Link berhasil disalin ke clipboard!');
+      });
+    });
+  </script>
+@endpush
