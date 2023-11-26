@@ -20,11 +20,15 @@ class RegisterController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
+            'nim' => 'required',
+            'field_of_study' => 'required',
             'division_id' => 'required|integer',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:8'
         ], [
             'name.required' => 'Nama Lengkap wajib diisi',
+            'nim.required' => 'NIM wajib diisi',
+            'field_of_study.required' => 'Jurusan wajib diisi',
             'division_id.required' => 'Division wajib diisi',
             'email.required' => 'Email wajib diisi',
             'email.unique' => 'Email sudah digunakan',

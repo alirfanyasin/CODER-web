@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Presence;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Meet;
@@ -50,5 +51,15 @@ class Division extends Model
     public function user()
     {
         return $this->hasMany(User::class);
+    }
+
+    /**
+     * Get the user that owns the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function presence()
+    {
+        return $this->hasMany(Presence::class, 'division_id');
     }
 }

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - Create Presence')
+@section('title', 'CODER - Edit Presence')
 
 @section('content')
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
-      <h1>Create Absence</h1>
+      <h1>Edit Presence</h1>
     </div>
   </section>
 
@@ -14,19 +14,20 @@
       <div class="text-white p-4"
         style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
         <header class="text-left">
-          <h5>Create Presence</h5>
+          <h5>Edit Presence</h5>
         </header>
 
         <div class="mt-4">
-          <form action="{{ route('admin.presence.store') }}" method="POST">
+          <form action="{{ route('admin.presence.update', $data->id) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="row">
               <div class="col-md-4">
                 <div class="input-group-custom mb-3">
                   <input type="number" name="meeting" class="form-control text-white fw-light"
                     style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                       backdrop-filter: blur(5px);"
-                    placeholder="Pertemuan">
+                    placeholder="Pertemuan" value="{{ $data->meeting }}">
                   @error('meeting')
                     <small class="fw-light">{{ $message }}</small>
                   @enderror
@@ -40,7 +41,8 @@
                     name="division_id" id="division">
                     <option selected disabled class="text-black">Pilih Divisi</option>
                     @foreach ($data_division as $division)
-                      <option value="{{ $division->id }}" class="text-black">{{ $division->name }}</option>
+                      <option value="{{ $division->id }}" class="text-black"
+                        {{ $division->id == $data->division_id ? 'selected' : '' }}>{{ $division->name }}</option>
                     @endforeach
                   </select>
                   @error('division_id')
@@ -53,7 +55,7 @@
                   <input type="date" name="date" class="form-control text-white fw-light"
                     style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                       backdrop-filter: blur(5px);"
-                    placeholder="Date">
+                    placeholder="Date" value="{{ $data->date }}">
                   @error('date')
                     <small class="fw-light">{{ $message }}</small>
                   @enderror
