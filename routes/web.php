@@ -17,7 +17,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LandingPageController;
-
+use App\Http\Controllers\PresenceVerifyController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\ElearningController as UserElearningController;
 use App\Http\Controllers\User\UserController as UserUserController;
@@ -119,7 +119,9 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
   });
 });
 
-
+Route::get('/presence/verify/{uuid}/{id}/user-presence', [PresenceVerifyController::class, 'user_presence'])->name('admin.presence.user_presence');
+Route::post('/presence/verify/submit', [PresenceVerifyController::class, 'user_presence_submit'])->name('presence.verify.submit');
+Route::get('/presence/verify/success', [PresenceVerifyController::class, 'user_presence_success'])->name('presence.verify.success');
 
 
 
