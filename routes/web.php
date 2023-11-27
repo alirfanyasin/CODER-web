@@ -83,6 +83,10 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/my-profile/{id}/{name}', [UserProfileController::class, 'index'])->name('admin.my-profile');
+    Route::get('/my-profile/settings/{id}/{name}', [UserProfileController::class, 'settings'])->name('admin.my-profile.settings');
+    Route::put('/my-profile/settings/update/{id}', [UserProfileController::class, 'update'])->name('admin.my-profile.settings.update');
+
+
 
     Route::get('/news', [NewsController::class, 'index'])->name('admin.news');
     Route::get('/news/create', [NewsController::class, 'create'])->name('admin.news.create');

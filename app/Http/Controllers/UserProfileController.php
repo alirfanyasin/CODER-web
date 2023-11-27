@@ -8,6 +8,7 @@ use App\Models\Submission;
 use App\Models\User;
 use App\Models\UserPresence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -79,11 +80,18 @@ class UserProfileController extends Controller
     }
 
 
-
-    if ($data->update($validatedData)) {
-      return redirect()->route('user.my-profile', ['id' => $id, 'name' => $data->name])->with('success', 'Updated profile successfully');
+    if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division')) {
+      if ($data->update($validatedData)) {
+        return redirect()->route('admin.my-profile', ['id' => $id, 'name' => $data->name])->with('success', 'Updated profile successfully');
+      } else {
+        return redirect()->back()->with('error', 'Failed to update profile.')->withErrors($validatedData)->withInput();
+      }
     } else {
-      return redirect()->back()->with('error', 'Failed to update profile.')->withErrors($validatedData)->withInput();
+      if ($data->update($validatedData)) {
+        return redirect()->route('user.my-profile', ['id' => $id, 'name' => $data->name])->with('success', 'Updated profile successfully');
+      } else {
+        return redirect()->back()->with('error', 'Failed to update profile.')->withErrors($validatedData)->withInput();
+      }
     }
   }
 }

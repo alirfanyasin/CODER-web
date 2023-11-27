@@ -12,7 +12,8 @@
           <div class="row d-flex align-items-center">
             <div class="col-md-3">
               <div class="rounded-2 overflow-hidden" style="width: 250px; height: 250px;">
-                <img src="{{ asset('assets/img/photo-profile.jpg') }}" alt="" width="100%" height="100%">
+                <img src="{{ asset('storage/avatar/' . ($data->avatar ?? 'photo-profile.jpg')) }}" alt=""
+                  width="100%" height="100%">
               </div>
             </div>
             <div class="col-md-3">
@@ -97,7 +98,7 @@
                       <td class="align-middle"><span
                           class="badge {{ $presence->status == 'Hadir' ? 'bg-success' : '' }} {{ $presence->status == 'Alfa' ? 'bg-danger' : '' }} {{ $presence->status == 'Izin' ? 'bg-warning' : '' }}">{{ $presence->status }}</span>
                       </td>
-                      <td>{{$presence->point}}</td>
+                      <td>{{ $presence->point }}</td>
                     </tr>
                   @endforeach
                 </tbody>
