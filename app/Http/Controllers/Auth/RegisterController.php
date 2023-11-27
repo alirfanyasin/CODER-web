@@ -37,6 +37,7 @@ class RegisterController extends Controller
         ]);
 
         $validatedData['division_id'] = $request->division_id;
+        $validatedData['avatar'] = 'photo-profile.jpg';
 
         // dd($validatedData);
         $user = User::create($validatedData);
