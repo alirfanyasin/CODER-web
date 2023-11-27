@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - User Profile')
+@section('title', 'CODER - User Profile ' . $data->name)
 
 @section('content')
   <section>
@@ -17,33 +17,33 @@
             </div>
             <div class="col-md-3">
               <div class="text-white">
-                <h3>Irfan Yasin</h3>
-                <div>1203220082</div>
-                <div>Web Developer</div>
-                <br>
-                <div class="fw-light">
-                  <div class="fw-light">irfanyasin@gmail.com</div>
-                  <div class="fw-light">Informatika</div>
-                  <div class="fw-light">2022</div>
-                  <div class="fw-light">087859967039</div>
-                </div>
+                <h5>{{ $data->name }}</h4>
+                  <div>{{ $data->nim }}</div>
+                  <div>{{ $data->division->name }}</div>
+                  <br>
+                  <div class="fw-light">
+                    <div class="fw-light">{{ $data->email }}</div>
+                    <div class="fw-light">{{ $data->field_of_study ?? '-' }}</div>
+                    <div class="fw-light">{{ $data->batch ?? '-' }}</div>
+                    <div class="fw-light">{{ $data->phone_number ?? '-' }}</div>
+                  </div>
               </div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
               <div class="text-white text-center">
-                <h1 class="fw-bold" style="font-size: 60pt;">13</h1>
+                <h1 class="fw-bold" style="font-size: 60pt;">{{ $totalPresence }}</h1>
                 <p>Presence</p>
               </div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
               <div class="text-white text-center">
-                <h1 class="fw-bold" style="font-size: 60pt;">28</h1>
+                <h1 class="fw-bold" style="font-size: 60pt;">{{ $totalPoint }}</h1>
                 <p>Point</p>
               </div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
               <div class="text-white text-center">
-                <h1 class="fw-bold" style="font-size: 60pt;">5</h1>
+                <h1 class="fw-bold" style="font-size: 60pt;">0</h1>
                 <p>Project</p>
               </div>
             </div>
@@ -86,20 +86,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th class="align-middle" scope="row">1</th>
-                    <td class="align-middle">Pertemuan 1</td>
-                    <td class="align-middle">27 November 2023</td>
-                    <td class="align-middle"><span class="badge bg-danger">Tidak Hadir</span></td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <th class="align-middle" scope="row">1</th>
-                    <td class="align-middle">Pertemuan 1</td>
-                    <td class="align-middle">27 November 2023</td>
-                    <td class="align-middle"><span class="badge bg-success">Hadir</span></td>
-                    <td>5</td>
-                  </tr>
+                  @php
+                    $no = 1;
+                  @endphp
+                  @foreach ($dataPresence as $presence)
+                    <tr>
+                      <th class="align-middle" scope="row">{{ $no++ }}</th>
+                      <td class="align-middle">Pertemuan {{ $presence->presence->meeting }}</td>
+                      <td class="align-middle">{{ date('j F Y', strtotime($presence->presence->date)) }}</td>
+                      <td class="align-middle"><span
+                          class="badge {{ $presence->status == 'Hadir' ? 'bg-success' : '' }} {{ $presence->status == 'Alfa' ? 'bg-danger' : '' }} {{ $presence->status == 'Izin' ? 'bg-warning' : '' }}">{{ $presence->status }}</span>
+                      </td>
+                      <td>{{$presence->point}}</td>
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -109,36 +109,34 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">File</th>
+                    <th scope="col">Link</th>
                     <th scope="col">Task Name</th>
                     <th scope="col">Status</th>
                     <th scope="col">Point</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th class="align-middle" scope="row">1</th>
-                    <td class="align-middle"><iconify-icon icon="vscode-icons:file-type-pdf2" width="50px"
-                        class="icon-type"></iconify-icon></td>
-                    <td class="align-middle">Membuat CRUD menggunakan bahasa php</td>
-                    <td class="align-middle"><span class="badge bg-danger">Not Submitted</span></td>
-                    <td class="align-middle">0</td>
-                  </tr>
-                  <tr>
-                    <th class="align-middle" scope="row">1</th>
-                    <td class="align-middle"><iconify-icon icon="vscode-icons:file-type-pdf2" width="50px"
-                        class="icon-type"></iconify-icon></td>
-                    <td class="align-middle">Membuat Todolist menggunakan JavaScript</td>
-                    <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
-                    <td class="align-middle">5</td>
-                  </tr>
+                  @php
+                    $noSubmission = 1;
+                  @endphp
+                  @foreach ($dataSubmission as $submission)
+                    <tr>
+                      <th class="align-middle" scope="row">{{ $noSubmission++ }}</th>
+                      <td class="align-middle"><a href="{{ $submission->submission }}" target="_blank"
+                          class="text-decoration-none text-white"><iconify-icon icon="ci:link" width="50px"
+                            class="icon-type"></iconify-icon></a></td>
+                      <td class="align-middle">{{ $submission->task->task_name }}</td>
+                      <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
+                      <td class="align-middle">{{ $submission->point }}</td>
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
 
             <div class="tab-pane fade" id="project-tab-pane" role="tabpanel" aria-labelledby="project-tab"
               tabindex="0">
-              <h2 class="text-white">Ini adalah Project</h2>
+              <h2 class="text-white">Cooming Soon</h2>
             </div>
           </div>
         </div>
