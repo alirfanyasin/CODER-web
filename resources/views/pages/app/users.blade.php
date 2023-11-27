@@ -58,7 +58,8 @@
             @endrole
             <div class="d-flex justify-content-center">
               <div class="rounded-pill bg-dark overflow-hidden" style="width: 100px; height: 100px;">
-                <img src="{{ asset('assets/img/photo-profile.jpg') }}" alt="" width="100%" height="">
+                <img src="{{ asset('storage/avatar/' . ($user->avatar ?? 'photo-profile.jpg')) }}" alt=""
+                  width="100%" height="">
               </div>
             </div>
             <div class="fw-light mt-4">

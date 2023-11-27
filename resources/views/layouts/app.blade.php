@@ -55,10 +55,21 @@
             <div class="dropdown-center">
               <button class="dropdown-toggle rounded-pill bg-dark overflow-hidden" style="width: 50px; height: 50px;"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="{{ asset('assets/img/photo-profile.jpg') }}" alt="" width="100%" height="100%">
+                <img src="{{ asset('storage/avatar/' . (Auth::user()->avatar ?? 'photo-profile.jpg')) }}" alt=""
+                  width="100%" height="100%">
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
+                  <li><a class="dropdown-item"
+                      href="{{ route('admin.my-profile', ['id' => Auth::user()->id, 'name' => Auth::user()->name]) }}">Profile</a>
+                  </li>
+                @endif
+                @if (Auth::user()->hasRole('user'))
+                  <li><a class="dropdown-item"
+                      href="{{ route('user.my-profile', ['id' => Auth::user()->id, 'name' => Auth::user()->name]) }}">Profile</a>
+                  </li>
+                @endif
+
                 <li>
                   <form action="{{ route('logout') }}" method="POST" class="d-inline-block dropdown-item">
                     @csrf
