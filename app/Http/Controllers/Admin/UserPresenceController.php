@@ -40,11 +40,20 @@ class UserPresenceController extends Controller
         foreach ($validate['status'] as $userId => $status) {
             $user = User::find($userId);
 
+
+
             if ($user) {
-                UserPresence::updateOrCreate(
-                    ['user_id' => $user->id, 'presence_id' => $presence_id],
-                    ['status' => $status]
-                );
+                if ($status == 'Hadir') {
+                    UserPresence::updateOrCreate(
+                        ['user_id' => $user->id, 'presence_id' => $presence_id, 'point' => 2],
+                        ['status' => $status]
+                    );
+                } else {
+                    UserPresence::updateOrCreate(
+                        ['user_id' => $user->id, 'presence_id' => $presence_id, 'point' => 0],
+                        ['status' => $status]
+                    );
+                }
             }
         }
 

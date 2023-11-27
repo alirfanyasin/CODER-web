@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_presences', function (Blueprint $table) {
+        Schema::create('points', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('presence_id')->constrained();
-            $table->string('status');
-            $table->unsignedBigInteger('point')->default(2)->nullable();
+            $table->foreignId('user_presence_id')->nullable()->constrained();
+            $table->foreignId('submission_id')->nullable()->constrained();
+            $table->unsignedBigInteger('point')->default(0)->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_presences');
+        Schema::dropIfExists('points');
     }
 };

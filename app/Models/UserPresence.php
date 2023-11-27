@@ -18,4 +18,14 @@ class UserPresence extends Model
     {
         return $this->belongsTo(Presence::class, 'presence_id');
     }
+
+    /**
+     * Get all of the comments for the UserPresence
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function point()
+    {
+        return $this->hasMany(Point::class, 'user_presence_id');
+    }
 }

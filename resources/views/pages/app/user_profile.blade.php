@@ -31,19 +31,19 @@
             </div>
             <div class="col-md-2 d-flex justify-content-center">
               <div class="text-white text-center">
-                <h1 class="fw-bold" style="font-size: 60pt;">13</h1>
+                <h1 class="fw-bold" style="font-size: 60pt;">{{ $totalPresence }}</h1>
                 <p>Presence</p>
               </div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
               <div class="text-white text-center">
-                <h1 class="fw-bold" style="font-size: 60pt;">28</h1>
+                <h1 class="fw-bold" style="font-size: 60pt;">{{ $totalPoint }}</h1>
                 <p>Point</p>
               </div>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
               <div class="text-white text-center">
-                <h1 class="fw-bold" style="font-size: 60pt;">5</h1>
+                <h1 class="fw-bold" style="font-size: 60pt;">0</h1>
                 <p>Project</p>
               </div>
             </div>
@@ -97,7 +97,7 @@
                       <td class="align-middle"><span
                           class="badge {{ $presence->status == 'Hadir' ? 'bg-success' : '' }} {{ $presence->status == 'Alfa' ? 'bg-danger' : '' }} {{ $presence->status == 'Izin' ? 'bg-warning' : '' }}">{{ $presence->status }}</span>
                       </td>
-                      <td>0</td>
+                      <td>{{$presence->point}}</td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -127,7 +127,7 @@
                             class="icon-type"></iconify-icon></a></td>
                       <td class="align-middle">{{ $submission->task->task_name }}</td>
                       <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
-                      <td class="align-middle">0</td>
+                      <td class="align-middle">{{ $submission->point }}</td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -136,7 +136,7 @@
 
             <div class="tab-pane fade" id="project-tab-pane" role="tabpanel" aria-labelledby="project-tab"
               tabindex="0">
-              <h2 class="text-white">Ini adalah Project</h2>
+              <h2 class="text-white">Cooming Soon</h2>
             </div>
           </div>
         </div>
