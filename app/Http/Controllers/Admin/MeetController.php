@@ -44,8 +44,11 @@ class MeetController extends Controller
             'link.url' => 'Link harus berupa url',
         ]);
 
+        $validatedData['status'] = 'Active';
         Meet::create($validatedData);
-        return redirect('admin/e-learning/meet/division-1')->with('success', 'Meet created successfully');
+        dd($validatedData);
+        echo ('halo');
+        // return redirect('admin/e-learning/meet/division-1')->with('success', 'Meet created successfully');
     }
 
     /**
@@ -78,6 +81,7 @@ class MeetController extends Controller
             'meeting' => 'required',
             'start_time' => 'required',
             'end_time' => 'nullable',
+            'status' => 'nullable',
             'link' => 'required|url',
             'type' => 'nullable|string',
         ], [

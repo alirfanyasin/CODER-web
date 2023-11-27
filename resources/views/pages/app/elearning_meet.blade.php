@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - Meet')
+@section('title', 'CODER - Meet ' . $division->name)
 
 @section('content')
     <section>
@@ -19,42 +19,46 @@
             <div class="text-white p-4"
                 style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
                 <header class="text-left">
-                    <h5>Meeting</h5>
+                    <h5>Meet {{ $division->name }}</h5>
                 </header>
 
                 <div class="mt-4">
                     <table class="table rounded-4 table-striped" style="background: none">
-                        @foreach ($allDivision as $division)
-                            <thead>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Meeting</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($allData as $meet)
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Meeting</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th class="align-middle" scope="row">{{ $meet->id }}</th>
-                                    <td class="align-middle">{{ $meet->meeting }}</td>
-                                    <td class="align-middle">{{ $meet->start_time }}</td>
-                                    <td class="align-middle"><span class="badge bg-primary">Done</span></td>
-                                    {{-- <td class="align-middle"><span class="badge bg-warning">Temporary</span></td> --}}
-                                    {{-- <td class="align-middle"><span class="badge bg-success">Active</span></td> --}}
+                                    <th class="align-middle" scope="row">{{ $no++ }}</th>
+                                    <td class="align-middle">Pertemuan {{ $meet->meeting }}</td>
+                                    <td class="align-middle">{{ date('j F Y', strtotime($meet->start_time)) }}</td>
+                                    <td class="align-middle"><span
+                                            class="badge {{ $meet->status == 'Active' ? 'bg-primary' : 'bg-success' }}">{{ $presence->status }}</span>
+                                    </td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('admin.elearning.meet.show', $data->id) }}"
+                                            <a href="{{ route('admin.presence.show', ['pres_id' => $presence->id, 'div_id' => $presence->division->id]) }}"
                                                 class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                                                     icon="carbon:view"></iconify-icon></a>
-                                            <form action="" method="POST" class="d-inline-block">
+                                            <form action="{{ route('admin.presence.destroy', $presence->id) }}"
+                                                method="POST" class="d-inline-block">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
                                                         icon="mynaui:trash"></iconify-icon></button>
                                             </form>
-                                            <a href=""
+                                            <a href="{{ route('admin.presence.edit', $presence->id) }}"
                                                 class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                                                     icon="basil:edit-outline"></iconify-icon></a>
                                             <a href=""
@@ -63,8 +67,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -80,7 +84,7 @@
                     <ul class="mt-3">
                         @foreach ($allDivision as $division)
                             <li class="mb-3 list-division">
-                                <a href="{{ url('/admin/e-learning/meet/division-' . $division->id) }}"
+                                <a href="{{ url('/admin/presence/division-' . $division->id) }}"
                                     class="text-white fw-light text-decoration-none">{{ $division->name }}</a>
                             </li>
                         @endforeach

@@ -33,7 +33,9 @@
                                     <th scope="col">Topic</th>
                                     <th scope="col">Meeting</th>
                                     <th scope="col">Start Time</th>
+                                    <th scope="col">End Time</th>
                                     <th scope="col">Link</th>
+                                    <th scope="col">Type</th>
                                 </tr>
                             </thead>
                             @foreach ($data as $meet)
@@ -43,7 +45,9 @@
                                         <td class="align-middle">{{ $meet->topic }}</td>
                                         <td class="align-middle">{{ $meet->meeting }}</td>
                                         <td class="align-middle">{{ $meet->start_time }}</td>
+                                        <td class="align-middle">{{ $meet->end_time }}</td>
                                         <td class="align-middle">{{ $meet->link }}</td>
+                                        <td class="align-middle">{{ $meet->type }}</td>
                                         {{-- <td>
                                         <div class="d-flex align-items-center">
                                         </div>

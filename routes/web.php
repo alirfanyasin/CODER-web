@@ -71,7 +71,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/news/{id}/show', [NewsController::class, 'show'])->name('admin.news.show');
     Route::post('/news/store', [NewsController::class, 'store'])->name('admin.news.store');
     Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
-    Route::get('/news/{id}/destroy', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+    Route::delete('/news/{id}/destroy', [NewsController::class, 'destroy'])->name('admin.news.destroy');
     Route::put('/news/{id}/update', [NewsController::class, 'update'])->name('admin.news.update');
 
     Route::get('/division', [DivisionController::class, 'index'])->name('admin.division');

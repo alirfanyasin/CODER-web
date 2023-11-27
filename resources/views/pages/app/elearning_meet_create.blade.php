@@ -5,7 +5,7 @@
 @section('content')
     <section>
         <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
-            <h1>Create Absence</h1>
+            <h1>Create Meet</h1>
         </div>
     </section>
 
@@ -18,8 +18,9 @@
                 </header>
 
                 <div class="mt-4">
-                    <form action="">
+                    <form action="{{ route('admin.elearning.meet.store') }}" method="POST">
                         @csrf
+                        @method('POST')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group-custom mb-3">
@@ -34,11 +35,55 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group-custom mb-3">
-                                    <input type="date" name="date" class="form-control text-white fw-light"
+                                    <input type="text" name="topic" class="form-control text-white fw-light"
                                         style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                       backdrop-filter: blur(5px);"
-                                        placeholder="Date">
-                                    @error('date')
+                                        placeholder="Topic">
+                                    @error('topic')
+                                        <small class="fw-light">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom mb-3">
+                                    <input type="datetime-local" name="start_time" class="form-control text-white fw-light"
+                                        style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                      backdrop-filter: blur(5px);"
+                                        placeholder="Start Time">
+                                    @error('start_time')
+                                        <small class="fw-light">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom mb-3">
+                                    <input type="time" name="end_time" class="form-control text-white fw-light"
+                                        style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                      backdrop-filter: blur(5px);"
+                                        placeholder="End Time">
+                                    @error('end_time')
+                                        <small class="fw-light">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom mb-3">
+                                    <input type="url" name="link" class="form-control text-white fw-light"
+                                        style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                      backdrop-filter: blur(5px);"
+                                        placeholder="Link Meet">
+                                    @error('link')
+                                        <small class="fw-light">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group-custom mb-3">
+                                    <input type="text" name="type" class="form-control text-white fw-light"
+                                        style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                      backdrop-filter: blur(5px);"
+                                        placeholder="Type">
+                                    @error('type')
                                         <small class="fw-light">{{ $message }}</small>
                                     @enderror
                                 </div>
