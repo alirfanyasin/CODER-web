@@ -29,7 +29,8 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center mt-4">
                   <div class="overflow-hidden rounded-circle border border-1" style="width: 50px; height: 50px;">
-                    <img src="{{ asset('assets/img/photo-profile.jpg') }}" alt="" class="w-100 h-100">
+                    <img src="{{ asset('storage/avatar/' . ($user->user->avatar ?? 'photo-profile.jpg')) }}"
+                      alt="" class="w-100 h-100">
                   </div>
                   <div class="mx-3">
                     <div style="margin-bottom: -5px">{{ $user->user->name }}</div>
