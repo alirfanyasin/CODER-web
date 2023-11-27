@@ -82,7 +82,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/division/member', [DivisionController::class, 'member'])->name('admin.division.member');
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
-    Route::get('/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
+    Route::get('/users/profile/{uuid}/{id}/{name}', [AdminUserController::class, 'profile'])->name('admin.users.profile');
     Route::post('/users/give-permission/{id}', [AdminUserController::class, 'givePermission'])->name('admin.users.give_permission');
     Route::post('/users/revoke-permission/{id}', [AdminUserController::class, 'revokePermission'])->name('admin.users.revoke_permission');
 

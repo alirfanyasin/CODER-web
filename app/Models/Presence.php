@@ -20,4 +20,15 @@ class Presence extends Model
     {
         return $this->belongsTo(Division::class, 'division_id');
     }
+
+
+    /**
+     * Get all of the comments for the Presence
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function UserPresence()
+    {
+        return $this->hasMany(UserPresence::class, 'presence_id');
+    }
 }
