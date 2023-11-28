@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('topic');
             $table->string('meeting');
             $table->dateTime('start_time');
-            $table->dateTime('end_time')->nullable();
+            $table->time('end_time')->nullable();
             $table->string('status');
             $table->string('link');
             $table->string('type')->nullable();

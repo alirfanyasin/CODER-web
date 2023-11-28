@@ -20,7 +20,6 @@
                 <div class="mt-4">
                     <form action="{{ route('admin.elearning.meet.store') }}" method="POST">
                         @csrf
-                        @method('POST')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group-custom mb-3">

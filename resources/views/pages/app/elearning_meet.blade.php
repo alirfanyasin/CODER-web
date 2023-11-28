@@ -43,14 +43,14 @@
                                     <td class="align-middle">Pertemuan {{ $meet->meeting }}</td>
                                     <td class="align-middle">{{ date('j F Y', strtotime($meet->start_time)) }}</td>
                                     <td class="align-middle"><span
-                                            class="badge {{ $meet->status == 'Active' ? 'bg-primary' : 'bg-success' }}">{{ $presence->status }}</span>
+                                            class="badge {{ $meet->status == 'Active' ? 'bg-primary' : 'bg-success' }}">{{ $meet->status }}</span>
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('admin.presence.show', ['pres_id' => $presence->id, 'div_id' => $presence->division->id]) }}"
+                                            <a href="{{ route('admin.elearning.meet.show', ['id' => $meet->id, 'division_id' => $meet->division->id]) }}"
                                                 class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                                                     icon="carbon:view"></iconify-icon></a>
-                                            <form action="{{ route('admin.presence.destroy', $presence->id) }}"
+                                            <form action="{{ route('admin.elearning.meet.destroy', $meet->id) }}"
                                                 method="POST" class="d-inline-block">
                                                 @csrf
                                                 @method('DELETE')
@@ -58,7 +58,7 @@
                                                     class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
                                                         icon="mynaui:trash"></iconify-icon></button>
                                             </form>
-                                            <a href="{{ route('admin.presence.edit', $presence->id) }}"
+                                            <a href="{{ route('admin.elearning.meet.edit', $meet->id) }}"
                                                 class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                                                     icon="basil:edit-outline"></iconify-icon></a>
                                             <a href=""
@@ -84,7 +84,7 @@
                     <ul class="mt-3">
                         @foreach ($allDivision as $division)
                             <li class="mb-3 list-division">
-                                <a href="{{ url('/admin/presence/division-' . $division->id) }}"
+                                <a href="{{ url('/admin/e-learning/meet/division-' . $division->id) }}"
                                     class="text-white fw-light text-decoration-none">{{ $division->name }}</a>
                             </li>
                         @endforeach

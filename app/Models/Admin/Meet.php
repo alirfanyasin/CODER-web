@@ -9,6 +9,7 @@ class Meet extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    // protected $fillable = ['topic', 'meeting', 'start_time', 'end_time', 'status', 'link', 'type'];
 
     /**
      * Get the division that owns the module.

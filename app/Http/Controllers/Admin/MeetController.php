@@ -6,6 +6,7 @@ use App\Models\Admin\Division;
 use App\Models\Admin\Meet;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MeetController extends Controller
 {
@@ -30,7 +31,7 @@ class MeetController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'division_id' => 'required',
+            // 'division_id' => 'required',
             'topic' => 'required|string',
             'meeting' => 'required',
             'start_time' => 'required',
@@ -44,11 +45,14 @@ class MeetController extends Controller
             'link.url' => 'Link harus berupa url',
         ]);
 
+        $validatedData['user_id'] = Auth::user()->id;
+        $divisionUser = Auth::user()->division_id;
+        $validatedData['division_id'] = Auth::user()->division_id;
         $validatedData['status'] = 'Active';
         Meet::create($validatedData);
-        dd($validatedData);
-        echo ('halo');
-        // return redirect('admin/e-learning/meet/division-1')->with('success', 'Meet created successfully');
+        // dd($validatedData);
+        // echo ('halo');
+        return redirect()->route('admin.elearning.meet.division-1', $divisionUser)->with('success', 'Meet created successfully');
     }
 
     /**
@@ -111,7 +115,7 @@ class MeetController extends Controller
     public function division($id)
     {
         // Menggunakan with() untuk memuat relasi division
-        $allData = Meet::with('meet')->where('division_id', $id)->get();
+        $allData = Meet::with('division')->where('division_id', $id)->get();
 
         // Mengambil divisi dengan ID yang sesuai
         $division = Division::find($id);
