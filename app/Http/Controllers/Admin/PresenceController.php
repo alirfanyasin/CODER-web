@@ -61,7 +61,7 @@ class PresenceController extends Controller
         if (Auth::user()->hasPermissionTo('admin-division')) {
             return redirect()->route('elearning.task', $divisionUser)->with('success', 'Created presence successfully');
         } else {
-            return redirect()->route('admin.presence', 1)->with('success', 'Created presence successfully');
+            return redirect()->route('admin.presence', $request->division_id)->with('success', 'Created presence successfully');
         }
     }
 
@@ -105,7 +105,7 @@ class PresenceController extends Controller
         if (Auth::user()->hasPermissionTo('admin-division')) {
             return redirect()->route('elearning.task', $divisionUser)->with('success', 'Updated presence successfully');
         } else {
-            return redirect()->route('admin.presence', 1)->with('success', 'Updated presence successfully');
+            return redirect()->route('admin.presence', $request->division_id)->with('success', 'Updated presence successfully');
         }
     }
 
@@ -122,7 +122,7 @@ class PresenceController extends Controller
         if (Auth::user()->hasPermissionTo('admin-division')) {
             return redirect()->route('elearning.task', $divisionUser)->with('success', 'Deleted presence successfully');
         } else {
-            return redirect()->route('admin.presence', 1)->with('success', 'Deleted presence successfully');
+            return redirect()->route('admin.presence', $data->division->id)->with('success', 'Deleted presence successfully');
         }
     }
 }

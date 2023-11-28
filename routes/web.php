@@ -121,7 +121,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/e-learning/module/create', [ModuleController::class, 'create'])->name('admin.elearning.module.create');
     Route::post('/e-learning/module/store', [ModuleController::class, 'store'])->name('admin.elearning.module.store');
     Route::delete('/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
-    Route::get('/e-learning/module/division-{id}', [ModuleController::class, 'division']);
+    Route::get('/e-learning/module/division-{id}', [ModuleController::class, 'division'])->name('admin.elearning.module.division');
 
     Route::get('/e-learning/meet', [MeetController::class, 'index'])->name('admin.elearning.meet');
     Route::get('/e-learning/meet/create', [MeetController::class, 'create'])->name('admin.elearning.meet.create');
