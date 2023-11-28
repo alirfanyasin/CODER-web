@@ -15,8 +15,7 @@
   @enderror
   <div class="row">
     <div class="col-md-8">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+      <div class="text-white p-4 bg-custom">
         <header class="text-left mb-4">
           <h5>Create Task</h5>
         </header>
@@ -92,8 +91,7 @@
     </div>
 
     <div class="col-md-4">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+      <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>File Type</h5>
         </header>

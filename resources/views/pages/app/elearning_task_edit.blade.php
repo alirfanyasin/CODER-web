@@ -15,8 +15,7 @@
   @enderror
   <div class="row">
     <div class="col-md-8">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+      <div class="text-white p-4 bg-custom">
         <header class="text-left mb-4">
           <h5>Edit Task</h5>
         </header>
@@ -95,18 +94,17 @@
     </div>
 
     <div class="col-md-4">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
-        <header class="text-left">
-          <h5>File Type</h5>
-        </header>
-        <div class="text-center my-5">
-          @if ($data->file != null)
+      @if ($data->file != null)
+        <div class="text-white p-4 bg-custom">
+          <header class="text-left">
+            <h5>File Type</h5>
+          </header>
+          <div class="text-center my-5">
             <iconify-icon icon="vscode-icons:file-type-pdf2" width="200px" class="icon-type"></iconify-icon>
-          @endif
+          </div>
         </div>
-      </div>
     </div>
+    @endif
   </div>
 @endsection
 
