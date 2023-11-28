@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Models\Admin\Division;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,11 +24,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'division',
+        'division_id',
         'field_of_study',
         'nim',
         'batch',
         'phone_number',
+        'avatar',
     ];
 
     /**
@@ -48,4 +51,51 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+
+    /**
+     * Mendefinisikan relasi antara User dan Task.
+     */
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+
+    /**
+     * Mendefinisikan relasi antara Task dan User.
+     */
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
+    }
+    /**
+     * Get the user that owns the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function submission()
+    {
+        return $this->hasMany(Submission::class, 'user_id');
+    }
+    /**
+     * Get the user that owns the Division
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user_presences()
+    {
+        return $this->hasMany(UserPresence::class, 'user_id');
+    }
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function point()
+    {
+        return $this->hasMany(Point::class, 'user_id');
+    }
 }

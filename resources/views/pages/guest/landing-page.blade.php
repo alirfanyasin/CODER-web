@@ -19,7 +19,8 @@
               berfokus pada
               teknologi pengembangan software</p>
             <div class="mt-5 btn-group animate__animated  animate__bounceInUp animate__delay-3s">
-              <a href="" class="btn-main animate__animated animate__tada animate__delay-4s animate__repeat-3">Join
+              <a href="{{ route('login') }}"
+                class="btn-main animate__animated animate__tada animate__delay-4s animate__repeat-3">Join
                 Us</a>
               <a href="" class="btn-second mx-3">See
                 More</a>
@@ -61,7 +62,7 @@
             style="width: 340px; height: 340px; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; z-index: -999; left: 450px; top: -150px;">
           </div>
           <div class="w-full"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px); z-index: 99;">
+            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px); border: 2px solid rgba( 255, 255, 255, 0.18 ); z-index: 99;">
             <div class="mb-5">
               <div class="row">
                 <div class="col-2">
@@ -133,8 +134,7 @@
 
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="1000">
-          <div class="p-5 text-center "
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="p-5 text-center bg-custom">
             <div class="d-flex justify-content-center mb-4">
               <div class="d-flex justify-content-center align-items-center"
                 style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
@@ -146,8 +146,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="2000">
-          <div class="p-5 text-center "
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="p-5 text-center bg-custom">
             <div class="d-flex justify-content-center mb-4">
               <div class="d-flex justify-content-center align-items-center"
                 style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
@@ -159,8 +158,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="3000">
-          <div class="p-5 text-center "
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="p-5 text-center bg-custom">
             <div class="d-flex justify-content-center mb-4">
               <div class="d-flex justify-content-center align-items-center"
                 style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
@@ -172,8 +170,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="4000">
-          <div class="p-5 text-center "
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="p-5 text-center  bg-custom">
             <div class="d-flex justify-content-center mb-4">
               <div class="d-flex justify-content-center align-items-center"
                 style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
@@ -185,8 +182,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="5000">
-          <div class="p-5 text-center "
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="p-5 text-center bg-custom">
             <div class="d-flex justify-content-center mb-4">
               <div class="d-flex justify-content-center align-items-center"
                 style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
@@ -198,8 +194,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6 mb-4 text-white position-relative" data-aos="flip-left" data-aos-duration="6000">
-          <div class="p-5 text-center"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="p-5 text-center bg-custom">
             <div class="d-flex justify-content-center mb-4">
               <div class="d-flex justify-content-center align-items-center"
                 style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
@@ -236,8 +231,7 @@
 
       <div class="row autoplay" data-aos="fade-up" data-aos-duration="3000">
         <div class="col-lg-4 col-md-6">
-          <div class="card mx-3 p-4"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
             <div class="text-white pt-4">
               <h5 class="">Card title</h5>
@@ -248,8 +242,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
-          <div class="card mx-3 p-4"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
             <div class="text-white pt-4">
               <h5 class="">Card title</h5>
@@ -260,8 +253,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
-          <div class="card mx-3 p-4"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
             <div class="text-white pt-4">
               <h5 class="">Card title</h5>
@@ -272,8 +264,7 @@
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
-          <div class="card mx-3 p-4"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
             <div class="text-white pt-4">
               <h5 class="">Card title</h5>
@@ -306,8 +297,7 @@
 
       <div class="row news-content">
         <div class="col-md-6">
-          <div class="card p-4" data-aos="fade-right" data-aos-duration="2000"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="card p-4 bg-custom" data-aos="fade-right" data-aos-duration="2000">
             <div class="text-white">
               <img src="{{ asset('assets/img/img-1.png') }}" class="w-100" alt="...">
               <h5 class="mt-5">Play Box Let’s Play Out Of The Box</h5>
@@ -322,8 +312,7 @@
         <div class="col-md-6 mt-3">
           <div class="container" data-aos="fade-left" data-aos-duration="2000">
             <div class="row">
-              <div class="card mb-3"
-                style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+              <div class="card mb-3 bg-custom">
                 <div class="row g-0 d-flex align-items-center">
                   <div class="col-4">
                     <img src="{{ asset('assets/img/img-1.png') }}" class="img-fluid rounded-xl" alt="...">
@@ -341,8 +330,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="card mb-3"
-                style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+              <div class="card mb-3 bg-custom">
                 <div class="row g-0 d-flex align-items-center">
                   <div class="col-4">
                     <img src="{{ asset('assets/img/img-2.png') }}" class="img-fluid rounded-xl" alt="...">
@@ -360,8 +348,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="card mb-3"
-                style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+              <div class="card mb-3 bg-custom">
                 <div class="row g-0 d-flex align-items-center">
                   <div class="col-4">
                     <img src="{{ asset('assets/img/img-3.png') }}" class="img-fluid rounded-xl" alt="...">

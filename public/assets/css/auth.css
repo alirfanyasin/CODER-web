@@ -33,16 +33,27 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  width: 100%;
+}
+
+body > * {
+  overflow-x: hidden;
 }
 
 
-.container .row .col-md-4 .card {
+/* .container .row  .card {
   background: rgba(255, 255, 255, 0.13);
   border-radius: 20px;
   backdrop-filter: blur(5px);
   z-index: 99;
+} */
+ 
+.bg-custom {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba( 255, 255, 255, 0.18 );
 }
-
 
 .input-group-custom input::placeholder {
   color: var(--color-white); 

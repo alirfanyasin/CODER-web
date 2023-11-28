@@ -7,22 +7,19 @@
   <section>
     <div class="row">
       <div class="col-md-4 mb-4">
-        <div class="p-3 text-center text-white"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="p-3 text-center text-white bg-custom">
           <h2 class="fw-bold" style="font-size: 50pt;">23</h2>
           <span>Gallery</span>
         </div>
       </div>
       <div class="col-md-4 mb-4">
-        <div class="p-3 text-center text-white"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="p-3 text-center text-white bg-custom">
           <h2 class="fw-bold" style="font-size: 50pt;">152</h2>
           <span>User</span>
         </div>
       </div>
       <div class="col-md-4 mb-4">
-        <div class="p-3 text-center text-white"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="p-3 text-center text-white bg-custom">
           <h2 class="fw-bold" style="font-size: 50pt;">72</h2>
           <span>News</span>
         </div>
@@ -31,8 +28,7 @@
 
     <div class="row">
       <div class="col-md-8">
-        <div class="p-4"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="p-4 bg-custom">
           <h5 class="text-white">Statistik</h5>
           <div class="w-100">
             {!! $chart->container() !!}
@@ -41,8 +37,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="p-4"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="p-4 bg-custom">
           <h5 class="text-white">Meeting Schedule</h5>
 
           <div class="mt-4">

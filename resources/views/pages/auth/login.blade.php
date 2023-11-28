@@ -7,12 +7,13 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-4">
         @error('error')
-          <div class="text-white text-center mb-3 py-3"
+          <div class="text-white text-center mb-3 py-3 d-flex align-items-center justify-content-center"
             style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
-            Email atau Password salah!
+            <iconify-icon icon="material-symbols:error-outline" width="30px"></iconify-icon> &nbsp;&nbsp; Email atau
+            Password salah!
           </div>
         @enderror
-        <div class="card p-4">
+        <div class="card p-4 bg-custom">
           <div class="d-flex justify-content-center">
             <img src="{{ asset('assets/img/second-logo.png') }}" alt="" width="50%">
           </div>

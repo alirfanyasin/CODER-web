@@ -58,6 +58,13 @@ body {
   color: white;
 }
 
+.bg-custom {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
 
 aside .sidebar .list-group .list-item:hover{
   background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(20px);
@@ -84,4 +91,18 @@ aside .sidebar .list-group .list-item:hover{
 
 .icon-toggle.dropdown-toggle:hover {
   cursor: pointer;
+}
+
+.btn-action-custom {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 200px );
+  -webkit-backdrop-filter: blur( 200px );
+  width: 40px;
+  height: 40px;
+  font-size: 18pt;
+  border-radius: 100%;
+  display: inline-block;
+  border: none;
 }
