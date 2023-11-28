@@ -68,11 +68,9 @@
         </div>
       </div>
 
-
-
       @role('admin')
-        <div class="col-md-4 bg-custom">
-          <div class="text-white p-4">
+        <div class="col-md-4">
+          <div class="text-white p-4 bg-custom">
             <header class="text-left">
               <h5>Division</h5>
             </header>
