@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('title', 255);
             $table->string('category', 255);
-            $table->string('content');
+            $table->longText('content');
             $table->string('thumbnail', 255);
 
             $table->timestamps();
