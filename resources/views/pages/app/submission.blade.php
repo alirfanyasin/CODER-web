@@ -17,8 +17,7 @@
         <div class="col-md-12">
         @endrole
 
-        <div class="text-white p-4"
-          style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+        <div class="text-white p-4 bg-custom">
           <header class="text-left">
             <h5>{{ $data_task->task_name }}</h5>
           </header>
@@ -50,8 +49,7 @@
 
       @role('admin')
         <div class="col-md-4">
-          <div class="text-white p-4"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="text-white p-4 bg-custom">
             <header class="text-left">
               <h5>Division</h5>
             </header>

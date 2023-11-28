@@ -24,8 +24,7 @@ use Carbon\Carbon;
       @role('user')
         <div class="col-md-12">
         @endrole
-        <div class="text-white p-4"
-          style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+        <div class="text-white p-4 bg-custom">
           <header class="text-left">
             <h5>Task {{ $division->name }}</h5>
           </header>
@@ -60,8 +59,7 @@ use Carbon\Carbon;
                 </div>
               </div>
 
-              <div class="text-white p-4 mt-2"
-                style="background: rgba(255, 255, 255, 0.13); border-radius: 10px; backdrop-filter: blur(5px);">
+              <div class="text-white p-4 mt-2 bg-custom">
                 <h5>{{ $data->task_name }}</h5>
                 <p class="fw-light">{{ $data->description }}.</p>
 
@@ -128,8 +126,7 @@ use Carbon\Carbon;
 
       @role('admin')
         <div class="col-md-4">
-          <div class="text-white p-4"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="text-white p-4 bg-custom">
             <header class="text-left">
               <h5>Division</h5>
             </header>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\MeetController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\UserPresenceController;
 use App\Http\Controllers\Auth\LoginController;
@@ -93,7 +94,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/news/{id}/show', [NewsController::class, 'show'])->name('admin.news.show');
     Route::post('/news/store', [NewsController::class, 'store'])->name('admin.news.store');
     Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
-    Route::get('/news/{id}/destroy', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+    Route::delete('/news/{id}/destroy', [NewsController::class, 'destroy'])->name('admin.news.destroy');
     Route::put('/news/{id}/update', [NewsController::class, 'update'])->name('admin.news.update');
 
     Route::get('/division', [DivisionController::class, 'index'])->name('admin.division');
@@ -121,6 +122,15 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::post('/e-learning/module/store', [ModuleController::class, 'store'])->name('admin.elearning.module.store');
     Route::delete('/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
     Route::get('/e-learning/module/division-{id}', [ModuleController::class, 'division']);
+
+    Route::get('/e-learning/meet', [MeetController::class, 'index'])->name('admin.elearning.meet');
+    Route::get('/e-learning/meet/create', [MeetController::class, 'create'])->name('admin.elearning.meet.create');
+    Route::get('/e-learning/meet/{id}/show', [MeetController::class, 'show'])->name('admin.elearning.meet.show');
+    Route::post('/e-learning/meet/store', [MeetController::class, 'store'])->name('admin.elearning.meet.store');
+    Route::delete('/e-learning/meet/{id}/destroy', [MeetController::class, 'destroy'])->name('admin.elearning.meet.destroy');
+    Route::get('/e-learning/meet/{id}/edit', [MeetController::class, 'edit'])->name('admin.elearning.meet.edit');
+    Route::put('/e-learning/meet/{id}/update', [MeetController::class, 'update'])->name('admin.elearning.meet.update');
+    Route::get('/e-learning/meet/division-{id}', [MeetController::class, 'division'])->name('admin.elearning.meet.division');
 
     Route::get('/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
     Route::get('/e-learning/task/create', [TaskController::class, 'create'])->name('admin.elearning.task.create');

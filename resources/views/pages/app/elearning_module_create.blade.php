@@ -17,15 +17,14 @@
 
   <div class="row">
     <div class="col-md-8">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+      <div class="text-white p-4 bg-custom">
         <header class="text-left mb-4">
-          <h5>Create Module</h5>
+          <h5>Create Meet</h5>
         </header>
-        <form action="{{ route('admin.elearning.module.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.elearning.meet.store') }}" method="POST">
           @csrf
           <div class="input-group-custom mb-3">
-            <input type="text" name="lesson" class="form-control mb-3 text-white fw-light"
+            <input type="text" name="topic" class="form-control mb-3 text-white fw-light"
               style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                 backdrop-filter: blur(5px);"
               placeholder="Nama Materi">
@@ -37,27 +36,15 @@
               placeholder="Pertemuan">
           </div>
           <div class="input-group-custom mb-3">
-            @role('admin')
-              <select class="form-select text-white fw-light mb-3"
-                style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+            <select class="form-select text-white fw-light mb-3"
+              style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-                name="division_id" id="division">
-                <option selected disabled class="text-black">Pilih Divisi</option>
-                @foreach ($data_division as $division)
-                  <option value="{{ $division->id }}" class="text-black">{{ $division->name }}</option>
-                @endforeach
-              </select>
-            @endrole
-            @if (Auth::user()->hasPermissionTo('admin-division'))
-              <select class="form-select text-white fw-light mb-3"
-                style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
-              backdrop-filter: blur(5px);"
-                name="division_id" id="division">
-                <option selected value="{{ Auth::user()->division_id }}" class="text-black">
-                  {{ Auth::user()->division->name }}
-                </option>
-              </select>
-            @endif
+              name="division_id" id="division">
+              <option selected disabled class="text-black">Pilih Division</option>
+              @foreach ($data_division as $division)
+                <option value="{{ $division->id }}" class="text-black">{{ $division->name }}</option>
+              @endforeach
+            </select>
           </div>
           <div class="input-group-custom mb-3">
             <select class="form-select text-white fw-light mb-3 custom-select"
@@ -66,10 +53,12 @@
               name="type" id="type">
               <option selected disabled class="text-black">Pilih Type</option>
               <option value="mdi:github" name="github" class="text-black">Github</option>
-              <option value="vscode-icons:file-type-powerpoint" name="power_point" class="text-black">Power Point</option>
+              <option value="vscode-icons:file-type-powerpoint" name="power_point" class="text-black">Power
+                Point</option>
               <option value="vscode-icons:file-type-pdf2" name="power_point" class="text-black">PDF</option>
               <option value="vscode-icons:file-type-word" name="ms_word" class="text-black">Ms. Word</option>
-              <option value="vscode-icons:file-type-excel" name="ms_excel" class="text-black">Ms. Excel</option>
+              <option value="vscode-icons:file-type-excel" name="ms_excel" class="text-black">Ms. Excel
+              </option>
               <option value="logos:blogger" name="blog" class="text-black">Blog</option>
               <option value="fxemoji:notepad" name="notepad" class="text-black">Notepad (.txt)</option>
             </select>
@@ -116,8 +105,7 @@
     </div>
 
     <div class="col-md-4">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+      <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>Logo Type</h5>
         </header>
@@ -133,7 +121,8 @@
   <script>
     $('.custom-select').on('change', function() {
       console.log($(this).val());
-      if ($(this).val() == 'vscode-icons:file-type-word' || $(this).val() == 'vscode-icons:file-type-excel' || $(this)
+      if ($(this).val() == 'vscode-icons:file-type-word' || $(this).val() == 'vscode-icons:file-type-excel' ||
+        $(this)
         .val() == 'vscode-icons:file-type-powerpoint' || $(this)
         .val() == 'fxemoji:notepad' || $(this).val() == 'vscode-icons:file-type-pdf2') {
         $('.link_file').attr('hidden', false);

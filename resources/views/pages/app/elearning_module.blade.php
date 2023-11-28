@@ -21,8 +21,7 @@
       @role('user')
         <div class="col-md-12">
         @endrole
-        <div class="text-white p-4"
-          style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+        <div class="text-white p-4 bg-custom">
           <header class="text-left">
             <h5>Module {{ $division->name }}</h5>
           </header>
@@ -72,9 +71,8 @@
 
 
       @role('admin')
-        <div class="col-md-4">
-          <div class="text-white p-4"
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+        <div class="col-md-4 bg-custom">
+          <div class="text-white p-4">
             <header class="text-left">
               <h5>Division</h5>
             </header>
@@ -93,6 +91,10 @@
       @endrole
     </div>
 
+
+  @endsection
+
+  @push('css-custom')
     <style>
       .list-division {
         transition: .7s;
@@ -105,4 +107,4 @@
         backdrop-filter: blur(5px);
       }
     </style>
-  @endsection
+  @endpush
