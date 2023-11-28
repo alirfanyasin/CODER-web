@@ -107,7 +107,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::delete('/e-learning/meet/{id}/destroy', [MeetController::class, 'destroy'])->name('admin.elearning.meet.destroy');
     Route::get('/e-learning/meet/{id}/edit', [MeetController::class, 'edit'])->name('admin.elearning.meet.edit');
     Route::put('/e-learning/meet/{id}/update', [MeetController::class, 'update'])->name('admin.elearning.meet.update');
-    Route::get('/e-learning/meet/division-{id}', [MeetController::class, 'division']);
+    Route::get('/e-learning/meet/division-{id}', [MeetController::class, 'division'])->name('admin.elearning.meet.division');
 
     Route::get('/e-learning/task', [TaskController::class, 'index'])->name('admin.elearning.task');
     Route::get('/e-learning/task/create', [TaskController::class, 'create'])->name('admin.elearning.task.create');

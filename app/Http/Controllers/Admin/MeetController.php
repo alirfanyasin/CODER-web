@@ -50,9 +50,7 @@ class MeetController extends Controller
         $validatedData['division_id'] = Auth::user()->division_id;
         $validatedData['status'] = 'Active';
         Meet::create($validatedData);
-        // dd($validatedData);
-        // echo ('halo');
-        return redirect()->route('admin.elearning.meet.division-1', $divisionUser)->with('success', 'Meet created successfully');
+        return redirect()->route('admin.elearning.meet.division', 1)->with('success', 'Meet created successfully');
     }
 
     /**
@@ -71,7 +69,10 @@ class MeetController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('pages.app.elearning_meet_edit', [
+            'data' => Meet::findOrFail($id),
+            'data_division' => Division::all()
+        ]);
     }
 
     /**
@@ -79,13 +80,13 @@ class MeetController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $data = Meet::findOrFail($id);
         $validatedData = $request->validate([
-            'division_id' => 'required',
+            // 'division_id' => 'required',
             'topic' => 'required|string',
             'meeting' => 'required',
             'start_time' => 'required',
             'end_time' => 'nullable',
-            'status' => 'nullable',
             'link' => 'required|url',
             'type' => 'nullable|string',
         ], [
@@ -95,8 +96,13 @@ class MeetController extends Controller
             'link.url' => 'Link harus berupa url',
         ]);
 
-        Meet::where('id', $id)->update($validatedData);
-        return redirect('admin/e-learning/meet/division-1')->with('success', 'Meet updated successfully');
+        $validatedData['user_id'] = Auth::user()->id;
+        $divisionUser = Auth::user()->division_id;
+        $validatedData['division_id'] = Auth::user()->division_id;
+        $validatedData['status'] = 'Done';
+        $data->update($validatedData);
+
+        return redirect()->route('admin.elearning.meet.division', 1)->with('success', 'Meet Updated successfully');
     }
 
     /**
@@ -104,10 +110,8 @@ class MeetController extends Controller
      */
     public function destroy(string $id)
     {
-        $file = Meet::findOrFail($id);
-        if (!$file) {
-            return redirect()->back()->with('error', 'File not found');
-        }
+        Meet::destroy($id);
+
         return redirect('/admin/e-learning/meet/division-1')->with('success', 'Deleted meet successfully');
     }
 

@@ -47,9 +47,6 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('admin.elearning.meet.show', ['id' => $meet->id, 'division_id' => $meet->division->id]) }}"
-                                                class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
-                                                    icon="carbon:view"></iconify-icon></a>
                                             <form action="{{ route('admin.elearning.meet.destroy', $meet->id) }}"
                                                 method="POST" class="d-inline-block">
                                                 @csrf
