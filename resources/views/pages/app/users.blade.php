@@ -58,7 +58,8 @@
             @endrole
             <div class="d-flex justify-content-center">
               <div class="rounded-pill bg-dark overflow-hidden" style="width: 100px; height: 100px;">
-                <img src="{{ asset('assets/img/photo-profile.jpg') }}" alt="" width="100%" height="">
+                <img src="{{ asset('storage/avatar/' . ($user->avatar ?? 'photo-profile.jpg')) }}" alt=""
+                  width="100%" height="">
               </div>
             </div>
             <div class="fw-light mt-4">
@@ -76,7 +77,7 @@
               @endif
             </div>
             <div class="footer d-flex justify-content-center align-items-center mt-3">
-              <a href="{{ route('admin.users.profile') }}"
+              <a href="{{ route('admin.users.profile', ['uuid' => Str::random(20), 'id' => $user->id, 'name' => $user->name]) }}"
                 class="border border-1 px-5 py-1 rounded-pill text-decoration-none text-center text-white fw-light">
                 Profile
               </a>

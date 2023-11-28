@@ -29,6 +29,7 @@ class User extends Authenticatable
         'nim',
         'batch',
         'phone_number',
+        'avatar',
     ];
 
     /**
@@ -86,5 +87,15 @@ class User extends Authenticatable
     public function user_presences()
     {
         return $this->hasMany(UserPresence::class, 'user_id');
+    }
+
+    /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function point()
+    {
+        return $this->hasMany(Point::class, 'user_id');
     }
 }
