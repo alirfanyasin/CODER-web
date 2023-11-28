@@ -95,6 +95,9 @@
     </div>
   </div>
 
+
+@endsection
+@push('css-custom')
   <style>
     .list-division {
       transition: .7s;
@@ -113,7 +116,7 @@
       --bs-table-striped-color: white;
     }
   </style>
-@endsection
+@endpush
 
 @push('js-libraries')
   <script>

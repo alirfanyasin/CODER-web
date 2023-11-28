@@ -82,7 +82,7 @@
                   @enderror
                 </div>
               </div>
-              <div class="col-md-6">
+              {{-- <div class="col-md-6">
                 <div class="input-group-custom mb-3">
                   <input type="text" name="type" class="form-control text-white fw-light"
                     style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
@@ -92,8 +92,8 @@
                     <small class="fw-light">{{ $message }}</small>
                   @enderror
                 </div>
-              </div>
-              <div class="col-md-12">
+              </div> --}}
+              <div class="col-md-6">
                 <div class="input-group-custom mb-3">
                   <input type="url" name="link" class="form-control text-white fw-light"
                     style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
