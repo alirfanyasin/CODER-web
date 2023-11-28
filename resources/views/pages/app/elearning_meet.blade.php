@@ -27,7 +27,8 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Meeting</th>
-                <th scope="col">Date</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
               </tr>
@@ -40,7 +41,8 @@
                 <tr>
                   <th class="align-middle" scope="row">{{ $no++ }}</th>
                   <td class="align-middle">Pertemuan {{ $meet->meeting }}</td>
-                  <td class="align-middle">{{ date('j F Y', strtotime($meet->start_time)) }}</td>
+                  <td class="align-middle">{{ $meet->start_time }}</td>
+                  <td class="align-middle">{{ $meet->end_time ?? '-' }}</td>
                   <td class="align-middle"><span
                       class="badge {{ $meet->status == 'Active' ? 'bg-primary' : 'bg-success' }}">{{ $meet->status }}</span>
                   </td>
@@ -57,9 +59,14 @@
                       <a href="{{ route('admin.elearning.meet.edit', $meet->id) }}"
                         class="btn-action-custom d-flex justify-content-center align-items-center mx-2"><iconify-icon
                           icon="basil:edit-outline"></iconify-icon></a>
-                      <a href=""
-                        class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
-                          icon="uil:share"></iconify-icon></a>
+                      <a href="#"
+                        class="btn-action-custom d-flex justify-content-center align-items-center copyLinkButton"
+                        data-meet-id="{{ $meet->id }}" data-division="{{ $meet->division->name }}"
+                        data-topic="{{ $meet->topic }}" data-start-time="{{ $meet->start_time }}"
+                        data-end-time="{{ $meet->end_time }}" data-meeting="{{ $meet->meeting }}"
+                        data-link="{{ $meet->link }}">
+                        <iconify-icon icon="uil:share"></iconify-icon>
+                      </a>
                     </div>
                   </td>
                 </tr>
@@ -89,6 +96,9 @@
     </div>
   </div>
 
+@endsection
+
+@push('css-custom')
   <style>
     .list-division {
       transition: .7s;
@@ -107,4 +117,75 @@
       --bs-table-striped-color: white;
     }
   </style>
-@endsection
+@endpush
+
+@push('js-libraries')
+  <script>
+    document.querySelectorAll('.copyLinkButton').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var meetId = button.getAttribute('data-meet-id');
+        var divisionName = button.getAttribute('data-division');
+        var topicName = button.getAttribute('data-topic');
+        var meeting = button.getAttribute('data-meeting');
+        var linkMeet = button.getAttribute('data-link');
+        var startTime = new Date(button.getAttribute('data-start-time'));
+        var endTime = new Date(button.getAttribute('data-end-time'));
+
+        // Memastikan bahwa endTime adalah objek Date yang valid
+        var isValidEndTime = !isNaN(endTime.getTime());
+
+        // Fungsi untuk mengubah bulan dalam format angka menjadi format nama bulan
+        function getMonthName(monthNumber) {
+          const months = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+          ];
+          return months[monthNumber];
+        }
+
+        // Format tanggal
+        var formattedDate =
+          `${startTime.getDate()} ${getMonthName(startTime.getMonth())} ${startTime.getFullYear()}`;
+
+        // Format jam
+        var formattedStartTime = startTime.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        var formattedEndTime = isValidEndTime ? endTime.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit'
+        }) : 'Selesai';
+
+
+        // Membuat elemen textarea untuk menyalin teks ke clipboard
+        var textarea = document.createElement('textarea');
+        textarea.value = `*Online Meeting*
+--------------------
+Diharapkan semua anggota *${divisionName}* hadir pada pertemuan ${meeting} untuk membahas "${topicName}".
+
+Pada tanggal ${formattedDate}
+Jam ${formattedStartTime} - ${formattedEndTime}
+  
+Link:
+${linkMeet}
+  
+Terimakasih ☺️
+`;
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        try {
+          document.execCommand('copy');
+          alert('Link berhasil disalin ke clipboard!');
+        } catch (err) {
+          console.error('Gagal menyalin ke clipboard:', err);
+          alert('Gagal menyalin ke clipboard. Silakan salin secara manual.');
+        } finally {
+          document.body.removeChild(textarea);
+        }
+      });
+    });
+  </script>
+@endpush
