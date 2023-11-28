@@ -26,8 +26,7 @@
       </div>
       <div class="row">
         <div class="col-md-8 mb-3">
-          <div class="p-3 text-white"
-            style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+          <div class="p-3 text-white bg-custom">
             <div class="input-group-custom mb-4">
               <input type="text" name="title" class="form-control text-white fw-light"
                 style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
@@ -64,8 +63,7 @@
           </div>
         </div>
         <div class="col-md-4 mb-3">
-          <div class="p-3 text-white"
-            style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px); border-bottom: 2px solid white">
+          <div class="p-3 text-white bg-custom">
             <img src="{{ asset('assets/img/no-image.svg') }}" id="result" alt="" class="w-100" width="100%"
               style="border-radius: 10px;">
             <p class="text-left mt-3">Thumbnail</p>

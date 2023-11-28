@@ -86,8 +86,8 @@
         // Create a new row element for each file
         const divRow = document.createElement('div');
         divRow.classList.add('row');
-        divRow.setAttribute('style', 'background: rgba(255, 255, 255, 0.13)');
-        divRow.classList.add('py-3', 'rounded-3');
+        // divRow.setAttribute('style', 'background: rgba(255, 255, 255, 0.13)');
+        divRow.classList.add('py-3', 'rounded-3', 'bg-custom');
 
 
         // Create a new column element for the image

@@ -16,8 +16,7 @@
 
   <div class="row">
     <div class="col-md-8">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+      <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>Presence {{ $division->name }}</h5>
         </header>
@@ -62,9 +61,6 @@
                           class="btn-action-custom d-flex justify-content-center align-items-center"><iconify-icon
                             icon="mynaui:trash"></iconify-icon></button>
                       </form>
-                      {{-- <a href="/presence/verify/{{ Ramsey\Uuid\Uuid::uuid4() }}{{ $presence->id }}"
-                        class="btn-action-custom d-flex justify-content-center align-items-center mx-2">
-                        <iconify-icon icon="uil:share"></iconify-icon> --}}
                       <a href="#"
                         class="btn-action-custom d-flex justify-content-center align-items-center mx-2 copyLinkButton"
                         data-presence-id="{{ $presence->id }}">
@@ -81,8 +77,7 @@
     </div>
 
     <div class="col-md-4">
-      <div class="text-white p-4"
-        style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+      <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>Division</h5>
         </header>
