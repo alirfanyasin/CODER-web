@@ -1,14 +1,27 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - User Profile ' . $data->name)
+@section('title', 'CODER - My Profile' . $data->name)
 
 @section('content')
   <section>
     <div class="container">
       <div class="row">
-        <div class="col p-4"
+        <div class="col p-4 position-relative"
           style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
-
+          <div class="text-white position-absolute" style="right: 20px;">
+            @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
+              <a href="{{ route('admin.my-profile.settings', ['id' => $data->id, 'name' => $data->name]) }}"
+                class="text-decoration-none text-white">
+                <iconify-icon icon="ph:gear" width="30px"></iconify-icon>
+              </a>
+            @endif
+            @if (Auth::user()->hasRole('user'))
+              <a href="{{ route('user.my-profile.settings', ['id' => $data->id, 'name' => $data->name]) }}"
+                class="text-decoration-none text-white">
+                <iconify-icon icon="ph:gear" width="30px"></iconify-icon>
+              </a>
+            @endif
+          </div>
           <div class="row d-flex align-items-center">
             <div class="col-md-3">
               <div class="rounded-2 overflow-hidden" style="width: 250px; height: 250px;">

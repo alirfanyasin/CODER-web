@@ -64,6 +64,8 @@
   {{-- <script src="{{ url('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script> --}}
   {{-- My SCRIPT --}}
   <script src="{{ asset('assets/js/script.js') }}"></script>
+  {{-- Iconify --}}
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   @stack('js-libraries')
 
 </body>

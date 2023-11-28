@@ -18,6 +18,8 @@ use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PresenceVerifyController;
+use App\Http\Controllers\UserProfileController;
 
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\ElearningController as UserElearningController;
@@ -43,6 +45,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LandingPageController::class, 'index']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
 
 Route::middleware('guest')->group(function () {
   Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -50,10 +55,17 @@ Route::middleware('guest')->group(function () {
   Route::get('/register', [RegisterController::class, 'index'])->name('register');
   Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 });
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
 
 Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+  Route::get('/my-profile/{id}/{name}', [UserProfileController::class, 'index'])->name('user.my-profile');
+  Route::get('/my-profile/settings/{id}/{name}', [UserProfileController::class, 'settings'])->name('user.my-profile.settings');
+  Route::put('/my-profile/settings/update/{id}', [UserProfileController::class, 'update'])->name('user.my-profile.settings.update');
+
   Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
   Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
   Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
@@ -62,9 +74,20 @@ Route::middleware(['auth', 'role:user'])->group(function () {
   Route::post('/e-learning/task/submission/{subm_id}/update/{divi_id}', [UserTaskController::class, 'update'])->name('user.elearning.task.submission.update');
 });
 
+
+
+
+
+
 Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(function () {
   Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/my-profile/{id}/{name}', [UserProfileController::class, 'index'])->name('admin.my-profile');
+    Route::get('/my-profile/settings/{id}/{name}', [UserProfileController::class, 'settings'])->name('admin.my-profile.settings');
+    Route::put('/my-profile/settings/update/{id}', [UserProfileController::class, 'update'])->name('admin.my-profile.settings.update');
+
+
 
     Route::get('/news', [NewsController::class, 'index'])->name('admin.news');
     Route::get('/news/create', [NewsController::class, 'create'])->name('admin.news.create');
@@ -83,7 +106,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/division/member', [DivisionController::class, 'member'])->name('admin.division.member');
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
-    Route::get('/users/profile', [AdminUserController::class, 'profile'])->name('admin.users.profile');
+    Route::get('/users/profile/{uuid}/{id}/{name}', [AdminUserController::class, 'profile'])->name('admin.users.profile');
     Route::post('/users/give-permission/{id}', [AdminUserController::class, 'givePermission'])->name('admin.users.give_permission');
     Route::post('/users/revoke-permission/{id}', [AdminUserController::class, 'revokePermission'])->name('admin.users.revoke_permission');
 
@@ -129,7 +152,9 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
   });
 });
 
-
+Route::get('/presence/verify/{uuid}/{id}/user-presence', [PresenceVerifyController::class, 'user_presence'])->name('admin.presence.user_presence');
+Route::post('/presence/verify/submit', [PresenceVerifyController::class, 'user_presence_submit'])->name('presence.verify.submit');
+Route::get('/presence/verify/success', [PresenceVerifyController::class, 'user_presence_success'])->name('presence.verify.success');
 
 
 
