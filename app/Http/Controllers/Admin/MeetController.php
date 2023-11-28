@@ -31,7 +31,7 @@ class MeetController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            // 'division_id' => 'required',
+            'division_id' => 'required',
             'topic' => 'required|string',
             'meeting' => 'required',
             'start_time' => 'required',
@@ -46,11 +46,10 @@ class MeetController extends Controller
         ]);
 
         $validatedData['user_id'] = Auth::user()->id;
-        $divisionUser = Auth::user()->division_id;
-        $validatedData['division_id'] = Auth::user()->division_id;
+        $validatedData['division_id'] = $request->division_id;
         $validatedData['status'] = 'Active';
         Meet::create($validatedData);
-        return redirect()->route('admin.elearning.meet.division', 1)->with('success', 'Meet created successfully');
+        return redirect()->route('admin.elearning.meet.division', $request->division_id)->with('success', 'Meet created successfully');
     }
 
     /**
@@ -98,11 +97,11 @@ class MeetController extends Controller
 
         $validatedData['user_id'] = Auth::user()->id;
         $divisionUser = Auth::user()->division_id;
-        $validatedData['division_id'] = Auth::user()->division_id;
+        $validatedData['division_id'] = $request->division_id;
         $validatedData['status'] = 'Done';
         $data->update($validatedData);
 
-        return redirect()->route('admin.elearning.meet.division', 1)->with('success', 'Meet Updated successfully');
+        return redirect()->route('admin.elearning.meet.division', $request->division_id)->with('success', 'Meet Updated successfully');
     }
 
     /**
