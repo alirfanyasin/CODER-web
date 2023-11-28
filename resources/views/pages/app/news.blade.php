@@ -25,8 +25,7 @@
     <div class="row">
       @foreach ($data as $news)
         <div class="col-md-4 mb-3">
-          <div class="p-3 text-white"
-            style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+          <div class="p-3 text-white bg-custom">
             <a href="{{ route('admin.news.show', $news->id) }}" class="text-decoration-none">
               <img src="{{ asset('storage/image/' . $news->thumbnail) }}" alt='image' width="100%">
               <p class="text-left mt-3">{{ $news->title }} </p>

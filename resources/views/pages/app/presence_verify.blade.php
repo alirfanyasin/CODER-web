@@ -7,13 +7,14 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-4">
         @if (session('error'))
-          <div class="text-white text-center mb-3 py-3"
+          <div class="text-white text-center mb-3 py-3 d-flex align-items-center justify-content-center"
             style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+            <iconify-icon icon="material-symbols:error-outline" width="30px"></iconify-icon> &nbsp;&nbsp;
             {{ session('error') }}
           </div>
         @endif
 
-        <div class="card p-4">
+        <div class="card p-4 bg-custom">
           <div class="text-center">
             <h2 class="text-white fw-bold">Presence Verify</h2>
             <div class="text-white">{{ $data->division->name }}</div>

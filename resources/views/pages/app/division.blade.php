@@ -15,8 +15,7 @@
     <div class="row">
       @foreach ($data as $item)
         <div class="col-lg-4 col-md-6 mb-4 text-white position-relative">
-          <div class="px-2 py-4 text-center "
-            style="background: rgba(255, 255, 255, 0.13); border-radius: 20px; backdrop-filter: blur(5px);">
+          <div class="px-2 py-4 text-center bg-custom">
             <div class="dropdown position-absolute dropstart" style="right: 20px;">
               <iconify-icon icon="charm:menu-kebab" class="icon-toggle dropdown-toggle" data-bs-toggle="dropdown"
                 aria-expanded="false"></iconify-icon>

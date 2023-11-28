@@ -6,7 +6,7 @@
   <div class="container" style="z-index: 100">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-6">
-        <div class="card p-4">
+        <div class="card p-4 bg-custom">
           <div class="d-flex justify-content-center">
             <img src="{{ asset('assets/img/second-logo.png') }}" alt="" width="50%">
           </div>
