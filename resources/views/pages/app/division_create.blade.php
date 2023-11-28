@@ -10,8 +10,7 @@
 
     <div class="row">
       <div class="col-12 mb-3">
-        <div class="p-3 text-white"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="p-3 text-white bg-custom">
           <form action="{{ route('admin.division.store') }}" method="POST">
             @csrf
             <div class="input-group-custom mb-4">

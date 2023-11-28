@@ -8,7 +8,7 @@
       <div class="col-md-4">
 
         @if (session('success'))
-          <div class="card p-4">
+          <div class="card p-4 bg-custom">
             <div class="text-center text-white">
               <iconify-icon icon="ph:seal-check-bold" width="80px"></iconify-icon>
               <h2 class="text-white fw-bold">{{ session('success') }}</h2>

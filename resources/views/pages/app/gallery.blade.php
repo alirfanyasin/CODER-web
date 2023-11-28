@@ -15,14 +15,13 @@
       @foreach ($data as $img)
         <div class="col-lg-4 col-md-6 mb-3">
           <div class="position-relative">
-            <a href="{{ asset('storage/gallery/' . $img->img) }}" class="p-3 d-block overflow-hidden "
-              style="background: rgba(255, 255, 255, 0.13); height: 230px; width: 100%; border-radius: 10px; backdrop-filter: blur(5px);">
+            <a href="{{ asset('storage/gallery/' . $img->img) }}" class="p-3 d-block overflow-hidden bg-custom">
               <div class="overflow-hidden" style=" height: 200px; width: 100%; border-radius: 10px; ">
                 <img src="{{ asset('storage/gallery/' . $img->img) }}" alt="Img" width="100%" class="rounded-3">
               </div>
             </a>
             <div class="bg-danger action p-2 "
-              style="position: absolute; top: 0px; right: 0px; border-radius: 0 10px 0 10px">
+              style="position: absolute; top: 0px; right: 0px; border-radius: 0 20px 0 20px">
               <form action="{{ route('admin.gallery.destroy', $img->id) }}" method="POST">
                 @csrf
                 @method('DELETE')

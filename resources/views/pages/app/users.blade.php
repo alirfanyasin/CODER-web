@@ -10,9 +10,8 @@
 
     <div class="row">
       @foreach ($data as $user)
-        <div class="col-md-3 mb-3">
-          <div class="p-4 text-white text-center position-relative"
-            style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="col-md-3 mb-4">
+          <div class="p-4 text-white text-center position-relative bg-custom">
             @role('admin')
               @if ($user->id != 1)
                 <div class="dropdown position-absolute dropstart" style="right: 20px;">
