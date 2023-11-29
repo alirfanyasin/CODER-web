@@ -43,7 +43,7 @@ use Carbon\Carbon;
                   @endif
                 </div>
               </div>
-              <div class="text-end">
+              <div class="text-end d-md-block d-none">
                 <?php
                 $dateTime = \Carbon\Carbon::parse($data->deadline);
                 $countdown = $dateTime->diffForHumans(\Carbon\Carbon::now(), [

@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 mb-4">
         <div class="p-4 bg-custom">
           <h5 class="text-white">Statistik</h5>
           <div class="w-100">
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 mb-5">
         <div class="p-4 bg-custom">
           <h5 class="text-white">Meeting Schedule</h5>
 

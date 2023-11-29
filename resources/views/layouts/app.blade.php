@@ -30,6 +30,8 @@
   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
   {{-- Custom CSS --}}
   <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+  {{-- Custom CSS --}}
+  <link rel="stylesheet" href="{{ asset('assets/js/app.js') }}">
   {{-- QuillJs --}}
   <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet" />
   <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>
@@ -43,12 +45,20 @@
       <div class="col-3">
         @include('components.sidebar')
       </div>
-
-
-      <div class="col-9" style="height: 100vh; overflow-y: scroll; overflow-x: hidden;">
+      <div class="col-md-9" style="height: 100vh; overflow-y: scroll; overflow-x: hidden;">
         <div class="container">
-          <nav class="py-4 d-flex justify-content-end align-items-center">
-            <div class="text-white mx-4">
+          <nav class="py-4 d-flex align-items-center">
+            <div class="text-white" id="icon-hamburger">
+              <a href="#" class="text-decoration-none">
+                <iconify-icon icon="ion:menu" width="35px" class="text-white"></iconify-icon>
+              </a>
+            </div>
+            <div id="logo-mobile">
+              <header class="">
+                <img src="{{ asset('assets/img/second-logo.png') }}" alt="" width="100px">
+              </header>
+            </div>
+            <div class="text-white mx-4 name-user">
               <span class="fw-light">Welcome, <span class="fw-semibold">{{ Auth::user()->name }}</span></span>
             </div>
             {{-- <div class="rounded-pill bg-dark overflow-hidden" style="width: 50px; height: 50px;"> --}}
@@ -56,7 +66,7 @@
               <button class="dropdown-toggle rounded-pill bg-dark overflow-hidden" style="width: 50px; height: 50px;"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="{{ asset('storage/avatar/' . (Auth::user()->avatar ?? 'photo-profile.jpg')) }}" alt=""
-                  width="100%" height="100%">
+                  width="100%" height="">
               </button>
               <ul class="dropdown-menu">
                 @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
@@ -88,22 +98,23 @@
         </div>
       </div>
     </div>
+
+
+    <div class="Ellipse12 position-absolute"
+      style="width: 1100px; height: 1100px; transform: rotate(74.92deg); transform-origin: 0 0; background: linear-gradient(220deg, #01012D 0%, #900505 100%); border-radius: 9999px; z-index: -99; left: 800px; top: -600px; ">
+    </div>
+
+    <div class="Ellipse13 position-absolute"
+      style="width: 800px; height: 800px; background: rgba(0, 139.21, 148.10, 0.48); box-shadow: 500px 500px 500px; border-radius: 9999px; filter: blur(100px); z-index: -99; left: 800px; top: -600px;">
+    </div>
+    <div class="Ellipse17 position-absolute"
+      style="width: 800px; height: 800px; background: rgba(0, 0, 0, 0.60);  border-radius: 9999px; filter: blur(100px); z-index: -99; left: 100px; top: -400px;">
+    </div>
+    <div class="Ellipse14  position-absolute"
+      style="width: 400px; height: 400px; background: rgba(220.66, 147.69, 255, 0.60); box-shadow: 600px 600px 600px; border-radius: 9999px; filter: blur(200px); z-index: -99; left: 600px; bottom:0;">
+    </div>
   </main>
 
-
-  <div class="Ellipse12 position-absolute"
-    style="width: 1100px; height: 1100px; transform: rotate(74.92deg); transform-origin: 0 0; background: linear-gradient(220deg, #01012D 0%, #900505 100%); border-radius: 9999px; z-index: -99; left: 800px; top: -600px; ">
-  </div>
-
-  <div class="Ellipse13 position-absolute"
-    style="width: 800px; height: 800px; background: rgba(0, 139.21, 148.10, 0.48); box-shadow: 500px 500px 500px; border-radius: 9999px; filter: blur(100px); z-index: -99; left: 800px; top: -600px;">
-  </div>
-  <div class="Ellipse17 position-absolute"
-    style="width: 800px; height: 800px; background: rgba(0, 0, 0, 0.60);  border-radius: 9999px; filter: blur(100px); z-index: -99; left: 100px; top: -400px;">
-  </div>
-  <div class="Ellipse14  position-absolute"
-    style="width: 400px; height: 400px; background: rgba(220.66, 147.69, 255, 0.60); box-shadow: 600px 600px 600px; border-radius: 9999px; filter: blur(200px); z-index: -99; left: 600px; bottom:0;">
-  </div>
 
 
   {{-- BOOTSTRAP 5.3.2 JS --}}
@@ -115,6 +126,20 @@
   {{-- Iconify --}}
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   @stack('js-libraries')
+
+  <script>
+    var iconMenu = document.getElementById('icon-hamburger');
+    var iconClose = document.getElementById('icon-close');
+    var sidebar = document.getElementById('sidebar');
+
+    iconMenu.addEventListener('click', function() {
+      sidebar.classList.remove('d-none');
+    });
+
+    iconClose.addEventListener('click', function() {
+      sidebar.classList.add('d-none');
+    });
+  </script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@
     </div>
   </section>
 
-  <div class="row">
+  <div class="row" id="elearning-module">
     @role('admin')
       <div class="col-md-8">
       @endrole
@@ -28,10 +28,10 @@
 
           @foreach ($groupedData as $meeting => $data)
             <div>
-              <div class="d-flex align-items-center">
-                <hr class="border border-2" style="width: 40%;">
+              <div class="d-flex align-items-center mb-3">
+                <hr class="border border-2">
                 <small class="mx-2 fw-light">Pertemuan {{ $meeting }}</small>
-                <hr class="border border-2" style="width: 40%;">
+                <hr class="border border-2">
               </div>
 
               @foreach ($data as $item)

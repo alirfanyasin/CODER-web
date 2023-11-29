@@ -1,6 +1,11 @@
-<aside style="height: 100vh;" class="d-flex justify-content-center p-4 position-absolute" class="margin-right: 100px;">
+<aside style="height: 100vh;" class="d-flex justify-content-center p-4 position-absolute d-none d-md-block" id="sidebar">
   <div class="sidebar">
-    <header class="d-flex justify-content-center">
+
+    <div class="d-flex justify-content-end d-block d-md-none">
+      <iconify-icon icon="uil:times" class="text-white" width="30px" id="icon-close"></iconify-icon>
+    </div>
+
+    <header class="d-flex justify-content-center" id="logo-sidebar">
       <img src="{{ asset('assets/img/second-logo.png') }}" alt="" width="200px">
     </header>
 
@@ -62,11 +67,14 @@
             width="24"></iconify-icon>
           &nbsp;&nbsp;
           E-Learning</a>
-        <a href="/presence/division-1"
-          class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('presence') ? 'side-active' : '' }} {{ Request::is('presence/*') ? 'side-active' : '' }}"
-          style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
-          &nbsp;&nbsp;
-          Presence</a>
+        @if (Auth::user()->hasPermissionTo('admin-division'))
+          <a href="/presence/division-1"
+            class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('presence') ? 'side-active' : '' }} {{ Request::is('presence/*') ? 'side-active' : '' }}"
+            style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
+            &nbsp;&nbsp;
+            Presence</a>
+        @endif
+
       </div>
     @endif
 </aside>
