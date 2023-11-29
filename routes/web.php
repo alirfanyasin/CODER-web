@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\MeetController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\UserPresenceController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -54,6 +55,10 @@ Route::middleware('guest')->group(function () {
   Route::post('/login', [LoginController::class, 'login'])->name('login.post');
   Route::get('/register', [RegisterController::class, 'index'])->name('register');
   Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+
+  // login with google
+  Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+  Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCollback'])->name('auth.google.callback');
 });
 
 
@@ -61,7 +66,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
-
   Route::get('/my-profile/{id}/{name}', [UserProfileController::class, 'index'])->name('user.my-profile');
   Route::get('/my-profile/settings/{id}/{name}', [UserProfileController::class, 'settings'])->name('user.my-profile.settings');
   Route::put('/my-profile/settings/update/{id}', [UserProfileController::class, 'update'])->name('user.my-profile.settings.update');
