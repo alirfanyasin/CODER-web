@@ -65,6 +65,20 @@ body {
   border: 2px solid rgba( 255, 255, 255, 0.18 );
 }
 
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur( 200px );
+  -webkit-backdrop-filter: blur( 200px );
+  border-radius: 100%;
+  text-decoration: none;
+}
+
 
 aside .sidebar .list-group .list-item:hover{
   background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(20px);
@@ -126,6 +140,14 @@ nav #icon-hamburger{
   width: 45%;
 }
 
+#my-profile .col .row .col-md-3 .rounded-2 {
+  width: 250px;
+  height: 250px;
+}
+#my-profile .row .col .position-absolute {
+  right: 20px;
+}
+
 
 @media (max-width: 768px) {
 
@@ -173,6 +195,23 @@ nav #icon-hamburger{
   
   #elearning-module hr {
     width: 30%;
+  }
+
+  #my-profile .col .row .col-md-3 .rounded-2 {
+    width: 100%;
+    height: 300px;
+  }
+
+  #my-profile .row .col .position-absolute {
+    top: 30px;
+    right: 30px;
+  }
+
+  #my-profile .row .col .position-absolute a iconify-icon{
+    color: black;
+  }
+  #my-profile #my-data {
+    margin-bottom: 50px;
   }
 
 }

@@ -16,7 +16,7 @@
   @enderror
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mb-3">
       <div class="text-white p-4 bg-custom">
         <header class="text-left mb-4">
           <h5>Create Module</h5>
@@ -104,7 +104,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-5">
       <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>Logo Type</h5>

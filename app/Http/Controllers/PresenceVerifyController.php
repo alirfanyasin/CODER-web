@@ -41,7 +41,7 @@ class PresenceVerifyController extends Controller
                     return redirect()->back()->with('error', 'Absensi sudah di tutup');
                 }
             } else {
-                return redirect()->back()->with('error', 'Email atau Password anda salah');
+                return redirect()->back()->with('error', 'Email atau Password salah');
             }
         } else {
             return redirect()->back()->with('error', 'Email atau Password anda salah');

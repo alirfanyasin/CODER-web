@@ -28,6 +28,11 @@
 body {
   background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
   overflow: hidden;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 main .container{
