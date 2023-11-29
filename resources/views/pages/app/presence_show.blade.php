@@ -44,6 +44,7 @@
                   @if ($data->id != 1)
                     <input type="hidden" name="user_id" value="{{ $data->name }}">
                     <input type="hidden" name="presence_id" value="{{ $presence->id }}">
+                    <input type="hidden" name="division_id" value="{{ $presence->division->id }}">
                     <tr>
                       <th class="align-middle" scope="row">{{ $no++ }}</th>
                       <td class="align-middle">{{ $data->name }}</td>

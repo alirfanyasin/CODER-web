@@ -103,7 +103,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/division/{id}/edit', [DivisionController::class, 'edit'])->name('admin.division.edit');
     Route::put('/division/{id}/update', [DivisionController::class, 'update'])->name('admin.division.update');
     Route::delete('/division/{id}/destroy', [DivisionController::class, 'destroy'])->name('admin.division.destroy');
-    Route::get('/division/member', [DivisionController::class, 'member'])->name('admin.division.member');
+    Route::get('/division/{id}/member', [DivisionController::class, 'member'])->name('admin.division.member');
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
     Route::get('/users/profile/{uuid}/{id}/{name}', [AdminUserController::class, 'profile'])->name('admin.users.profile');
