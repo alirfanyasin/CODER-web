@@ -27,52 +27,54 @@
                 {{ date('j F Y', strtotime($presence->date)) }}
               </div>
             </div>
-            <table class="table rounded-4 table-striped" style="background: none">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Prodi</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                @php
-                  $no = 1;
-                @endphp
-                @foreach ($user as $data)
-                  @if ($data->id != 1)
-                    <input type="hidden" name="user_id" value="{{ $data->name }}">
-                    <input type="hidden" name="presence_id" value="{{ $presence->id }}">
-                    <input type="hidden" name="division_id" value="{{ $presence->division->id }}">
-                    <tr>
-                      <th class="align-middle" scope="row">{{ $no++ }}</th>
-                      <td class="align-middle">{{ $data->name }}</td>
-                      <td class="align-middle">{{ $data->field_of_study }}</td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="">
-                            <input type="radio" id="hadir" name="status[{{ $data->id }}]" value="Hadir"
-                              {{ getStatusChecked($data->user_presences, $presence->id, 'Hadir') }}>
-                            <label>Hadir</label>
+            <div class="table-responsive">
+              <table class="table rounded-4 table-striped" style="background: none">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Prodi</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @php
+                    $no = 1;
+                  @endphp
+                  @foreach ($user as $data)
+                    @if ($data->id != 1)
+                      <input type="hidden" name="user_id" value="{{ $data->name }}">
+                      <input type="hidden" name="presence_id" value="{{ $presence->id }}">
+                      <input type="hidden" name="division_id" value="{{ $presence->division->id }}">
+                      <tr>
+                        <th class="align-middle" scope="row">{{ $no++ }}</th>
+                        <td class="align-middle">{{ $data->name }}</td>
+                        <td class="align-middle">{{ $data->field_of_study }}</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="">
+                              <input type="radio" id="hadir" name="status[{{ $data->id }}]" value="Hadir"
+                                {{ getStatusChecked($data->user_presences, $presence->id, 'Hadir') }}>
+                              <label>Hadir</label>
+                            </div>
+                            <div class="mx-4">
+                              <input type="radio" id="izin" name="status[{{ $data->id }}]" value="Izin"
+                                {{ getStatusChecked($data->user_presences, $presence->id, 'Izin') }}>
+                              <label>Izin</label>
+                            </div>
+                            <div class="">
+                              <input type="radio" id="alfa" name="status[{{ $data->id }}]" value="Alfa"
+                                {{ getStatusChecked($data->user_presences, $presence->id, 'Alfa') }}>
+                              <label>Alfa</label>
+                            </div>
                           </div>
-                          <div class="mx-4">
-                            <input type="radio" id="izin" name="status[{{ $data->id }}]" value="Izin"
-                              {{ getStatusChecked($data->user_presences, $presence->id, 'Izin') }}>
-                            <label>Izin</label>
-                          </div>
-                          <div class="">
-                            <input type="radio" id="alfa" name="status[{{ $data->id }}]" value="Alfa"
-                              {{ getStatusChecked($data->user_presences, $presence->id, 'Alfa') }}>
-                            <label>Alfa</label>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  @endif
-                @endforeach
-              </tbody>
-            </table>
+                        </td>
+                      </tr>
+                    @endif
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
           </form>
         </div>
       </div>
@@ -95,6 +97,11 @@
       --bs-table-bg: none;
       --bs-table-color: white;
       --bs-table-striped-color: white;
+    }
+
+    .table td,
+    .table th {
+      white-space: nowrap;
     }
   </style>
 @endsection

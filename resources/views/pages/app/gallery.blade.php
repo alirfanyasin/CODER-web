@@ -6,9 +6,14 @@
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Gallery</h1>
-      <div>
+      {{-- <div>
         <a href="{{ route('admin.gallery.create') }}" class="btn-main">Create Gallery</a>
-      </div>
+      </div> --}}
+      <a href="{{ route('admin.gallery.create') }}">
+        <div class="btn-circle">
+          <iconify-icon icon="ph:plus-bold" class="text-white" width="20px"></iconify-icon>
+        </div>
+      </a>
     </div>
 
     <div class="row">

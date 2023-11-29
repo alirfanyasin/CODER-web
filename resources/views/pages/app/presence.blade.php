@@ -7,21 +7,26 @@
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Presence</h1>
       @role('admin')
-        <div>
+        {{-- <div>
           <a href="{{ route('admin.presence.create') }}" class="btn-main">Create Presence</a>
-        </div>
+        </div> --}}
+        <a href="{{ route('admin.presence.create') }}">
+          <div class="btn-circle">
+            <iconify-icon icon="ph:plus-bold" class="text-white" width="20px"></iconify-icon>
+          </div>
+        </a>
       @endrole
     </div>
   </section>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mb-3">
       <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>Presence {{ $division->name }}</h5>
         </header>
 
-        <div class="mt-4">
+        <div class="table-responsive mt-4">
           <table class="table rounded-4 table-striped" style="background: none">
             <thead>
               <tr>
@@ -76,7 +81,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-5">
       <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>Division</h5>
@@ -114,6 +119,11 @@
       --bs-table-bg: none;
       --bs-table-color: white;
       --bs-table-striped-color: white;
+    }
+
+    .table td,
+    .table th {
+      white-space: nowrap;
     }
   </style>
 @endpush

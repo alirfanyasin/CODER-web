@@ -3,12 +3,12 @@
 @section('title', 'CODER - My Profile' . $data->name)
 
 @section('content')
-  <section>
+  <section id="my-profile">
     <div class="container">
       <div class="row">
         <div class="col p-4 position-relative"
           style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
-          <div class="text-white position-absolute" style="right: 20px;">
+          <div class="text-white position-absolute">
             @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
               <a href="{{ route('admin.my-profile.settings', ['id' => $data->id, 'name' => $data->name]) }}"
                 class="text-decoration-none text-white">
@@ -24,12 +24,12 @@
           </div>
           <div class="row d-flex align-items-center">
             <div class="col-md-3">
-              <div class="rounded-2 overflow-hidden" style="width: 250px; height: 250px;">
+              <div class="rounded-2 overflow-hidden">
                 <img src="{{ asset('storage/avatar/' . ($data->avatar ?? 'photo-profile.jpg')) }}" alt=""
                   width="100%" height="">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3" id="my-data">
               <div class="text-white">
                 <h5>{{ $data->name }}</h4>
                   <div>{{ $data->nim }}</div>
@@ -64,7 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="row mt-3">
+      <div class="row mt-3 mb-5">
         <div class="col">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -89,33 +89,35 @@
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="presence-tab-pane" role="tabpanel" aria-labelledby="presence-tab"
               tabindex="0">
-              <table class="table rounded-4 table-striped mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Meeting</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Point</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @php
-                    $no = 1;
-                  @endphp
-                  @foreach ($dataPresence as $presence)
+              <div class="table-responsive">
+                <table class="table rounded-4 table-striped mt-3 ">
+                  <thead>
                     <tr>
-                      <th class="align-middle" scope="row">{{ $no++ }}</th>
-                      <td class="align-middle">Pertemuan {{ $presence->presence->meeting }}</td>
-                      <td class="align-middle">{{ date('j F Y', strtotime($presence->presence->date)) }}</td>
-                      <td class="align-middle"><span
-                          class="badge {{ $presence->status == 'Hadir' ? 'bg-success' : '' }} {{ $presence->status == 'Alfa' ? 'bg-danger' : '' }} {{ $presence->status == 'Izin' ? 'bg-warning' : '' }}">{{ $presence->status }}</span>
-                      </td>
-                      <td>{{ $presence->point }}</td>
+                      <th scope="col">#</th>
+                      <th scope="col">Meeting</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Point</th>
                     </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    @php
+                      $no = 1;
+                    @endphp
+                    @foreach ($dataPresence as $presence)
+                      <tr>
+                        <th class="align-middle" scope="row">{{ $no++ }}</th>
+                        <td class="align-middle">Pertemuan {{ $presence->presence->meeting }}</td>
+                        <td class="align-middle">{{ date('j F Y', strtotime($presence->presence->date)) }}</td>
+                        <td class="align-middle"><span
+                            class="badge {{ $presence->status == 'Hadir' ? 'bg-success' : '' }} {{ $presence->status == 'Alfa' ? 'bg-danger' : '' }} {{ $presence->status == 'Izin' ? 'bg-warning' : '' }}">{{ $presence->status }}</span>
+                        </td>
+                        <td>{{ $presence->point }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div class="tab-pane fade" id="task-tab-pane" role="tabpanel" aria-labelledby="task-tab" tabindex="0">
@@ -167,6 +169,11 @@
       --bs-table-bg: none;
       --bs-table-color: white;
       --bs-table-striped-color: white;
+    }
+
+    .table td,
+    .table th {
+      white-space: nowrap;
     }
   </style>
 @endpush

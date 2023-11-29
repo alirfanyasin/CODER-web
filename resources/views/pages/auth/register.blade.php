@@ -4,7 +4,6 @@
 
 @section('content')
   <main>
-
     <div class="container" style="z-index: 100">
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-6">
