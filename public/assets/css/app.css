@@ -139,7 +139,7 @@ nav #icon-hamburger{
 #elearning-module hr {
   width: 45%;
 }
-
+#user-profile .col .row .col-md-3 .rounded-2,
 #my-profile .col .row .col-md-3 .rounded-2 {
   width: 250px;
   height: 250px;
@@ -196,7 +196,7 @@ nav #icon-hamburger{
   #elearning-module hr {
     width: 30%;
   }
-
+  #user-profile .col .row .col-md-3 .rounded-2
   #my-profile .col .row .col-md-3 .rounded-2 {
     width: 100%;
     height: 300px;

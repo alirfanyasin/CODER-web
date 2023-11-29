@@ -6,8 +6,7 @@
   <section id="my-profile">
     <div class="container">
       <div class="row">
-        <div class="col p-4 position-relative"
-          style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(5px);">
+        <div class="col p-4 position-relative bg-custom">
           <div class="text-white position-absolute">
             @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
               <a href="{{ route('admin.my-profile.settings', ['id' => $data->id, 'name' => $data->name]) }}"
@@ -121,33 +120,35 @@
             </div>
 
             <div class="tab-pane fade" id="task-tab-pane" role="tabpanel" aria-labelledby="task-tab" tabindex="0">
-              <table class="table rounded-4 table-striped mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Link</th>
-                    <th scope="col">Task Name</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Point</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @php
-                    $noSubmission = 1;
-                  @endphp
-                  @foreach ($dataSubmission as $submission)
+              <div class="table-responsive">
+                <table class="table rounded-4 table-striped mt-3">
+                  <thead>
                     <tr>
-                      <th class="align-middle" scope="row">{{ $noSubmission++ }}</th>
-                      <td class="align-middle"><a href="{{ $submission->submission }}" target="_blank"
-                          class="text-decoration-none text-white"><iconify-icon icon="ci:link" width="50px"
-                            class="icon-type"></iconify-icon></a></td>
-                      <td class="align-middle">{{ $submission->task->task_name }}</td>
-                      <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
-                      <td class="align-middle">{{ $submission->point }}</td>
+                      <th scope="col">#</th>
+                      <th scope="col">Link</th>
+                      <th scope="col">Task Name</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Point</th>
                     </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    @php
+                      $noSubmission = 1;
+                    @endphp
+                    @foreach ($dataSubmission as $submission)
+                      <tr>
+                        <th class="align-middle" scope="row">{{ $noSubmission++ }}</th>
+                        <td class="align-middle"><a href="{{ $submission->submission }}" target="_blank"
+                            class="text-decoration-none text-white"><iconify-icon icon="ci:link" width="50px"
+                              class="icon-type"></iconify-icon></a></td>
+                        <td class="align-middle">{{ $submission->task->task_name }}</td>
+                        <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
+                        <td class="align-middle">{{ $submission->point }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div class="tab-pane fade" id="project-tab-pane" role="tabpanel" aria-labelledby="project-tab"
