@@ -41,7 +41,7 @@
                         </form>
                       </li>
                     @endif
-                    <li>
+                    {{-- <li>
                       <form action="" class="dropdown-item" method="POST">
                         @csrf
                         @method('DELETE')
@@ -50,7 +50,7 @@
                           Delete
                         </button>
                       </form>
-                    </li>
+                    </li> --}}
                   </ul>
                 </div>
               @endif

@@ -29,7 +29,6 @@
 body {
   background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
   overflow-x: hidden;
-  position: relative;
 }
 ::placeholder {
   color: white;
@@ -106,4 +105,74 @@ aside .sidebar .list-group .list-item:hover{
   border-radius: 100%;
   display: inline-block;
   border: none;
+}
+
+
+nav {
+  display: flex;
+  justify-content: end;
+}
+
+nav #logo-mobile, 
+nav #icon-hamburger{
+  display: none;;
+}
+
+/* nav #icon-humburger {
+  display: none;
+} */
+
+#elearning-module hr {
+  width: 45%;
+}
+
+
+@media (max-width: 768px) {
+
+  body > * {
+    overflow: hidden;
+  }
+
+  main{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  nav #logo-mobile,
+  nav #icon-hamburger{
+    display: block;;
+  }
+  nav .name-user {
+    display: none;
+  }
+
+  aside {
+    background: rgba( 0, 0, 0, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 18.5px );
+    -webkit-backdrop-filter: blur( 18.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    z-index: 99999;
+  }
+
+  aside #logo-sidebar img {
+    width: 130px;
+  }
+
+  #elearning-module header h5,
+  #elearning-task header h5{
+    font-size: 12pt;
+    margin-bottom: 30px;
+  }
+  
+  #elearning-module hr {
+    width: 30%;
+  }
+
 }

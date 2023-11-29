@@ -26,7 +26,7 @@
             <div class="col-md-3">
               <div class="rounded-2 overflow-hidden" style="width: 250px; height: 250px;">
                 <img src="{{ asset('storage/avatar/' . ($data->avatar ?? 'photo-profile.jpg')) }}" alt=""
-                  width="100%" height="100%">
+                  width="100%" height="">
               </div>
             </div>
             <div class="col-md-3">

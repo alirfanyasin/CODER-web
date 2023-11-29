@@ -1,5 +1,10 @@
 <?php
 use Carbon\Carbon;
+$dateTime = \Carbon\Carbon::parse($data->deadline);
+$countdown = $dateTime->diffForHumans(\Carbon\Carbon::now(), [
+    'syntax' => Carbon::DIFF_ABSOLUTE,
+    'parts' => 5,
+]);
 ?>
 @extends('layouts.app')
 
@@ -17,7 +22,7 @@ use Carbon\Carbon;
     </div>
   </section>
 
-  <div class="row">
+  <div class="row" id="elearning-task">
     @role('admin')
       <div class="col-md-8">
       @endrole
@@ -46,14 +51,7 @@ use Carbon\Carbon;
                     @endif
                   </div>
                 </div>
-                <div class="text-end">
-                  <?php
-                  $dateTime = \Carbon\Carbon::parse($data->deadline);
-                  $countdown = $dateTime->diffForHumans(\Carbon\Carbon::now(), [
-                      'syntax' => Carbon::DIFF_ABSOLUTE,
-                      'parts' => 5,
-                  ]);
-                  ?>
+                <div class="text-end d-none" style="display: none;">
                   <div>{{ $countdown }}</div>
                   <small class="fw-light" style="font-size: 8pt;">{{ $dateTime->format('j F Y') }}</small>
                 </div>
