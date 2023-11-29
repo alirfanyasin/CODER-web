@@ -86,7 +86,7 @@
             </div>
             <div class="text-center text-white">
               <p class="mb-4">Or</p>
-              <a href="">
+              <a href="{{ route('auth.google') }}">
                 <img src="{{ asset('assets/img/icon-google.png') }}" alt="">
               </a>
               <p class="mt-4 fw-light">Do you have an accout? <a href="{{ route('login') }}"
