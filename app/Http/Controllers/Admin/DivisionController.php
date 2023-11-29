@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Division;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DivisionController extends Controller
@@ -29,9 +30,11 @@ class DivisionController extends Controller
     /**
      * Show the form for member a new resource.
      */
-    public function member()
+    public function member($id)
     {
-        return view('pages.app.division_member');
+        return view('pages.app.division_member', [
+            'data' => User::where('division_id', $id)->get()
+        ]);
     }
 
     /**

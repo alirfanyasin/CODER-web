@@ -63,7 +63,7 @@ class UserPresenceController extends Controller
         if (Auth::user()->hasPermissionTo('admin-division')) {
             return redirect()->route('elearning.task', $divisionUser)->with('success', 'Submitted presence successfully');
         } else {
-            return redirect()->route('admin.presence', 1)->with('success', 'Submitted presence successfully');
+            return redirect()->route('admin.presence', $request->division_id)->with('success', 'Submitted presence successfully');
         }
     }
 

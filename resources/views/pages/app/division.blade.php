@@ -46,9 +46,8 @@
             <h5>{{ $item->name }}</h5>
             <p class="fw-light">{{ $item->description }}</p>
             <div class="mt-4">
-              <a href="{{ route('admin.division.member') }}"
-                class="text-decoration-none text-white fw-light px-4 py-2 border-1 border-white border rounded-pill">View
-                More</a>
+              <a href="{{ route('admin.division.member', $item->id) }}"
+                class="text-decoration-none text-white fw-light px-4 py-2 border-1 border-white border rounded-pill">Member</a>
             </div>
           </div>
         </div>

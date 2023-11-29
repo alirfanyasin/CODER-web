@@ -161,7 +161,7 @@
         // Membuat elemen textarea untuk menyalin teks ke clipboard
         var textarea = document.createElement('textarea');
         textarea.value = `*Online Meeting*
---------------------
+--------------------------
 Diharapkan semua anggota *${divisionName}* hadir pada pertemuan ${meeting} untuk membahas "${topicName}".
 
 Pada tanggal ${formattedDate}
