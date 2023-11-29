@@ -35,7 +35,7 @@ class GoogleController extends Controller
                         'division_id' => 1,
                         'name' => $googleUser->name,
                         'email' => $googleUser->email,
-                        'password' => Hash::make('password')
+                        'password' => Hash::make('Y60ku5mYH5sMVpSggYi0g5nVHk6LNw')
                         // 'google_token' => $googleUser->token,
                         // 'google_refresh_token' => $googleUser->refreshToken,
                     ]

@@ -19,7 +19,6 @@
                   style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                     backdrop-filter: blur(5px);"
                   name="division_id" id="division">
-                  <option selected disabled class="text-black">Pilih Divisi</option>
                   @foreach ($data_division as $division)
                     <option value="{{ $division->id }}" class="text-black">{{ $division->name }}</option>
                   @endforeach
