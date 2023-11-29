@@ -30,6 +30,7 @@ class User extends Authenticatable
         'batch',
         'phone_number',
         'avatar',
+        'google_id',
     ];
 
     /**
