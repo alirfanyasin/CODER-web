@@ -65,6 +65,9 @@ Route::middleware('guest')->group(function () {
 
 
 Route::middleware(['auth', 'role:user'])->group(function () {
+  Route::get('/auth/choice/division', [GoogleController::class, 'choiceDivision'])->name('auth.choice_division');
+  Route::put('/save/choice/division', [GoogleController::class, 'saveChoiceDivision'])->name('save.choice_division');
+
   Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
   Route::get('/my-profile/{id}/{name}', [UserProfileController::class, 'index'])->name('user.my-profile');
   Route::get('/my-profile/settings/{id}/{name}', [UserProfileController::class, 'settings'])->name('user.my-profile.settings');
