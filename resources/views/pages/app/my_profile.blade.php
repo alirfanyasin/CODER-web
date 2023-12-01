@@ -14,7 +14,7 @@
                 <iconify-icon icon="ph:gear" width="30px"></iconify-icon>
               </a>
             @endif
-            @if (Auth::user()->hasRole('user'))
+            @if (Auth::user()->hasRole('user') && !Auth::user()->hasPermissionTo('admin-division'))
               <a href="{{ route('user.my-profile.settings', ['id' => $data->id, 'name' => $data->name]) }}"
                 class="text-decoration-none text-white">
                 <iconify-icon icon="ph:gear" width="30px"></iconify-icon>
