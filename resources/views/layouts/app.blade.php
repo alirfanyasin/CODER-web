@@ -74,7 +74,7 @@
                       href="{{ route('admin.my-profile', ['id' => Auth::user()->id, 'name' => Auth::user()->name]) }}">Profile</a>
                   </li>
                 @endif
-                @if (Auth::user()->hasRole('user'))
+                @if (Auth::user()->hasRole('user') && !Auth::user()->hasPermissionTo('admin-division'))
                   <li><a class="dropdown-item"
                       href="{{ route('user.my-profile', ['id' => Auth::user()->id, 'name' => Auth::user()->name]) }}">Profile</a>
                   </li>

@@ -5,7 +5,7 @@
 @section('content')
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
-      <h1>Create Presence</h1>
+      <h1>Presence</h1>
     </div>
   </section>
 
