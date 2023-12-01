@@ -3,7 +3,6 @@
 @section('title', 'CODER - Presence Verify')
 
 @section('content')
-  {{-- <main> --}}
   <section>
     <div class="container" style="z-index: 100">
       <div class="row d-flex justify-content-center">
@@ -69,7 +68,6 @@
     <div class="Ellipse14 position-absolute"
       style="width: 660px; height: 600px; background: rgba(196.72, 72.89, 255, 0.60); box-shadow: 600px 600px 600px; border-radius: 9999px; filter: blur(200px); left: -60px; top: -300px">
     </div>
-    {{-- </main> --}}
   </section>
   <style>
     section {
@@ -77,6 +75,9 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 @endsection

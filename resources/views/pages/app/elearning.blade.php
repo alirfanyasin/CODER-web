@@ -74,7 +74,7 @@
       </div>
 
       <div class="col-md-4 mb-3">
-        <a href="" class="text-decoration-none">
+        <a href="{{ route('user.elearning.meet', Auth::user()->division_id) }}" class="text-decoration-none">
           <div class="text-white p-4 text-center bg-custom">
             <div class="text-white">
               <iconify-icon icon="fluent:meet-now-24-regular" width="150px"></iconify-icon>

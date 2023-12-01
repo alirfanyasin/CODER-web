@@ -68,8 +68,8 @@
           &nbsp;&nbsp;
           E-Learning</a>
         @if (Auth::user()->hasPermissionTo('admin-division'))
-          <a href="/presence/division-1"
-            class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('presence') ? 'side-active' : '' }} {{ Request::is('presence/*') ? 'side-active' : '' }}"
+          <a href="/presence/division-{{ Auth::user()->division_id }}"
+            class="list-item text-white border-0 py-3 px-3 text-decoration-none d-flex align-items-center text-white w-100 mb-2 {{ Request::is('presence') ? 'side-active' : '' }} {{ Request::is('presence/*') ? 'side-active' : '' }} {{ Request::is('admin/presence/*') ? 'side-active' : '' }}"
             style="margin-right: 150px;"> <iconify-icon icon="lucide:check-circle" width="24"></iconify-icon>
             &nbsp;&nbsp;
             Presence</a>

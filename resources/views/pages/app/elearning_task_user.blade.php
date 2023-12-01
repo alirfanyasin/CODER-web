@@ -11,9 +11,11 @@ use Carbon\Carbon;
       <h1>E-Learning</h1>
       {{-- @if (Auth::user()->hasPermissionTo('admin-division')) --}}
       @can('admin-division')
-        <div>
-          <a href="{{ route('admin.elearning.task.create') }}" class="btn-main">Create Task</a>
-        </div>
+        <a href="{{ route('admin.elearning.task.create') }}">
+          <div class="btn-circle">
+            <iconify-icon icon="ph:plus-bold" class="text-white" width="20px"></iconify-icon>
+          </div>
+        </a>
       @endcan
       {{-- @endif --}}
     </div>
