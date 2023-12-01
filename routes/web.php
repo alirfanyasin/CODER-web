@@ -27,6 +27,9 @@ use App\Http\Controllers\User\ElearningController as UserElearningController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\ModuleController as UserModuleController;
 use App\Http\Controllers\User\TaskController as UserTaskController;
+use App\Http\Controllers\User\MeetController as UserMeetController;
+use App\Http\Controllers\User\PresenceController as UserUserPresenceController;
+
 use App\Models\UserPresence;
 use Illuminate\Support\Facades\Route;
 
@@ -80,7 +83,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
   Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
   Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division'])->name('elearning.task');
   Route::post('/e-learning/task/submission/{id}', [UserTaskController::class, 'submission'])->name('user.elearning.task.submission');
+  Route::get('/e-learning/meet/division-{id}', [UserMeetController::class, 'division'])->name('user.elearning.meet');
   Route::post('/e-learning/task/submission/{subm_id}/update/{divi_id}', [UserTaskController::class, 'update'])->name('user.elearning.task.submission.update');
+  Route::get('/presence/division-{id}', [UserUserPresenceController::class, 'index'])->name('user.presence');
 });
 
 

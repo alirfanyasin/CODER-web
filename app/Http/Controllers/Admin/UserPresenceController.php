@@ -61,7 +61,7 @@ class UserPresenceController extends Controller
         $dataPresence->update(['status' => 'Done']);
         $divisionUser = Auth::user()->division_id;
         if (Auth::user()->hasPermissionTo('admin-division')) {
-            return redirect()->route('elearning.task', $divisionUser)->with('success', 'Submitted presence successfully');
+            return redirect()->route('user.presence', $divisionUser)->with('success', 'Submitted presence successfully');
         } else {
             return redirect()->route('admin.presence', $request->division_id)->with('success', 'Submitted presence successfully');
         }
