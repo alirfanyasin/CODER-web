@@ -21,6 +21,8 @@ use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PresenceVerifyController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\GalleryController as landingGalleryController;
+use App\Http\Controllers\NewsController as landingNewsController;
 
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\ElearningController as UserElearningController;
@@ -49,6 +51,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LandingPageController::class, 'index']);
+Route::get('/gallery', [landingGalleryController::class, 'index'])->name('landingGallery');
+Route::get('/news', [landingNewsController::class, 'index'])->name('landingNews');
+Route::get('/news/{id}/show', [landingNewsController::class, 'show'])->name('landingNews.show');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
