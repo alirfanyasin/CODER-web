@@ -11,8 +11,7 @@
 
   <div class="row">
     @role('admin')
-      <div class="col-md-4">
-
+      <div class="col-md-4 mb-3">
         <a href="/admin/e-learning/module/division-1" class="text-decoration-none">
           <div class="text-white p-4 text-center bg-custom">
             <div class="text-white">
@@ -24,7 +23,7 @@
         </a>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <a href="/admin/e-learning/task/division-1" class="text-decoration-none">
           <div class="text-white p-4 text-center bg-custom">
             <div class="text-white">
@@ -36,7 +35,7 @@
         </a>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <a href="/admin/e-learning/meet/division-1" class="text-decoration-none">
           <div class="text-white p-4 text-center bg-custom">
             <div class="text-white">
@@ -50,7 +49,7 @@
     @endrole
 
     @role('user')
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <a href="/e-learning/module/division-{{ Auth::user()->division_id }}" class="text-decoration-none">
           <div class="text-white p-4 text-center bg-custom">
             <div class="text-white">
@@ -62,7 +61,7 @@
         </a>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-4 mb-3">
         <a href="/e-learning/task/division-{{ Auth::user()->division_id }}" class="text-decoration-none">
           <div class="text-white p-4 text-center bg-custom">
             <div class="text-white">
@@ -74,8 +73,8 @@
         </a>
       </div>
 
-      <div class="col-md-4">
-        <a href="" class="text-decoration-none">
+      <div class="col-md-4 mb-3">
+        <a href="{{ route('user.elearning.meet', Auth::user()->division_id) }}" class="text-decoration-none">
           <div class="text-white p-4 text-center bg-custom">
             <div class="text-white">
               <iconify-icon icon="fluent:meet-now-24-regular" width="150px"></iconify-icon>

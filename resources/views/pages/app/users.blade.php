@@ -41,7 +41,7 @@
                         </form>
                       </li>
                     @endif
-                    <li>
+                    {{-- <li>
                       <form action="" class="dropdown-item" method="POST">
                         @csrf
                         @method('DELETE')
@@ -50,7 +50,7 @@
                           Delete
                         </button>
                       </form>
-                    </li>
+                    </li> --}}
                   </ul>
                 </div>
               @endif
@@ -76,10 +76,19 @@
               @endif
             </div>
             <div class="footer d-flex justify-content-center align-items-center mt-3">
-              <a href="{{ route('admin.users.profile', ['uuid' => Str::random(20), 'id' => $user->id, 'name' => $user->name]) }}"
-                class="border border-1 px-5 py-1 rounded-pill text-decoration-none text-center text-white fw-light">
-                Profile
-              </a>
+              @role('admin')
+                <a href="{{ route('admin.users.profile', ['uuid' => Str::random(20), 'id' => $user->id, 'name' => $user->name]) }}"
+                  class="border border-1 px-5 py-1 rounded-pill text-decoration-none text-center text-white fw-light">
+                  Profile
+                </a>
+              @endrole
+              @role('user')
+                <a href="{{ route('users.users.profile', ['uuid' => Str::random(20), 'id' => $user->id, 'name' => $user->name]) }}"
+                  class="border border-1 px-5 py-1 rounded-pill text-decoration-none text-center text-white fw-light">
+                  Profile
+                </a>
+              @endrole
+
             </div>
           </div>
         </div>

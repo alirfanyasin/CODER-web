@@ -29,7 +29,6 @@
 body {
   background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
   overflow-x: hidden;
-  position: relative;
 }
 ::placeholder {
   color: white;
@@ -64,6 +63,20 @@ body {
   border-radius: 20px;
   backdrop-filter: blur(5px);
   border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur( 200px );
+  -webkit-backdrop-filter: blur( 200px );
+  border-radius: 100%;
+  text-decoration: none;
 }
 
 
@@ -106,4 +119,99 @@ aside .sidebar .list-group .list-item:hover{
   border-radius: 100%;
   display: inline-block;
   border: none;
+}
+
+
+nav {
+  display: flex;
+  justify-content: end;
+}
+
+nav #logo-mobile, 
+nav #icon-hamburger{
+  display: none;;
+}
+
+/* nav #icon-humburger {
+  display: none;
+} */
+
+#elearning-module hr {
+  width: 45%;
+}
+#user-profile .col .row .col-md-3 .rounded-2,
+#my-profile .col .row .col-md-3 .rounded-2 {
+  width: 250px;
+  height: 250px;
+}
+#my-profile .row .col .position-absolute {
+  right: 20px;
+}
+
+
+@media (max-width: 768px) {
+
+  body > * {
+    overflow: hidden;
+  }
+
+  main{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  nav #logo-mobile,
+  nav #icon-hamburger{
+    display: block;;
+  }
+  nav .name-user {
+    display: none;
+  }
+
+  aside {
+    background: rgba( 0, 0, 0, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 18.5px );
+    -webkit-backdrop-filter: blur( 18.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    z-index: 99999;
+  }
+
+  aside #logo-sidebar img {
+    width: 130px;
+  }
+
+  #elearning-module header h5,
+  #elearning-task header h5{
+    font-size: 12pt;
+    margin-bottom: 30px;
+  }
+  
+  #elearning-module hr {
+    width: 30%;
+  }
+  #user-profile .col .row .col-md-3 .rounded-2
+  #my-profile .col .row .col-md-3 .rounded-2 {
+    width: 100%;
+    height: 300px;
+  }
+
+  #my-profile .row .col .position-absolute {
+    top: 30px;
+    right: 30px;
+  }
+
+  #my-profile .row .col .position-absolute a iconify-icon{
+    color: black;
+  }
+  #my-profile #my-data {
+    margin-bottom: 50px;
+  }
+
 }

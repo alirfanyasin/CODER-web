@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\MeetController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\UserPresenceController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -20,12 +21,17 @@ use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PresenceVerifyController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\GalleryController as landingGalleryController;
+use App\Http\Controllers\NewsController as landingNewsController;
 
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\ElearningController as UserElearningController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\ModuleController as UserModuleController;
 use App\Http\Controllers\User\TaskController as UserTaskController;
+use App\Http\Controllers\User\MeetController as UserMeetController;
+use App\Http\Controllers\User\PresenceController as UserUserPresenceController;
+
 use App\Models\UserPresence;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +51,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LandingPageController::class, 'index']);
+Route::get('/gallery', [landingGalleryController::class, 'index'])->name('landingGallery');
+Route::get('/news', [landingNewsController::class, 'index'])->name('landingNews');
+Route::get('/news/{id}/show', [landingNewsController::class, 'show'])->name('landingNews.show');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
@@ -54,24 +63,34 @@ Route::middleware('guest')->group(function () {
   Route::post('/login', [LoginController::class, 'login'])->name('login.post');
   Route::get('/register', [RegisterController::class, 'index'])->name('register');
   Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+
+  // login with google
+  Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+  Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCollback'])->name('auth.google.callback');
 });
 
 
 
 
 Route::middleware(['auth', 'role:user'])->group(function () {
-  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+  Route::get('/auth/choice/division', [GoogleController::class, 'choiceDivision'])->name('auth.choice_division');
+  Route::put('/save/choice/division', [GoogleController::class, 'saveChoiceDivision'])->name('save.choice_division');
 
+  Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
   Route::get('/my-profile/{id}/{name}', [UserProfileController::class, 'index'])->name('user.my-profile');
   Route::get('/my-profile/settings/{id}/{name}', [UserProfileController::class, 'settings'])->name('user.my-profile.settings');
   Route::put('/my-profile/settings/update/{id}', [UserProfileController::class, 'update'])->name('user.my-profile.settings.update');
 
   Route::get('/users', [UserUserController::class, 'index'])->name('user.users');
+  Route::get('/users/profile/{uuid}/{id}/{name}', [UserUserController::class, 'profile'])->name('users.users.profile');
+
   Route::get('/e-learning', [UserElearningController::class, 'index'])->name('user.elearning');
   Route::get('/e-learning/module/division-{id}', [UserModuleController::class, 'division']);
   Route::get('/e-learning/task/division-{id}', [UserTaskController::class, 'division'])->name('elearning.task');
   Route::post('/e-learning/task/submission/{id}', [UserTaskController::class, 'submission'])->name('user.elearning.task.submission');
+  Route::get('/e-learning/meet/division-{id}', [UserMeetController::class, 'division'])->name('user.elearning.meet');
   Route::post('/e-learning/task/submission/{subm_id}/update/{divi_id}', [UserTaskController::class, 'update'])->name('user.elearning.task.submission.update');
+  Route::get('/presence/division-{id}', [UserUserPresenceController::class, 'index'])->name('user.presence');
 });
 
 
@@ -103,7 +122,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/division/{id}/edit', [DivisionController::class, 'edit'])->name('admin.division.edit');
     Route::put('/division/{id}/update', [DivisionController::class, 'update'])->name('admin.division.update');
     Route::delete('/division/{id}/destroy', [DivisionController::class, 'destroy'])->name('admin.division.destroy');
-    Route::get('/division/member', [DivisionController::class, 'member'])->name('admin.division.member');
+    Route::get('/division/{id}/member', [DivisionController::class, 'member'])->name('admin.division.member');
 
     Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
     Route::get('/users/profile/{uuid}/{id}/{name}', [AdminUserController::class, 'profile'])->name('admin.users.profile');
@@ -121,7 +140,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/e-learning/module/create', [ModuleController::class, 'create'])->name('admin.elearning.module.create');
     Route::post('/e-learning/module/store', [ModuleController::class, 'store'])->name('admin.elearning.module.store');
     Route::delete('/e-learning/module/{id}/destroy', [ModuleController::class, 'destroy'])->name('admin.elearning.module.destroy');
-    Route::get('/e-learning/module/division-{id}', [ModuleController::class, 'division']);
+    Route::get('/e-learning/module/division-{id}', [ModuleController::class, 'division'])->name('admin.elearning.module.division');
 
     Route::get('/e-learning/meet', [MeetController::class, 'index'])->name('admin.elearning.meet');
     Route::get('/e-learning/meet/create', [MeetController::class, 'create'])->name('admin.elearning.meet.create');

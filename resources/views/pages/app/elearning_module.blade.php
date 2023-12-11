@@ -6,20 +6,22 @@
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>E-Learning</h1>
-      <div>
-        @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
-          <a href="{{ route('admin.elearning.module.create') }}" class="btn-main">Create Module</a>
-        @endif
-      </div>
+      @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
+        <a href="{{ route('admin.elearning.module.create') }}">
+          <div class="btn-circle">
+            <iconify-icon icon="ph:plus-bold" class="text-white" width="20px"></iconify-icon>
+          </div>
+        </a>
+      @endif
     </div>
   </section>
 
-  <div class="row">
+  <div class="row" id="elearning-module">
     @role('admin')
-      <div class="col-md-8">
+      <div class="col-md-8 mb-3">
       @endrole
       @role('user')
-        <div class="col-md-12">
+        <div class="col-md-12 mb-5">
         @endrole
         <div class="text-white p-4 bg-custom">
           <header class="text-left">
@@ -28,10 +30,10 @@
 
           @foreach ($groupedData as $meeting => $data)
             <div>
-              <div class="d-flex align-items-center">
-                <hr class="border border-2" style="width: 40%;">
+              <div class="d-flex align-items-center mb-3">
+                <hr class="border border-2">
                 <small class="mx-2 fw-light">Pertemuan {{ $meeting }}</small>
-                <hr class="border border-2" style="width: 40%;">
+                <hr class="border border-2">
               </div>
 
               @foreach ($data as $item)
@@ -68,11 +70,9 @@
         </div>
       </div>
 
-
-
       @role('admin')
-        <div class="col-md-4 bg-custom">
-          <div class="text-white p-4">
+        <div class="col-md-4 mb-5">
+          <div class="text-white p-4 bg-custom">
             <header class="text-left">
               <h5>Division</h5>
             </header>

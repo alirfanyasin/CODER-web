@@ -8,9 +8,14 @@
   <section>
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>Division</h1>
-      <div>
+      {{-- <div>
         <a href="{{ route('admin.division.create') }}" class="btn-main">Create Division</a>
-      </div>
+      </div> --}}
+      <a href="{{ route('admin.division.create') }}">
+        <div class="btn-circle">
+          <iconify-icon icon="ph:plus-bold" class="text-white" width="20px"></iconify-icon>
+        </div>
+      </a>
     </div>
     <div class="row">
       @foreach ($data as $item)
@@ -46,9 +51,8 @@
             <h5>{{ $item->name }}</h5>
             <p class="fw-light">{{ $item->description }}</p>
             <div class="mt-4">
-              <a href="{{ route('admin.division.member') }}"
-                class="text-decoration-none text-white fw-light px-4 py-2 border-1 border-white border rounded-pill">View
-                More</a>
+              <a href="{{ route('admin.division.member', $item->id) }}"
+                class="text-decoration-none text-white fw-light px-4 py-2 border-1 border-white border rounded-pill">Member</a>
             </div>
           </div>
         </div>

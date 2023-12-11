@@ -11,10 +11,10 @@
 
   <div class="row">
     @role('admin')
-      <div class="col-md-8">
+      <div class="col-md-8 mb-3">
       @endrole
       @role('user')
-        <div class="col-md-12">
+        <div class="col-md-12 mb-5">
         @endrole
 
         <div class="text-white p-4 bg-custom">
@@ -48,7 +48,7 @@
       </div>
 
       @role('admin')
-        <div class="col-md-4">
+        <div class="col-md-4 mb-5">
           <div class="text-white p-4 bg-custom">
             <header class="text-left">
               <h5>Division</h5>

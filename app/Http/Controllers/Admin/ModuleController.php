@@ -60,7 +60,7 @@ class ModuleController extends Controller
 
         Module::create($validatedData);
 
-        return redirect('admin/e-learning/module/division-1')->with('success', 'Module created successfully');
+        return redirect()->route('admin.elearning.module.division', $request->division_id)->with('success', 'Module created successfully');
     }
 
     /**
@@ -98,7 +98,7 @@ class ModuleController extends Controller
         }
         Storage::delete('public/module/files/' . $file->file);
         $file->delete();
-        return redirect('/admin/e-learning/module/division-1')->with('success', 'Deleted module successfully');
+        return redirect('/admin/e-learning/module/division-' . $file->division->id)->with('success', 'Deleted module successfully');
     }
 
 

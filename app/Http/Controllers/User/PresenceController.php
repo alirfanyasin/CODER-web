@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Absence;
@@ -21,8 +21,9 @@ class PresenceController extends Controller
         $allData = Presence::with('division')->where('division_id', $id)->get();
         $division = Division::find($id);
 
-        if (!$division) {
+        if (Auth::user()->division_id != $division->id) {
             abort(404, 'Divisi tidak ditemukan');
+            return redirect()->route('user.presence', Auth::user()->division_id);
         }
 
         $groupedDataDivision = $allData->groupBy('division_id');
@@ -59,7 +60,7 @@ class PresenceController extends Controller
         Presence::create($validate);
         $divisionUser = Auth::user()->division_id;
         if (Auth::user()->hasPermissionTo('admin-division')) {
-            return redirect()->route('user.presence', $divisionUser)->with('success', 'Created presence successfully');
+            return redirect()->route('elearning.task', $divisionUser)->with('success', 'Created presence successfully');
         } else {
             return redirect()->route('admin.presence', $request->division_id)->with('success', 'Created presence successfully');
         }
@@ -70,10 +71,6 @@ class PresenceController extends Controller
      */
     public function show($pres_id, $div_id)
     {
-        $division = Division::findOrFail($div_id);
-        if (Auth::user()->hasPermissionTo('admin-division') && Auth::user()->division_id != $division->id) {
-            abort(404, 'Divisi tidak ditemukan');
-        }
         return view('pages.app.presence_show', [
             'user' => User::where('division_id', $div_id)->get(),
             'presence' => Presence::findOrFail($pres_id),
@@ -107,7 +104,7 @@ class PresenceController extends Controller
         $data->update($validate);
         $divisionUser = Auth::user()->division_id;
         if (Auth::user()->hasPermissionTo('admin-division')) {
-            return redirect()->route('user.presence', $divisionUser)->with('success', 'Updated presence successfully');
+            return redirect()->route('elearning.task', $divisionUser)->with('success', 'Updated presence successfully');
         } else {
             return redirect()->route('admin.presence', $request->division_id)->with('success', 'Updated presence successfully');
         }
@@ -124,7 +121,7 @@ class PresenceController extends Controller
 
         $divisionUser = Auth::user()->division_id;
         if (Auth::user()->hasPermissionTo('admin-division')) {
-            return redirect()->route('user.presence', $divisionUser)->with('success', 'Deleted presence successfully');
+            return redirect()->route('elearning.task', $divisionUser)->with('success', 'Deleted presence successfully');
         } else {
             return redirect()->route('admin.presence', $data->division->id)->with('success', 'Deleted presence successfully');
         }

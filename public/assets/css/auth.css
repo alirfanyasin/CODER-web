@@ -28,25 +28,23 @@
 body {
   background-image: linear-gradient(to right, var(--color-red), var(--color-blue));
   overflow: hidden;
-  height: 100vh;
   display: flex;
+  width: 100vw;
   justify-content: center;
   align-items: center;
-  position: relative;
-  width: 100%;
+  height: 100vh;
 }
 
-body > * {
-  overflow-x: hidden;
+main .container{
+  display: flex;
+  width: 100vw;
+
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 
-/* .container .row  .card {
-  background: rgba(255, 255, 255, 0.13);
-  border-radius: 20px;
-  backdrop-filter: blur(5px);
-  z-index: 99;
-} */
  
 .bg-custom {
   background: rgba(255, 255, 255, 0.13);
@@ -57,6 +55,10 @@ body > * {
 
 .input-group-custom input::placeholder {
   color: var(--color-white); 
+}
+
+.container .row .card {
+  z-index: 999;
 }
 
 form button.btn-auth {
@@ -70,4 +72,90 @@ form button.btn-auth {
   border-radius: 10px;
   backdrop-filter: blur(5px);
   border: none;
+}
+
+
+/* Gaya CSS untuk layar berukuran kecil */
+/* @media (max-width: 468px) {
+
+  * {
+    overflow: hidden;
+  }
+        
+} */
+@media (max-width: 768px) {
+  .col-md-4,
+  .col-md-6{
+    width: 100%;
+  }
+
+  main {
+    position: relative;
+    overflow-x: hidden;
+    height: 100%;
+  }
+
+  .col-md-6 .card {
+    width: 100%;
+    margin-top: 50px;
+  }
+  .col-md-4 .card {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 150px;
+  }
+
+  .btn-auth {
+    width: 100%;
+  }
+
+  .Ellipse12,
+  .Ellipse15,
+  .Ellipse13,
+  .Ellipse14 {
+    display: block;
+    position: absolute;
+    border-radius: 9999px;
+  }
+
+  .Ellipse12 {
+    width: 150px;
+    height: 150px;
+    transform: rotate(74.92deg);
+    transform-origin: 0 0;
+    background: linear-gradient(220deg, #01012D 0%, #900505 100%);
+    bottom: -50px;
+    left: 20px;
+  }
+
+  .Ellipse15 {
+    width: 120px;
+    height: 120px;
+    transform: rotate(118.56deg);
+    transform-origin: 0 0;
+    background: linear-gradient(220deg, #01012D 0%, #900505 100%);
+    right: -60px;
+    top: -20px;
+    z-index: 99;
+  }
+
+  .Ellipse13 {
+    width: 100px;
+    height: 100px;
+    background: rgba(0, 207.93, 221.20, 0.30);
+    box-shadow: 500px 500px 500px;
+    filter: blur(50px);
+    right: -20px;
+    top: -20px;
+  }
+
+  .Ellipse14 {
+    width: 90px;
+    height: 80px;
+    background: rgba(196.72, 72.89, 255, 0.60);
+    box-shadow: 100px 100px 100px;
+    filter: blur(50px);
+    left: -20px;
+    top: -100px;
+  }
 }

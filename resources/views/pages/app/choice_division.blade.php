@@ -1,20 +1,37 @@
 @extends('layouts.auth')
 
-@section('title', 'CODER - Presence Verify Success')
+@section('title', 'CODER - Choice Division')
 
 @section('content')
   <section>
     <div class="container" style="z-index: 100">
       <div class="row d-flex justify-content-center">
         <div class="col-md-4">
-
           @if (session('success'))
             <div class="card p-4 bg-custom">
-              <div class="text-center text-white">
-                <iconify-icon icon="ph:seal-check-bold" width="80px"></iconify-icon>
-                <h2 class="text-white fw-bold">{{ session('success') }}</h2>
-                <div class="text-white">Terimakasih {{ session('username') }} Telah Hadir</div>
+              <div class="text-center">
+                <h2 class="text-white fw-bold">Choice Division</h2>
               </div>
+              <form action="{{ route('save.choice_division') }}" method="POST" class="mt-3">
+                @csrf
+                @method('PUT')
+                <div class="input-group-custom mb-3">
+                  <select class="form-select text-white fw-light"
+                    style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                    backdrop-filter: blur(5px);"
+                    name="division_id" id="division">
+                    @foreach ($data_division as $division)
+                      <option value="{{ $division->id }}" class="text-black">{{ $division->name }}</option>
+                    @endforeach
+                  </select>
+                  @error('division_id')
+                    <small class="fw-light">{{ $message }}</small>
+                  @enderror
+                </div>
+                <div class="mb-3">
+                  <button type="submit" class="btn-auth">Next</button>
+                </div>
+              </form>
             </div>
           @endif
         </div>
@@ -42,9 +59,6 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   </style>
 @endsection

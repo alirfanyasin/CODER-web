@@ -3,18 +3,18 @@
 @section('title', 'CODER - User Profile ' . $data->name)
 
 @section('content')
-  <section>
+  <section id="user-profile">
     <div class="container">
       <div class="row">
         <div class="col p-4 bg-custom">
           <div class="row d-flex align-items-center">
-            <div class="col-md-3">
-              <div class="rounded-2 overflow-hidden" style="width: 250px; height: 250px;">
+            <div class="col-md-3 mb-3">
+              <div class="rounded-2 overflow-hidden">
                 <img src="{{ asset('storage/avatar/' . ($data->avatar ?? 'photo-profile.jpg')) }}" alt=""
-                  width="100%" height="100%">
+                  width="100%" height="">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 mb-3">
               <div class="text-white">
                 <h5>{{ $data->name }}</h4>
                   <div>{{ $data->nim }}</div>
@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-      <div class="row mt-3">
+      <div class="row mt-3 mb-5">
         <div class="col">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -74,63 +74,67 @@
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="presence-tab-pane" role="tabpanel" aria-labelledby="presence-tab"
               tabindex="0">
-              <table class="table rounded-4 table-striped mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Meeting</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Point</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @php
-                    $no = 1;
-                  @endphp
-                  @foreach ($dataPresence as $presence)
+              <div class="table-responsive">
+                <table class="table rounded-4 table-striped mt-3">
+                  <thead>
                     <tr>
-                      <th class="align-middle" scope="row">{{ $no++ }}</th>
-                      <td class="align-middle">Pertemuan {{ $presence->presence->meeting }}</td>
-                      <td class="align-middle">{{ date('j F Y', strtotime($presence->presence->date)) }}</td>
-                      <td class="align-middle"><span
-                          class="badge {{ $presence->status == 'Hadir' ? 'bg-success' : '' }} {{ $presence->status == 'Alfa' ? 'bg-danger' : '' }} {{ $presence->status == 'Izin' ? 'bg-warning' : '' }}">{{ $presence->status }}</span>
-                      </td>
-                      <td>{{ $presence->point }}</td>
+                      <th scope="col">#</th>
+                      <th scope="col">Meeting</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Point</th>
                     </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    @php
+                      $no = 1;
+                    @endphp
+                    @foreach ($dataPresence as $presence)
+                      <tr>
+                        <th class="align-middle" scope="row">{{ $no++ }}</th>
+                        <td class="align-middle">Pertemuan {{ $presence->presence->meeting }}</td>
+                        <td class="align-middle">{{ date('j F Y', strtotime($presence->presence->date)) }}</td>
+                        <td class="align-middle"><span
+                            class="badge {{ $presence->status == 'Hadir' ? 'bg-success' : '' }} {{ $presence->status == 'Alfa' ? 'bg-danger' : '' }} {{ $presence->status == 'Izin' ? 'bg-warning' : '' }}">{{ $presence->status }}</span>
+                        </td>
+                        <td>{{ $presence->point }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div class="tab-pane fade" id="task-tab-pane" role="tabpanel" aria-labelledby="task-tab" tabindex="0">
-              <table class="table rounded-4 table-striped mt-3">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Link</th>
-                    <th scope="col">Task Name</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Point</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @php
-                    $noSubmission = 1;
-                  @endphp
-                  @foreach ($dataSubmission as $submission)
+              <div class="table-responsive">
+                <table class="table rounded-4 table-striped mt-3">
+                  <thead>
                     <tr>
-                      <th class="align-middle" scope="row">{{ $noSubmission++ }}</th>
-                      <td class="align-middle"><a href="{{ $submission->submission }}" target="_blank"
-                          class="text-decoration-none text-white"><iconify-icon icon="ci:link" width="50px"
-                            class="icon-type"></iconify-icon></a></td>
-                      <td class="align-middle">{{ $submission->task->task_name }}</td>
-                      <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
-                      <td class="align-middle">{{ $submission->point }}</td>
+                      <th scope="col">#</th>
+                      <th scope="col">Link</th>
+                      <th scope="col">Task Name</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Point</th>
                     </tr>
-                  @endforeach
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    @php
+                      $noSubmission = 1;
+                    @endphp
+                    @foreach ($dataSubmission as $submission)
+                      <tr>
+                        <th class="align-middle" scope="row">{{ $noSubmission++ }}</th>
+                        <td class="align-middle"><a href="{{ $submission->submission }}" target="_blank"
+                            class="text-decoration-none text-white"><iconify-icon icon="ci:link" width="50px"
+                              class="icon-type"></iconify-icon></a></td>
+                        <td class="align-middle">{{ $submission->task->task_name }}</td>
+                        <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
+                        <td class="align-middle">{{ $submission->point }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div class="tab-pane fade" id="project-tab-pane" role="tabpanel" aria-labelledby="project-tab"
@@ -152,6 +156,23 @@
       --bs-table-bg: none;
       --bs-table-color: white;
       --bs-table-striped-color: white;
+    }
+
+    #user-profile .col .row .col-md-3 .rounded-2 {
+      width: 250px;
+      height: 250px;
+    }
+
+    .table td,
+    .table th {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      #user-profile .col .row .col-md-3 .rounded-2 {
+        width: 100%;
+        height: 350px;
+      }
     }
   </style>
 @endpush

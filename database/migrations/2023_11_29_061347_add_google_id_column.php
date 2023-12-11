@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('title', 255);
-            $table->string('category', 255);
-            $table->longText('content');
-            $table->string('thumbnail', 255);
-
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('google_id')->nullable();
         });
     }
 
@@ -28,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        //
     }
 };

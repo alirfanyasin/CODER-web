@@ -16,15 +16,15 @@
   @enderror
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mb-3">
       <div class="text-white p-4 bg-custom">
         <header class="text-left mb-4">
-          <h5>Create Meet</h5>
+          <h5>Create Module</h5>
         </header>
-        <form action="{{ route('admin.elearning.meet.store') }}" method="POST">
+        <form action="{{ route('admin.elearning.module.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="input-group-custom mb-3">
-            <input type="text" name="topic" class="form-control mb-3 text-white fw-light"
+            <input type="text" name="lesson" class="form-control mb-3 text-white fw-light"
               style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                 backdrop-filter: blur(5px);"
               placeholder="Nama Materi">
@@ -36,15 +36,31 @@
               placeholder="Pertemuan">
           </div>
           <div class="input-group-custom mb-3">
-            <select class="form-select text-white fw-light mb-3"
-              style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+            @role('admin')
+              <select class="form-select text-white fw-light"
+                style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
                   backdrop-filter: blur(5px);"
-              name="division_id" id="division">
-              <option selected disabled class="text-black">Pilih Division</option>
-              @foreach ($data_division as $division)
-                <option value="{{ $division->id }}" class="text-black">{{ $division->name }}</option>
-              @endforeach
-            </select>
+                name="division_id" id="division">
+                <option selected disabled class="text-black">Pilih Divisi</option>
+                @foreach ($data_division as $division)
+                  <option value="{{ $division->id }}" class="text-black"
+                    {{ $division->id == $data->division_id ? 'selected' : '' }}>{{ $division->name }}</option>
+                @endforeach
+              </select>
+              @error('division_id')
+                <small class="fw-light">{{ $message }}</small>
+              @enderror
+            @endrole
+            @if (Auth::user()->hasPermissionTo('admin-division'))
+              <select class="form-select text-white fw-light"
+                style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+            backdrop-filter: blur(5px);"
+                name="division_id" id="division">
+                <option selected value="{{ Auth::user()->division_id }}" class="text-black">
+                  {{ Auth::user()->division->name }}
+                </option>
+              </select>
+            @endif
           </div>
           <div class="input-group-custom mb-3">
             <select class="form-select text-white fw-light mb-3 custom-select"
@@ -104,7 +120,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-5">
       <div class="text-white p-4 bg-custom">
         <header class="text-left">
           <h5>Logo Type</h5>

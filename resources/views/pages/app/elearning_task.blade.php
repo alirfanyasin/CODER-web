@@ -1,5 +1,6 @@
 <?php
 use Carbon\Carbon;
+
 ?>
 @extends('layouts.app')
 
@@ -10,19 +11,21 @@ use Carbon\Carbon;
     <div class="breadcrumb d-flex justify-content-between align-items-center text-white">
       <h1>E-Learning</h1>
       @role('admin')
-        <div>
-          <a href="{{ route('admin.elearning.task.create') }}" class="btn-main">Create Task</a>
-        </div>
+        <a href="{{ route('admin.elearning.task.create') }}">
+          <div class="btn-circle">
+            <iconify-icon icon="ph:plus-bold" class="text-white" width="20px"></iconify-icon>
+          </div>
+        </a>
       @endrole
     </div>
   </section>
 
-  <div class="row">
+  <div class="row" id="elearning-task">
     @role('admin')
-      <div class="col-md-8">
+      <div class="col-md-8 mb-3">
       @endrole
       @role('user')
-        <div class="col-md-12">
+        <div class="col-md-12 mb-5">
         @endrole
         <div class="text-white p-4 bg-custom">
           <header class="text-left">
@@ -46,14 +49,14 @@ use Carbon\Carbon;
                     @endif
                   </div>
                 </div>
-                <div class="text-end">
-                  <?php
-                  $dateTime = \Carbon\Carbon::parse($data->deadline);
-                  $countdown = $dateTime->diffForHumans(\Carbon\Carbon::now(), [
-                      'syntax' => Carbon::DIFF_ABSOLUTE,
-                      'parts' => 5,
-                  ]);
-                  ?>
+                <div class="text-end d-none" style="display: none;">
+                  @php
+                    $dateTime = \Carbon\Carbon::parse($data->deadline);
+                    $countdown = $dateTime->diffForHumans(\Carbon\Carbon::now(), [
+                        'syntax' => Carbon::DIFF_ABSOLUTE,
+                        'parts' => 5,
+                    ]);
+                  @endphp
                   <div>{{ $countdown }}</div>
                   <small class="fw-light" style="font-size: 8pt;">{{ $dateTime->format('j F Y') }}</small>
                 </div>
@@ -67,8 +70,15 @@ use Carbon\Carbon;
                   @if ($data->file != null)
                     @role('admin')
                       <div class="d-flex align-items-center">
-                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}" class="btn-custom">View
+
+                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}"
+                          class="btn-action-custom d-flex justify-content-center align-items-center d-block d-md-none"><iconify-icon
+                            icon="ph:eye"></iconify-icon></a>
+
+                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}"
+                          class="btn-custom d-none d-md-block">View
                           Submission</a>
+
                         <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
@@ -94,8 +104,14 @@ use Carbon\Carbon;
                   @else
                     @role('admin')
                       <div class="d-flex justify-content-between align-items-center">
-                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}" class="btn-custom">View
+                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}"
+                          class="btn-action-custom d-flex justify-content-center align-items-center d-block d-md-none"><iconify-icon
+                            icon="ph:eye"></iconify-icon></a>
+
+                        <a href="{{ route('admin.elearning.submission.view', $data->id) }}"
+                          class="btn-custom d-none d-md-block">View
                           Submission</a>
+
                         <form action="{{ route('admin.elearning.task.destroy', $data->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
@@ -125,7 +141,7 @@ use Carbon\Carbon;
       </div>
 
       @role('admin')
-        <div class="col-md-4">
+        <div class="col-md-4 mb-5">
           <div class="text-white p-4 bg-custom">
             <header class="text-left">
               <h5>Division</h5>
