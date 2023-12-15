@@ -8,11 +8,13 @@
       <div class="row d-flex justify-content-between align-items-center">
         <div class="col-lg-6 col-md-12 text-white">
           <div class="position-relative">
-            <h1 class="fw-bold animate__animated animate__lightSpeedInLeft animate__delay-1s">Creativity on Digital
+            <h1 class="fw-bold animate__animated animate__lightSpeedInLeft animate__delay-1s">Creativity on
+              Digital
               Environment
               in<br>
               Room of <span id="element"></span></h1>
-            <p class="fw-light animate__animated animate__bounceInUp animate__delay-2s">CODER merupakan Unit Kegiatan
+            <p class="fw-light animate__animated animate__bounceInUp animate__delay-2s">CODER merupakan Unit
+              Kegiatan
               Mahasiswa (UKM)
               dari Institut Teknologi Telkom Surabaya.
               Kami
@@ -22,7 +24,7 @@
               <a href="{{ route('login') }}"
                 class="btn-main animate__animated animate__tada animate__delay-4s animate__repeat-3">Join
                 Us</a>
-              <a href="" class="btn-second mx-3">See
+              <a href="#about-section" class="btn-second mx-3">See
                 More</a>
             </div>
           </div>
@@ -73,7 +75,8 @@
                 </div>
                 <div class="col-10 text-white">
                   <h3>Visi</h3>
-                  <p class="fw-light my-4">Mewadahi bakat dan minat mahasiswa di bidang Teknologi, Informasi, dan
+                  <p class="fw-light my-4">Mewadahi bakat dan minat mahasiswa di bidang Teknologi,
+                    Informasi, dan
                     Komunikasi
                     untuk
                     berkontribusi
@@ -93,14 +96,17 @@
                 <div class="col-10 text-white">
                   <h3>Misi</h3>
                   <ol type="1" class="my-4">
-                    <li class="fw-light">Membantu dan mendukung untuk mewadahi mahasiswa ITTelkom Surabaya yang memiliki
+                    <li class="fw-light">Membantu dan mendukung untuk mewadahi mahasiswa ITTelkom
+                      Surabaya yang memiliki
                       bakat
                       dan
                       minat dalam bidang Teknologi Informasi dan Komunikasi.</li>
-                    <li class="fw-light">Membantu dan mendukung ITTelkom Surabaya untuk melakukan pengembangan Teknologi
+                    <li class="fw-light">Membantu dan mendukung ITTelkom Surabaya untuk melakukan
+                      pengembangan Teknologi
                       Informasi
                       dan Komunikasi.</li>
-                    <li class="fw-light">Berkontribusi untuk lingkungan sekitar melalui Teknologi Informasi dan Komunikasi
+                    <li class="fw-light">Berkontribusi untuk lingkungan sekitar melalui Teknologi
+                      Informasi dan Komunikasi
                       yang
                       bermanfaat.</li>
                   </ol>
@@ -133,19 +139,38 @@
       </header>
 
       <div class="row">
-        <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="1000">
-          <div class="p-5 text-center bg-custom">
-            <div class="d-flex justify-content-center mb-4">
-              <div class="d-flex justify-content-center align-items-center"
-                style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
-                <img src="{{ asset('assets/img/icon-webdev.png') }}" alt="">
+        @foreach ($division as $div)
+          <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="1000">
+            <div class="p-5 text-center bg-custom">
+              <div class="d-flex justify-content-center mb-4">
+                <div class="d-flex justify-content-center align-items-center"
+                  style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
+                  <iconify-icon icon="{{ $div->icon }}" width="50px"></iconify-icon>
+                </div>
+              </div>
+              <h5>{{ $div->name }}</h5>
+              <p class="fw-light">{{ $div->description }}</p>
+              <div class="mt-4">
+                <a href="{{ route('division.member', $div->id) }}"
+                  class="text-decoration-none text-white fw-light px-4 py-2 border-1 border-white border rounded-pill">Member</a>
               </div>
             </div>
-            <h5>Web Development</h5>
-            <p class="fw-light">Melakukan pengembangan aplikasi berbasis Website</p>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="2000">
+        @endforeach
+
+        {{-- <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="1000">
+            <div class="p-5 text-center bg-custom">
+              <div class="d-flex justify-content-center mb-4">
+                <div class="d-flex justify-content-center align-items-center"
+                  style="width: 88px; height: 88px; background: rgba(255, 255, 255, 0.19); border-radius: 20px;">
+                  <img src="{{ asset('assets/img/icon-webdev.png') }}" alt="">
+                </div>
+              </div>
+              <h5>Web Development</h5>
+              <p class="fw-light">Melakukan pengembangan aplikasi berbasis Website</p>
+            </div>
+          </div> --}}
+        {{-- <div class="col-lg-4 col-md-6 mb-4 text-white" data-aos="flip-left" data-aos-duration="2000">
           <div class="p-5 text-center bg-custom">
             <div class="d-flex justify-content-center mb-4">
               <div class="d-flex justify-content-center align-items-center"
@@ -207,7 +232,7 @@
           <div class="Ellipse11 position-absolute"
             style="width: 400px; height: 400px; transform: rotate(250deg); transform-origin: 0 0; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; z-index: -99; margin-left: 200px; margin-top:200px;">
           </div>
-        </div>
+        </div> --}}
       </div>
       <div class="Ellipse9 position-absolute"
         style="width: 722px; height: 722px; transform: rotate(180deg); transform-origin: 0 0; background: linear-gradient(216deg, #740200 0%, #01012D 100%); box-shadow: 10px 2px 50px rgba(255, 255, 255, 0.09); border-radius: 9999px; z-index: -99; margin-left: 300px; margin-top: 250px;">
@@ -233,52 +258,28 @@
         <div class="col-lg-4 col-md-6">
           <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
-            <div class="text-white pt-4">
-              <h5 class="">Card title</h5>
-              <p class="fw-light">Some quick example text to build on the card title and make up the bulk of the
-                card's
-                content.</p>
-            </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
-            <div class="text-white pt-4">
-              <h5 class="">Card title</h5>
-              <p class="fw-light">Some quick example text to build on the card title and make up the bulk of the
-                card's
-                content.</p>
-            </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
-            <div class="text-white pt-4">
-              <h5 class="">Card title</h5>
-              <p class="fw-light">Some quick example text to build on the card title and make up the bulk of the
-                card's
-                content.</p>
-            </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
           <div class="card mx-3 p-4 bg-custom">
             <img src="{{ asset('assets/img/img-1.png') }}" class="card-img-top" alt="...">
-            <div class="text-white pt-4">
-              <h5 class="">Card title</h5>
-              <p class="fw-light">Some quick example text to build on the card title and make up the bulk of the
-                card's
-                content.</p>
-            </div>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col text-center">
-          <a href="" class="btn-main">See More</a>
+          <a href="{{ route('landingGallery') }}" class="btn-main">See More</a>
         </div>
       </div>
     </div>
@@ -303,8 +304,10 @@
               <h5 class="mt-5">Play Box Let’s Play Out Of The Box</h5>
               <p class="fw-light">Playbox “let’s Play out of the box” seperti itulah jargon yang menjadi
                 identitas dari
-                kegiatan Playbox yang memiliki makna berfikir secara kreatif. Playbox sendiri merupakan salah satu wadah
-                berkreasi untuk menghasilkan karya inovatif terbaik melalui pelatihan intensif oleh para mentor
+                kegiatan Playbox yang memiliki makna berfikir secara kreatif. Playbox sendiri merupakan
+                salah satu wadah
+                berkreasi untuk menghasilkan karya inovatif terbaik melalui pelatihan intensif oleh para
+                mentor
                 berpengalaman di lingkungan yang kompetitif…</p>
             </div>
           </div>
@@ -320,10 +323,12 @@
                   <div class="col-8">
                     <div class="card-body text-white">
                       <h5 class="">Card title</h5>
-                      <p class="fw-light">This is a wider card with supporting text below as ra natural lead-in to
+                      <p class="fw-light">This is a wider card with supporting text below as ra
+                        natural lead-in to
                         additional
                         content..</p>
-                      <p class="fw-lights"><small class="text-body-white">Last updated 3 mins ago</small></p>
+                      <p class="fw-lights"><small class="text-body-white">Last updated 3 mins
+                          ago</small></p>
                     </div>
                   </div>
                 </div>
@@ -338,10 +343,12 @@
                   <div class="col-8">
                     <div class="card-body text-white">
                       <h5 class="">Card title</h5>
-                      <p class="fw-light">This is a wider card with supporting text below as ra natural lead-in to
+                      <p class="fw-light">This is a wider card with supporting text below as ra
+                        natural lead-in to
                         additional
                         content..</p>
-                      <p class="fw-lights"><small class="text-body-white">Last updated 3 mins ago</small></p>
+                      <p class="fw-lights"><small class="text-body-white">Last updated 3 mins
+                          ago</small></p>
                     </div>
                   </div>
                 </div>
@@ -356,10 +363,12 @@
                   <div class="col-8">
                     <div class="card-body text-white">
                       <h5 class="">Card title</h5>
-                      <p class="fw-light">This is a wider card with supporting text below as ra natural lead-in to
+                      <p class="fw-light">This is a wider card with supporting text below as ra
+                        natural lead-in to
                         additional
                         content..</p>
-                      <p class="fw-lights"><small class="text-body-white">Last updated 3 mins ago</small></p>
+                      <p class="fw-lights"><small class="text-body-white">Last updated 3 mins
+                          ago</small></p>
                     </div>
                   </div>
                 </div>
@@ -367,7 +376,7 @@
             </div>
             <div class="row mt-3" style="margin-left: -25px; ">
               <div class="col">
-                <a href="" class="btn-main">See More</a>
+                <a href="{{ route('landingNews') }}" class="btn-main">See More</a>
               </div>
             </div>
           </div>
@@ -422,7 +431,8 @@
             <h5 class="text-white">Useful Links</h5>
             <div class="fw-light mt-4">
               <a href="" class="text-decoration-none d-block text-white">Telkom Indonesia</a>
-              <a href="" class="text-decoration-none d-block text-white">Yayasan Pendidikan Telkom</a>
+              <a href="" class="text-decoration-none d-block text-white">Yayasan Pendidikan
+                Telkom</a>
               <a href="" class="text-decoration-none d-block text-white">IT Telkom Surabaya</a>
             </div>
           </div>
@@ -436,7 +446,8 @@
         </div>
         <div class="row mt-5">
           <div class="col text-center">
-            <small class="fw-light text-white">Copyright © 2022 CODER ITTelkom Surabaya. | Build with ❤️ by CODER
+            <small class="fw-light text-white">Copyright © 2022 CODER ITTelkom Surabaya. | Build with ❤️ by
+              CODER
               team.</small>
           </div>
         </div>

@@ -21,7 +21,7 @@
      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
        <div class="me-auto"></div>
        <div class="navbar-nav">
-         <a class="nav-link ms-3 text-white active" aria-current="page" href="#">Home</a>
+         <a class="nav-link ms-3 text-white active" aria-current="page" href="/">Home</a>
          <a class="nav-link ms-3 text-white" href="#about-section">About</a>
          {{-- <a class="nav-link ms-3 text-white" href="#">Event</a> --}}
          <a class="nav-link ms-3 text-white" href="#division-section">Division</a>
