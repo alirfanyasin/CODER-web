@@ -55,7 +55,7 @@ Route::get('/gallery', [landingGalleryController::class, 'index'])->name('landin
 Route::get('/news', [landingNewsController::class, 'index'])->name('landingNews');
 Route::get('/news/{id}/show', [landingNewsController::class, 'show'])->name('landingNews.show');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
+Route::get('/division/member/{id}', [LandingPageController::class, 'division_member'])->name('division.member');
 
 
 Route::middleware('guest')->group(function () {

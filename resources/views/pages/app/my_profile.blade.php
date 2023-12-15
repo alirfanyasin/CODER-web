@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'CODER - My Profile' . $data->name)
+@section('title', 'CODER - My Profile ' . $data->name)
 
 @section('content')
   <section id="my-profile">
@@ -23,12 +23,12 @@
           </div>
           <div class="row d-flex align-items-center">
             <div class="col-md-3">
-              <div class="rounded-2 overflow-hidden">
+              <div class="rounded-2 overflow-hidden" id="img-my-profile">
                 <img src="{{ asset('storage/avatar/' . ($data->avatar ?? 'photo-profile.jpg')) }}" alt=""
                   width="100%" height="">
               </div>
             </div>
-            <div class="col-md-3" id="my-data">
+            <div class="col-md-3 my-4" id="my-data">
               <div class="text-white">
                 <h5>{{ $data->name }}</h4>
                   <div>{{ $data->nim }}</div>
