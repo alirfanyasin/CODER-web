@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\UserPresence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -61,10 +62,14 @@ class UserProfileController extends Controller
       'email' => 'nullable|email',
       'field_of_study' => 'required',
       'nim' => 'required',
+      'password' => 'required|min:8',
       'batch' => 'nullable',
       'phone_number' => 'nullable',
       'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Add image validation rules
     ]);
+
+
+    $validatedData['password'] = Hash::make($request->password);
 
     if ($request->hasFile('avatar')) {
       $oldFile = $data->avatar;

@@ -44,7 +44,7 @@
                 <option selected disabled class="text-black">Pilih Divisi</option>
                 @foreach ($data_division as $division)
                   <option value="{{ $division->id }}" class="text-black"
-                    {{ $division->id == $data->division_id ? 'selected' : '' }}>{{ $division->name }}</option>
+                    {{ $division->id == $division->division_id ? 'selected' : '' }}>{{ $division->name }}</option>
                 @endforeach
               </select>
               @error('division_id')
