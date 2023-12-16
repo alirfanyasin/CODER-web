@@ -85,6 +85,15 @@
                 <small class="fw-light">{{ $message }}</small>
               @enderror
             </div>
+            <div class="input-group-custom mb-3">
+              <input type="password" name="password" class="form-control text-white fw-light"
+                style="height: 50px; background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none; border-bottom: 2px solid white;
+                      backdrop-filter: blur(5px);"
+                placeholder="Password" value="{{ $data->password }}">
+              @error('division_id')
+                <small class="fw-light">{{ $message }}</small>
+              @enderror
+            </div>
             <div class="input-group-custom">
               <button type="submit" class="text-white px-5 py-2"
                 style="background: rgba(255, 255, 255, 0.02);  border-radius: 10px; border: none;

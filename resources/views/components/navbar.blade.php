@@ -22,11 +22,11 @@
        <div class="me-auto"></div>
        <div class="navbar-nav">
          <a class="nav-link ms-3 text-white active" aria-current="page" href="/">Home</a>
-         <a class="nav-link ms-3 text-white" href="#about-section">About</a>
+         <a class="nav-link ms-3 text-white" href="{{ !Request::is('/') ? '/' : '#about-section' }}">About</a>
          {{-- <a class="nav-link ms-3 text-white" href="#">Event</a> --}}
-         <a class="nav-link ms-3 text-white" href="#division-section">Division</a>
-         <a class="nav-link ms-3 text-white" href="#gallery-section">Gallery</a>
-         <a class="nav-link ms-3 text-white" href="#news-section">News</a>
+         <a class="nav-link ms-3 text-white" href="{{ !Request::is('/') ? '/' : '#division-section' }}">Division</a>
+         <a class="nav-link ms-3 text-white" href="{{ !Request::is('/') ? 'gallery' : '#gallery-section' }}">Gallery</a>
+         <a class="nav-link ms-3 text-white" href="{{ !Request::is('/') ? 'news' : '#news-section' }}">News</a>
          {{-- <a class="nav-link ms-3 text-white" href="#">E-Learning</a> --}}
 
          @auth
