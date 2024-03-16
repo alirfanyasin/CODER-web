@@ -14,7 +14,7 @@
                         <h1>{{ $data->title }}</h1>
                         <div class="d-inline-block px-4 pt-3 mt-3"
                             style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(2px);">
-                            <p>{{ $data->created_at }}</p>
+                            <p>{{ Carbon\Carbon::parse($data->created_at)->translatedFormat('d F Y h:i') }} WIB</p>
                         </div>
                         <div class="d-inline-block px-4 pt-3"
                             style="background: rgba(255, 255, 255, 0.15); border-radius: 10px; backdrop-filter: blur(2px);">

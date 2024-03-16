@@ -316,7 +316,7 @@
                                 <img src="{{ asset('storage/image/' . $item->thumbnail) }}" class="w-100"
                                     alt="...">
                                 <h5 class="mt-5">{{ $item->title }}</h5>
-                                <p class="fw-light">{{ $item->content }}</p>
+                                <p class="fw-light">{{ Str::limit(strip_tags($item->content), 100, '...') }}</p>
                             @endforeach
                         </div>
                     </div>
@@ -334,9 +334,11 @@
                                         <div class="col-8">
                                             <div class="card-body text-white">
                                                 <h5 class="">{{ $item->title }}</h5>
-                                                <p class="fw-light">{{ $item->content }}</p>
+                                                <p class="fw-light">
+                                                    {{ Str::limit(strip_tags($item->content), 100, '...') }}</p>
                                                 <p class="fw-lights"><small
-                                                        class="text-body-white">{{ $item->created_at }}</small></p>
+                                                        class="text-body-white">{{ Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y h:i') }}
+                                                        WIB</small></p>
                                             </div>
                                         </div>
                                     </div>

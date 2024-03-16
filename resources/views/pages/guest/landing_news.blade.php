@@ -17,7 +17,9 @@
                                     <small class="fw-light" style="color: rgba(255, 255, 255, 0.573);">180 Views</small>
                                 </div>
                                 <div class="fw-light" style="color: rgba(255, 255, 255, 0.573);">
-                                    <small>{{ $news->created_at }}</small> &nbsp;
+                                    <small>{{ Carbon\Carbon::parse($news->created_at)->translatedFormat('d F Y h:i') }}
+                                        WIB</small>
+                                    &nbsp;
                                 </div>
                             </div>
                         </div>
