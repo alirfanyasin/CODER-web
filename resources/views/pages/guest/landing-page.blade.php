@@ -317,28 +317,27 @@
                 </div>
                 <div class="col-md-6 mt-3">
                     <div class="container" data-aos="fade-left" data-aos-duration="2000">
-                        <div class="row">
-                            <div class="card mb-3 bg-custom">
-                                <div class="row g-0 d-flex align-items-center">
-                                    <div class="col-4">
-                                        <img src="{{ asset('assets/img/img-1.png') }}" class="img-fluid rounded-xl"
-                                            alt="...">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="card-body text-white">
-                                            <h5 class="">Card title</h5>
-                                            <p class="fw-light">This is a wider card with supporting text below as ra
-                                                natural lead-in to
-                                                additional
-                                                content..</p>
-                                            <p class="fw-lights"><small class="text-body-white">Last updated 3 mins
-                                                    ago</small></p>
+                        @foreach ($news->take(3) as $item)
+                            <div class="row">
+                                <div class="card mb-3 bg-custom py-3">
+                                    <div class="row g-0 d-flex align-items-center">
+                                        <div class="col-4">
+                                            <img src="{{ asset('storage/image/' . $item->thumbnail) }}"
+                                                class="img-fluid rounded-xl" alt="...">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="card-body text-white">
+                                                <h5 class="">{{ $item->title }}</h5>
+                                                <p class="fw-light">{{ $item->content }}</p>
+                                                <p class="fw-lights"><small
+                                                        class="text-body-white">{{ $item->created_at }}</small></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        @endforeach
+                        {{-- <div class="row">
                             <div class="card mb-3 bg-custom">
                                 <div class="row g-0 d-flex align-items-center">
                                     <div class="col-4">
@@ -378,8 +377,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> 
+                        </div> --}}
                         <div class="row mt-3" style="margin-left: -25px; ">
                             <div class="col">
                                 <a href="{{ route('landingNews') }}" class="btn-main">See More</a>

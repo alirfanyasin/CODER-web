@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin\Division;
 use App\Models\User;
 use App\Models\Admin\Gallery;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -14,6 +15,7 @@ class LandingPageController extends Controller
         return view('pages.guest.landing-page', [
             'division' => Division::all(),
             'data' => Gallery::All(),
+            'news' => News::all(),
         ]);
     }
 
