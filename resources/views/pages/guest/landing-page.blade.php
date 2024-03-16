@@ -303,7 +303,7 @@
                 <div class="col-md-6">
                     <div class="card p-4 bg-custom" data-aos="fade-right" data-aos-duration="2000">
                         <div class="text-white">
-                            <img src="{{ asset('assets/img/img-1.png') }}" class="w-100" alt="...">
+                            {{-- <img src="{{ asset('assets/img/img-1.png') }}" class="w-100" alt="...">
                             <h5 class="mt-5">Play Box Let’s Play Out Of The Box</h5>
                             <p class="fw-light">Playbox “let’s Play out of the box” seperti itulah jargon yang menjadi
                                 identitas dari
@@ -311,13 +311,19 @@
                                 salah satu wadah
                                 berkreasi untuk menghasilkan karya inovatif terbaik melalui pelatihan intensif oleh para
                                 mentor
-                                berpengalaman di lingkungan yang kompetitif…</p>
+                                berpengalaman di lingkungan yang kompetitif…</p> --}}
+                            @foreach ($news->take(1) as $item)
+                                <img src="{{ asset('storage/image/' . $item->thumbnail) }}" class="w-100"
+                                    alt="...">
+                                <h5 class="mt-5">{{ $item->title }}</h5>
+                                <p class="fw-light">{{ $item->content }}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mt-3">
                     <div class="container" data-aos="fade-left" data-aos-duration="2000">
-                        @foreach ($news->take(3) as $item)
+                        @foreach ($news->skip(1)->take(3) as $item)
                             <div class="row">
                                 <div class="card mb-3 bg-custom py-3">
                                     <div class="row g-0 d-flex align-items-center">
