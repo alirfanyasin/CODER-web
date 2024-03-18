@@ -149,6 +149,16 @@ nav #icon-hamburger{
 }
 
 
+#meeting-schedule {
+  height: 500px;
+}
+
+#meeting-schedule::-webkit-scrollbar {
+  width: 2px;
+}
+
+
+/* Mobile Version */
 @media (max-width: 768px) {
 
   body > * {
