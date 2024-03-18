@@ -4,7 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Charts\MonthlyContentChart;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Meet;
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -14,7 +17,16 @@ class DashboardController extends Controller
 
     public function index(MonthlyContentChart $chart)
     {
-        return view('pages.app.dashboard', ['chart' => $chart->build()]);
+        $countTask = Task::where('division_id', Auth::user()->division_id)->get();
+        $countMeeting = Meet::where('division_id', Auth::user()->division_id)->get();
+        $meetingSchedule = Meet::where('division_id', Auth::user()->division_id)->get();
+
+        return view('pages.app.dashboard', [
+            'chart' => $chart->build(),
+            'tasks' => $countTask,
+            'meeting' => $countMeeting,
+            'meetingSchedule' => $meetingSchedule
+        ]);
     }
 
     /**
