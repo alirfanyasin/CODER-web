@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('task_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('task_id')->constrained()->onDelete('cascade');
             $table->string('submission')->nullable();
             $table->unsignedBigInteger('point')->default(5)->nullable();
             $table->timestamps();

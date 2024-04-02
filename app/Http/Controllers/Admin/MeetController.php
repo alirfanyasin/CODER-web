@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\Division;
 use App\Models\Admin\Meet;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 
 class MeetController extends Controller
 {
@@ -98,7 +100,11 @@ class MeetController extends Controller
         $validatedData['user_id'] = Auth::user()->id;
         $divisionUser = Auth::user()->division_id;
         $validatedData['division_id'] = $request->division_id;
-        $validatedData['status'] = 'Done';
+
+        if (Carbon::now() > $validatedData['meeting']) {
+            $validatedData['status'] = 'Done';
+        }
+
         $data->update($validatedData);
 
         return redirect()->route('admin.elearning.meet.division', $request->division_id)->with('success', 'Meet Updated successfully');
@@ -133,6 +139,22 @@ class MeetController extends Controller
 
         // Mengelompokkan data berdasarkan meeting
         $groupedData = $allData->groupBy('meeting');
+
+
+
+        foreach ($allData as $data) {
+            // Ubah string datetime ke objek Carbon
+            $startTime = Carbon::parse($data->start_time);
+
+            // Hitung selisih hari antara waktu sekarang dan waktu pertemuan
+            $daysDifference = Carbon::now()->diffInDays($startTime);
+
+            // Jika waktu pertemuan sudah lewat 1 hari atau lebih, update statusnya
+            if ($daysDifference > 0) {
+                $data['status'] = 'Done';
+                $data->save();
+            }
+        }
 
         return view('pages.app.elearning_meet', [
             'allData' => $allData,

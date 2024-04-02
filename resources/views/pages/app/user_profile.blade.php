@@ -111,7 +111,9 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Link</th>
+                      @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
+                        <th scope="col">Link</th>
+                      @endif
                       <th scope="col">Task Name</th>
                       <th scope="col">Status</th>
                       <th scope="col">Point</th>
@@ -124,9 +126,13 @@
                     @foreach ($dataSubmission as $submission)
                       <tr>
                         <th class="align-middle" scope="row">{{ $noSubmission++ }}</th>
-                        <td class="align-middle"><a href="{{ $submission->submission }}" target="_blank"
-                            class="text-decoration-none text-white"><iconify-icon icon="ci:link" width="50px"
-                              class="icon-type"></iconify-icon></a></td>
+                        @if (Auth::user()->hasRole('admin') || Auth::user()->hasPermissionTo('admin-division'))
+                          <td class="align-middle">
+                            <a href="{{ $submission->submission }}" target="_blank"
+                              class="text-decoration-none text-white"><iconify-icon icon="ci:link" width="50px"
+                                class="icon-type"></iconify-icon></a>
+                          </td>
+                        @endif
                         <td class="align-middle">{{ $submission->task->task_name }}</td>
                         <td class="align-middle"><span class="badge bg-success">Submitted</span></td>
                         <td class="align-middle">{{ $submission->point }}</td>
