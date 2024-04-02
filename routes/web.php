@@ -128,6 +128,7 @@ Route::middleware(['auth', 'role_or_permission:admin|admin-division'])->group(fu
     Route::get('/users/profile/{uuid}/{id}/{name}', [AdminUserController::class, 'profile'])->name('admin.users.profile');
     Route::post('/users/give-permission/{id}', [AdminUserController::class, 'givePermission'])->name('admin.users.give_permission');
     Route::post('/users/revoke-permission/{id}', [AdminUserController::class, 'revokePermission'])->name('admin.users.revoke_permission');
+    Route::post('/users/{id}/destroy', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 
     Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
     Route::get('/gallery/create', [GalleryController::class, 'create'])->name('admin.gallery.create');

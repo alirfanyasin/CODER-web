@@ -178,7 +178,8 @@ use Carbon\Carbon;
               <div class="modal-body">
                 <input type="hidden" name="task_id" value="{{ $data->id }}">
                 <div class="mb-3">
-                  <input type="url" name="submission" class="form-control" placeholder="Masukkan link project">
+                  <input type="url" name="submission" class="form-control"
+                    placeholder="Masukkan link project (github, drive, dll)">
                   @error('submission')
                     <small class="text-danger">{{ $message }}</small>
                   @enderror

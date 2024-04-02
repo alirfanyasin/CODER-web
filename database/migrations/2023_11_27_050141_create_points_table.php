@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('points', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_presence_id')->nullable()->constrained();
             $table->foreignId('submission_id')->nullable()->constrained();
             $table->unsignedBigInteger('point')->default(0)->nullable();

@@ -173,7 +173,8 @@ use Carbon\Carbon;
             <div class="modal-body">
               <input type="hidden" name="task_id" value="{{ $item->id }}">
               <div class="mb-3">
-                <input type="url" name="submission" class="form-control" placeholder="Masukkan link project">
+                <input type="url" name="submission" class="form-control"
+                  placeholder="Masukkan link project (github, drive, dll)">
                 @error('submission')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -207,7 +208,7 @@ use Carbon\Carbon;
                     <div class="mb-3">
 
                       <input type="url" name="submission" class="form-control" value="{{ $submis->submission }}"
-                        placeholder="Masukkan link project">
+                        placeholder="Masukkan link project (github, drive, dll)">
 
                       @error('submission')
                         <small class="text-danger">{{ $message }}</small>

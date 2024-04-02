@@ -127,11 +127,18 @@ class TaskController extends Controller
     public function destroy(string $id)
     {
         $data = Task::findOrFail($id);
+
         if (!$data) {
             return redirect()->back()->with('error', 'File not found');
         }
+        $data->submission()->delete();
+
+
         Storage::delete('public/task/' . $data->file);
         $data->delete();
+
+
+
         $divisionUser = Auth::user()->division_id;
         if (Auth::user()->hasPermissionTo('admin-division')) {
             return redirect()->route('elearning.task', $divisionUser)->with('success', 'Deleted task successfully');

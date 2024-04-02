@@ -28,15 +28,32 @@
                             Remove Permission
                           </button>
                         </form>
+
+                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="dropdown-item">
+                          @csrf
+                          <button type="submit" class="bg-transparent border-0 d-flex align-items-center">
+                            <iconify-icon icon="mynaui:trash"></iconify-icon> &nbsp;
+                            Delete
+                          </button>
+                        </form>
                       </li>
                     @else
                       <li>
+
                         <form action="{{ route('admin.users.give_permission', $user->id) }}" class="dropdown-item"
                           method="POST">
                           @csrf
                           <button type="submit" class="bg-transparent border-0">
                             <iconify-icon icon="mingcute:user-security-line"></iconify-icon>
                             Give Permission
+                          </button>
+                        </form>
+
+                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="dropdown-item">
+                          @csrf
+                          <button type="submit" class="bg-transparent border-0 d-flex align-items-center">
+                            <iconify-icon icon="mynaui:trash"></iconify-icon> &nbsp;
+                            Delete
                           </button>
                         </form>
                       </li>

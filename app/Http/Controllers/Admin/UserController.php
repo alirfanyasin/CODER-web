@@ -67,4 +67,16 @@ class UserController extends Controller
         $data->revokePermissionTo('admin-division');
         return redirect()->route('admin.users')->with('success', 'Give permission as admin division to ' . $data->name);
     }
+
+    public function destroy($id)
+    {
+        $dataUser = User::findOrFail($id);
+        $dataUser->tasks()->delete();
+        $dataUser->submission()->delete();
+        $dataUser->user_presences()->delete();
+        $dataUser->point()->delete();
+        $dataUser->delete();
+
+        return redirect()->route('admin.users')->with('success', 'Deleted user successfully');
+    }
 }
